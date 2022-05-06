@@ -5,6 +5,8 @@
  */
 package UI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -160,7 +162,14 @@ public class Login extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        String nombre = jTextField1.getText(), contrasena = jTextField2.getText();
+        String res = iniciarSesion(nombre,contrasena);
+        
+        if (res.equals("Satisfactorio")){//Satisfactorio
+            //lo que tenga que hacer
+        }else{//devuelvo el mensaje de res
+            JOptionPane.showMessageDialog(null, res);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -181,4 +190,8 @@ public class Login extends javax.swing.JPanel {
     private java.awt.Label label1;
     private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables
+
+    private String iniciarSesion(String nombre, String contrasena) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
