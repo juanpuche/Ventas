@@ -4,6 +4,8 @@
  */
 package com.codigo;
 
+import com.bd.BaseDeDatosTortas;
+
 /**
  *
  * @author Admin
@@ -81,5 +83,22 @@ public class Usuario {
         sb.append('}');
         return sb.toString();
     }
+        
+    private static Usuario convertirObjectToUsuario(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public static Usuario getUsuario(int usuario, String contrasena){
+        Usuario res = null;
+        
+        String sentencia ="";
+        
+        Object obj = BaseDeDatosTortas.getselect(sentencia);
+        
+        res = convertirObjectToUsuario(obj);
+        
+        return res;
+    }    
+    
     
 }

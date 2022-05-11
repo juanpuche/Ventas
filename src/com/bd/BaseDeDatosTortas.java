@@ -23,4 +23,8 @@ public class BaseDeDatosTortas {
     public static Conexion getCon() {
         return con;
     } 
+    
+    public static Object getselect(String sentencia){
+        return  null;
+    }
 }

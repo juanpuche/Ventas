@@ -12,17 +12,20 @@ import java.time.LocalDate;
  */
 public class Pedido {
     
-    private int id_numero;
+    private int id_numero, id_torta, cantidad_tortas;
+    private long cedula_cliente, cedula_usuario;
     private LocalDate fecha;
     private String estado;
     private double valorTotal;
 
-    public Pedido(int id_numero, LocalDate fecha, String estado, double valorTotal) {
+    public Pedido(int id_numero, long cedula_cliente, LocalDate fecha, String estado, double valorTotal) {
         this.id_numero = id_numero;
+        this.cedula_cliente = cedula_cliente;
         this.fecha = fecha;
         this.estado = estado;
         this.valorTotal = valorTotal;
     }
+    
 
     public int getId_numero() {
         return id_numero;
@@ -52,16 +55,35 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Pedido{");
-        sb.append("id_numero=").append(id_numero);
-        sb.append(", fecha=").append(fecha);
-        sb.append(", estado=").append(estado);
-        sb.append(", valorTotal=").append(valorTotal);
-        sb.append('}');
-        return sb.toString();
+    public long getCedula_cliente() {
+        return cedula_cliente;
+    }
+
+    public void setCedula_cliente(long cedula_cliente) {
+        this.cedula_cliente = cedula_cliente;
+    }
+    
+    public static boolean crearNuevoPedido(Pedido p){
+        String sentenciSQL = "INSERT INTO `tortas`.`pedido`\n" +
+            "(\n" +//`numero`,
+            "`fecha`,\n" +
+            "`estado`,\n" +
+            "`valortotal`,\n" +
+            "`cedula_cliente`,\n" +
+            "`codigo_torta`,\n" +
+            "`cedula_usuario`)\n" +
+            "VALUES\n" +
+            p.fecha.toString() + ",\n" +
+            p.estado + ",\n" +
+            p.valorTotal + ",\n" +
+            p.cedula_cliente + ",\n" +
+            p.id_torta + ",\n" +
+            //p.cantidad_tortas + ",\n" +
+            p.cedula_usuario + ");";
+        
+        
+        
+        return true;
     }
     
     

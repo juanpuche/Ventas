@@ -5,7 +5,7 @@
  */
 package com.UI;
 
-import static javafx.beans.binding.Bindings.and;
+import com.codigo.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -374,19 +374,25 @@ public class Login extends javax.swing.JFrame {
     }
 
     private String iniciarSesion(int user, String contrasena) {
-//       
-//         String res = "";
-//        String consultaSQL =" "
-//       
-//        
-//        
-//        
-//        
-//        
-        return "r";
+        String res = null;
+        Usuario u = Usuario.getUsuario(user, contrasena);
         
+        /**
+         * salidas comunes
+         * {
+         *  boolean,
+         *  Usuario,
+         *  LinkedList<Usuario>
+         * }
+         */
         
+        if (u != null){//satisfactorio
+            res = "r";
+        }else{//no existe o algo malo ocurrió
+            //Haga tal cosa
+        }
         
+        return res;
     }
 
     private String inciarSesion(int user, String contrasena) {
