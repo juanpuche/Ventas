@@ -11,17 +11,27 @@ package com.codigo;
 public class Usuario {
     
     private int cedula;
-    private String nombre, apellido, tipoUsuario;
+    private String nombre, apellido, tipoUsuario, contrasena;
     private int telefono;
 
-    public Usuario(int cedula, String nombre, String apellido, String tipoUsuario, int telefono) {
+    public Usuario(int cedula, String nombre, String apellido, String tipoUsuario, String contrasena, int telefono) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoUsuario = tipoUsuario;
+        this.contrasena = contrasena;
         this.telefono = telefono;
     }
 
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+ 
     public int getCedula() {
         return cedula;
     }
@@ -66,6 +76,7 @@ public class Usuario {
         sb.append(", nombre=").append(nombre);
         sb.append(", apellido=").append(apellido);
         sb.append(", tipoUsuario=").append(tipoUsuario);
+        sb.append(", contrasena=").append(contrasena);
         sb.append(", telefono=").append(telefono);
         sb.append('}');
         return sb.toString();

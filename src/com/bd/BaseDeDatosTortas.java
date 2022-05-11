@@ -13,7 +13,7 @@ public class BaseDeDatosTortas {
     private static final String 
             baseDeDatos = "tortas",
             usuariobd = "root",
-            passbd = "2711",
+            passbd = "1234",
             Driver = "com.mysql.cj.jdbc.Driver",
             URL = "localhost";
     
