@@ -9,6 +9,10 @@ package com.codigo;
  * @author Admin
  */
 public class Torta {
+
+    public static Torta getTorta(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private String codigo, sabor;
     private double peso, precio;
 

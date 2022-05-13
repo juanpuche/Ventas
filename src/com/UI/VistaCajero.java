@@ -5,8 +5,6 @@
  */
 package com.UI;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Juanfer
@@ -18,6 +16,8 @@ public class VistaCajero extends javax.swing.JFrame {
      */
     public VistaCajero() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setTitle("Sistema y Control de Ventas V 1.01");
     }
 
     /**
@@ -29,412 +29,567 @@ public class VistaCajero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        in_boton_registrarpedido = new javax.swing.JButton();
-        in_boton_cancelarpedido = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        in_text_cedulacliente = new javax.swing.JTextField();
-        in_boton_marcarentrega = new javax.swing.JButton();
-        in_boton_validarcedula = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel55 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        in_text_numeropedidoAgg = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        in_text_codigotortaAgg = new javax.swing.JTextField();
-        in_boton_anadiralpedido = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        in_boton_anadiralpedido1 = new javax.swing.JButton();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        in_boton_registrarpedido1 = new javax.swing.JButton();
+        jLabel57 = new javax.swing.JLabel();
+        in_text_cedulacliente3 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
+        jLabel74 = new javax.swing.JLabel();
+        in_text_cedulacliente5 = new javax.swing.JTextField();
+        jLabel77 = new javax.swing.JLabel();
+        jSeparator17 = new javax.swing.JSeparator();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel65 = new javax.swing.JLabel();
+        in_text_numeropedidoAgg4 = new javax.swing.JTextField();
+        jLabel66 = new javax.swing.JLabel();
+        in_text_numeropedidoAgg5 = new javax.swing.JTextField();
+        jLabel67 = new javax.swing.JLabel();
+        in_text_numeropedidoAgg6 = new javax.swing.JTextField();
+        jLabel68 = new javax.swing.JLabel();
+        in_text_numeropedidoAgg7 = new javax.swing.JTextField();
+        jLabel69 = new javax.swing.JLabel();
+        in_text_numeropedidoAgg8 = new javax.swing.JTextField();
+        jLabel70 = new javax.swing.JLabel();
+        in_text_numeropedidoAgg9 = new javax.swing.JTextField();
+        jSeparator13 = new javax.swing.JSeparator();
+        jSeparator14 = new javax.swing.JSeparator();
+        jSeparator16 = new javax.swing.JSeparator();
+        jSeparator18 = new javax.swing.JSeparator();
+        jSeparator19 = new javax.swing.JSeparator();
+        jSeparator20 = new javax.swing.JSeparator();
+        jLabel79 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel63 = new javax.swing.JLabel();
+        in_text_codigotortaAgg1 = new javax.swing.JTextField();
+        in_boton_anadiralpedido2 = new javax.swing.JButton();
+        in_boton_anadiralpedido3 = new javax.swing.JButton();
+        jSeparator15 = new javax.swing.JSeparator();
+        jSeparator21 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_inicio = new javax.swing.JTable();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jPanel21 = new javax.swing.JPanel();
+        in_boton_mostrarfactura12 = new javax.swing.JButton();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel73 = new javax.swing.JLabel();
+        in_text_cedulacliente4 = new javax.swing.JTextField();
+        in_boton_marcarentrega1 = new javax.swing.JButton();
+        in_boton_cancelarpedido1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
-        jLabel52 = new javax.swing.JLabel();
-        in_text_cedulacliente2 = new javax.swing.JTextField();
-        jLabel56 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator11 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        display_inicio = new javax.swing.JTextArea();
-        jLabel8 = new javax.swing.JLabel();
-        in_boton_mostrarfactura = new javax.swing.JButton();
-        in_boton_mostrarpedido = new javax.swing.JButton();
-        in_boton_salir = new javax.swing.JButton();
-        in_text_numeropedidoreporte = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        in_boton_mostrarfactura1 = new javax.swing.JButton();
-        in_boton_mostrarfactura2 = new javax.swing.JButton();
-        jLabel51 = new javax.swing.JLabel();
-        in_text_cedulacliente1 = new javax.swing.JTextField();
+        jLabel80 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel81 = new javax.swing.JLabel();
+        in_boton_salir1 = new javax.swing.JButton();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
         lbfecha = new javax.swing.JLabel();
         lbhora = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        cl_text_cedularegistro = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        cl_text_nombre = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        cl_text_apellidos = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        cl_text_direccion = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        cl_text_celular = new javax.swing.JTextField();
-        cl_boton_anadircliente = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        cl_text_cedulavalidar = new javax.swing.JTextField();
-        cl_boton_validarcedula = new javax.swing.JButton();
-        cl_boton_eliminarcliente = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        cl_boton_salir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        cl_boton_mostrarcliente = new javax.swing.JButton();
-        jLabel36 = new javax.swing.JLabel();
-        cl_text_cedulaconsultar = new javax.swing.JTextField();
-        jLabel37 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        display_cliente = new javax.swing.JTextArea();
-        jSeparator7 = new javax.swing.JSeparator();
-        jLabel57 = new javax.swing.JLabel();
-        jSeparator8 = new javax.swing.JSeparator();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator9 = new javax.swing.JSeparator();
-        jSeparator10 = new javax.swing.JSeparator();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu12 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(252, 162, 95));
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setForeground(new java.awt.Color(252, 162, 95));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
 
-        in_boton_registrarpedido.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        in_boton_registrarpedido.setText("Registrar Pedido");
-        in_boton_registrarpedido.addActionListener(new java.awt.event.ActionListener() {
+        in_boton_registrarpedido1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        in_boton_registrarpedido1.setText("Registrar Pedido");
+        in_boton_registrarpedido1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        in_boton_registrarpedido1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_registrarpedidoActionPerformed(evt);
+                in_boton_registrarpedido1ActionPerformed(evt);
             }
         });
 
-        in_boton_cancelarpedido.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        in_boton_cancelarpedido.setText("Cancelar Pedido");
-        in_boton_cancelarpedido.addActionListener(new java.awt.event.ActionListener() {
+        jLabel57.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel57.setText("Cedula Cliente:");
+
+        in_text_cedulacliente3.setBorder(null);
+        in_text_cedulacliente3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_cancelarpedidoActionPerformed(evt);
+                in_text_cedulacliente3ActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel4.setText("Cedula Cliente:");
+        jSeparator5.setForeground(new java.awt.Color(255, 204, 153));
 
-        in_text_cedulacliente.setForeground(new java.awt.Color(204, 204, 204));
-        in_text_cedulacliente.setText("Digite la cedula");
-        in_text_cedulacliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(in_text_cedulacliente3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addComponent(in_boton_registrarpedido1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(in_text_cedulacliente3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel57)))
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(in_boton_registrarpedido1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        in_boton_marcarentrega.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        in_boton_marcarentrega.setText("Marcar Entrega");
-        in_boton_marcarentrega.addActionListener(new java.awt.event.ActionListener() {
+        jLabel74.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel74.setText("Usuario:");
+
+        in_text_cedulacliente5.setEditable(false);
+        in_text_cedulacliente5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_marcarentregaActionPerformed(evt);
+                in_text_cedulacliente5ActionPerformed(evt);
             }
         });
 
-        in_boton_validarcedula.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        in_boton_validarcedula.setText("Buscar Pedido Cedula");
-        in_boton_validarcedula.addActionListener(new java.awt.event.ActionListener() {
+        jLabel77.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UI/Logo2.png"))); // NOI18N
+
+        jSeparator17.setForeground(new java.awt.Color(204, 204, 204));
+
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel65.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel65.setText("Numero Pedido:");
+
+        in_text_numeropedidoAgg4.setForeground(new java.awt.Color(153, 153, 153));
+        in_text_numeropedidoAgg4.setBorder(null);
+        in_text_numeropedidoAgg4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_validarcedulaActionPerformed(evt);
+                in_text_numeropedidoAgg4ActionPerformed(evt);
             }
         });
 
-        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel66.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel66.setText("Cedula Cliente:");
 
-        jLabel55.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel55.setText("Adicion de Productos:");
+        in_text_numeropedidoAgg5.setForeground(new java.awt.Color(153, 153, 153));
+        in_text_numeropedidoAgg5.setBorder(null);
+        in_text_numeropedidoAgg5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_text_numeropedidoAgg5ActionPerformed(evt);
+            }
+        });
 
-        jSeparator3.setForeground(new java.awt.Color(153, 153, 255));
+        jLabel67.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel67.setText("Nombre:");
+        jLabel67.setToolTipText("");
+
+        in_text_numeropedidoAgg6.setForeground(new java.awt.Color(153, 153, 153));
+        in_text_numeropedidoAgg6.setBorder(null);
+        in_text_numeropedidoAgg6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_text_numeropedidoAgg6ActionPerformed(evt);
+            }
+        });
+
+        jLabel68.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel68.setText("Apellido:");
+        jLabel68.setToolTipText("");
+
+        in_text_numeropedidoAgg7.setForeground(new java.awt.Color(153, 153, 153));
+        in_text_numeropedidoAgg7.setBorder(null);
+        in_text_numeropedidoAgg7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_text_numeropedidoAgg7ActionPerformed(evt);
+            }
+        });
+
+        jLabel69.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel69.setText("Direccion:");
+
+        in_text_numeropedidoAgg8.setForeground(new java.awt.Color(153, 153, 153));
+        in_text_numeropedidoAgg8.setBorder(null);
+        in_text_numeropedidoAgg8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_text_numeropedidoAgg8ActionPerformed(evt);
+            }
+        });
+
+        jLabel70.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel70.setText("Celular:");
+
+        in_text_numeropedidoAgg9.setForeground(new java.awt.Color(153, 153, 153));
+        in_text_numeropedidoAgg9.setBorder(null);
+        in_text_numeropedidoAgg9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_text_numeropedidoAgg9ActionPerformed(evt);
+            }
+        });
+
+        jSeparator13.setForeground(new java.awt.Color(255, 204, 153));
+
+        jSeparator14.setForeground(new java.awt.Color(255, 204, 153));
+
+        jSeparator16.setForeground(new java.awt.Color(255, 204, 153));
+
+        jSeparator18.setForeground(new java.awt.Color(255, 204, 153));
+
+        jSeparator19.setForeground(new java.awt.Color(255, 204, 153));
+
+        jSeparator20.setForeground(new java.awt.Color(255, 204, 153));
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addComponent(jLabel65)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(in_text_numeropedidoAgg4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel66)
+                            .addComponent(jLabel69))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator20)
+                                    .addComponent(in_text_numeropedidoAgg8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel70)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator16)
+                                    .addComponent(in_text_numeropedidoAgg9, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                                    .addComponent(jSeparator18)))
+                            .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel20Layout.createSequentialGroup()
+                                    .addComponent(jSeparator13, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                                    .addGap(400, 400, 400))
+                                .addGroup(jPanel20Layout.createSequentialGroup()
+                                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel20Layout.createSequentialGroup()
+                                            .addComponent(in_text_numeropedidoAgg5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(27, 27, 27)
+                                            .addComponent(jLabel67)
+                                            .addGap(10, 10, 10)
+                                            .addComponent(in_text_numeropedidoAgg6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(42, 42, 42)
+                                            .addComponent(jLabel68))
+                                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(10, 10, 10)
+                                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(in_text_numeropedidoAgg7, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                                        .addComponent(jSeparator19)))))))
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel65)
+                    .addComponent(in_text_numeropedidoAgg4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel66)
+                    .addComponent(in_text_numeropedidoAgg5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel67)
+                    .addComponent(in_text_numeropedidoAgg6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel68)
+                    .addComponent(in_text_numeropedidoAgg7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel69)
+                                    .addComponent(jLabel70)
+                                    .addComponent(in_text_numeropedidoAgg9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(in_text_numeropedidoAgg8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
+        );
+
+        jLabel79.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel79.setText("Registrar Pedido:");
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel5.setText("Numero Pedido:");
+        jLabel63.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel63.setText("Codigo Torta:");
 
-        in_text_numeropedidoAgg.setForeground(new java.awt.Color(204, 204, 204));
-        in_text_numeropedidoAgg.setText("Numero pedido");
-        in_text_numeropedidoAgg.setBorder(null);
-        in_text_numeropedidoAgg.addActionListener(new java.awt.event.ActionListener() {
+        in_text_codigotortaAgg1.setForeground(new java.awt.Color(204, 204, 204));
+        in_text_codigotortaAgg1.setText("Digite el codigo");
+        in_text_codigotortaAgg1.setBorder(null);
+        in_text_codigotortaAgg1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_text_numeropedidoAggActionPerformed(evt);
+                in_text_codigotortaAgg1ActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel6.setText("Codigo Torta:");
-
-        in_text_codigotortaAgg.setForeground(new java.awt.Color(204, 204, 204));
-        in_text_codigotortaAgg.setText("Digite el codigo");
-        in_text_codigotortaAgg.setBorder(null);
-        in_text_codigotortaAgg.addActionListener(new java.awt.event.ActionListener() {
+        in_boton_anadiralpedido2.setBackground(new java.awt.Color(153, 255, 153));
+        in_boton_anadiralpedido2.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        in_boton_anadiralpedido2.setText("+");
+        in_boton_anadiralpedido2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_text_codigotortaAggActionPerformed(evt);
+                in_boton_anadiralpedido2ActionPerformed(evt);
             }
         });
 
-        in_boton_anadiralpedido.setBackground(new java.awt.Color(153, 255, 153));
-        in_boton_anadiralpedido.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        in_boton_anadiralpedido.setText("+");
-        in_boton_anadiralpedido.addActionListener(new java.awt.event.ActionListener() {
+        in_boton_anadiralpedido3.setBackground(new java.awt.Color(255, 153, 153));
+        in_boton_anadiralpedido3.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        in_boton_anadiralpedido3.setText("-");
+        in_boton_anadiralpedido3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_anadiralpedidoActionPerformed(evt);
+                in_boton_anadiralpedido3ActionPerformed(evt);
             }
         });
 
-        jScrollPane1.setToolTipText("");
+        jSeparator15.setForeground(new java.awt.Color(204, 204, 204));
 
-        jTextArea1.setBackground(new java.awt.Color(204, 204, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Nota: Añadir al pedido,\nuna vez se haya creado.");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        in_boton_anadiralpedido1.setBackground(new java.awt.Color(255, 153, 153));
-        in_boton_anadiralpedido1.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        in_boton_anadiralpedido1.setText("-");
-        in_boton_anadiralpedido1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_anadiralpedido1ActionPerformed(evt);
-            }
-        });
-
-        jSeparator5.setForeground(new java.awt.Color(204, 204, 204));
-
-        jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
-
-        jLabel52.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel52.setText("Ultimo pedido registrado:");
-
-        in_text_cedulacliente2.setEditable(false);
+        jSeparator21.setForeground(new java.awt.Color(255, 204, 153));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(in_text_numeropedidoAgg, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSeparator6)
-                                    .addComponent(in_text_codigotortaAgg, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(in_boton_anadiralpedido)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(in_boton_anadiralpedido1))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel52)
-                        .addGap(18, 18, 18)
-                        .addComponent(in_text_cedulacliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                    .addComponent(in_text_codigotortaAgg1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(in_boton_anadiralpedido2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(in_boton_anadiralpedido3)
+                .addContainerGap(353, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(in_text_numeropedidoAgg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel6)
-                                .addComponent(in_text_codigotortaAgg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(in_boton_anadiralpedido)
-                                    .addComponent(in_boton_anadiralpedido1))))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel52)
-                            .addComponent(in_text_cedulacliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel63)
+                            .addComponent(in_text_codigotortaAgg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(in_boton_anadiralpedido2)
+                        .addComponent(in_boton_anadiralpedido3)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        tabla_inicio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Cantidad", "Cod.", "Descripcion", "Precio Unit.", "Importe"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla_inicio);
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jLabel71.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel71.setText("Subtotal:");
+
+        jLabel72.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel72.setText("IVA:");
+
+        jLabel78.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel78.setText("TOTAL:");
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel71)
+                    .addComponent(jLabel72)
+                    .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(220, Short.MAX_VALUE))
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel71)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel72)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel78)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel56.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel56.setText("Informacion:");
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
 
-        jSeparator4.setForeground(new java.awt.Color(0, 153, 153));
+        in_boton_mostrarfactura12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        in_boton_mostrarfactura12.setText("Guardar Pedido");
+        in_boton_mostrarfactura12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        in_boton_mostrarfactura12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_boton_mostrarfactura12ActionPerformed(evt);
+            }
+        });
 
-        jSeparator11.setForeground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1)
-                            .addComponent(in_text_cedulacliente, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(jSeparator11))
-                        .addGap(18, 18, 18)
-                        .addComponent(in_boton_validarcedula))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(in_boton_registrarpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(in_boton_cancelarpedido)
-                    .addComponent(in_boton_marcarentrega, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel55)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel56)
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(in_boton_mostrarfactura12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(in_boton_cancelarpedido)
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(in_boton_mostrarfactura12)
+                .addGap(34, 34, 34))
+        );
+
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel73.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel73.setText("Numero de Pedido:");
+
+        in_text_cedulacliente4.setForeground(new java.awt.Color(204, 204, 204));
+        in_text_cedulacliente4.setBorder(null);
+        in_text_cedulacliente4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_text_cedulacliente4ActionPerformed(evt);
+            }
+        });
+
+        in_boton_marcarentrega1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        in_boton_marcarentrega1.setText("Consultar");
+        in_boton_marcarentrega1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        in_boton_marcarentrega1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_boton_marcarentrega1ActionPerformed(evt);
+            }
+        });
+
+        in_boton_cancelarpedido1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        in_boton_cancelarpedido1.setText("Cambiar Estado");
+        in_boton_cancelarpedido1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        in_boton_cancelarpedido1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_boton_cancelarpedido1ActionPerformed(evt);
+            }
+        });
+
+        jSeparator6.setForeground(new java.awt.Color(255, 204, 153));
+
+        jLabel80.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel80.setText("Pedido Registrado:");
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addContainerGap(21, Short.MAX_VALUE)
+                        .addComponent(in_boton_marcarentrega1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(in_boton_cancelarpedido1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(in_boton_marcarentrega))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(in_text_cedulacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(in_boton_validarcedula)))
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(in_boton_registrarpedido)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel55)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel56)
-                .addGap(2, 2, 2)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator6)
+                            .addComponent(in_text_cedulacliente4))))
+                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel80)
+                .addContainerGap())
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel73)
+                    .addComponent(in_text_cedulacliente4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(in_boton_marcarentrega1)
+                    .addComponent(in_boton_cancelarpedido1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        display_inicio.setColumns(20);
-        display_inicio.setRows(5);
-        jScrollPane2.setViewportView(display_inicio);
+        jSeparator7.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel8.setText("Display:");
+        jLabel81.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel81.setText("Añadir Productos:");
 
-        in_boton_mostrarfactura.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        in_boton_mostrarfactura.setText("Mostrar Factura");
-        in_boton_mostrarfactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_mostrarfacturaActionPerformed(evt);
-            }
-        });
+        in_boton_salir1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        in_boton_salir1.setText("Salir");
+        in_boton_salir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        in_boton_mostrarpedido.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        in_boton_mostrarpedido.setText("Mostrar Pedido");
-        in_boton_mostrarpedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_mostrarpedidoActionPerformed(evt);
-            }
-        });
+        jPanel32.setBackground(new java.awt.Color(255, 204, 153));
 
-        in_boton_salir.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        in_boton_salir.setText("Salir");
-        in_boton_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_salirActionPerformed(evt);
-            }
-        });
+        jLabel93.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel93.setText("Fecha:");
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel10.setText("Numero Pedido:");
-
-        in_boton_mostrarfactura1.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        in_boton_mostrarfactura1.setText("Limpiar");
-        in_boton_mostrarfactura1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_mostrarfactura1ActionPerformed(evt);
-            }
-        });
-
-        in_boton_mostrarfactura2.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        in_boton_mostrarfactura2.setText("Imprimir");
-        in_boton_mostrarfactura2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_mostrarfactura2ActionPerformed(evt);
-            }
-        });
-
-        jLabel51.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel51.setText("Usuario:");
-
-        in_text_cedulacliente1.setEditable(false);
-        in_text_cedulacliente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_text_cedulacliente1ActionPerformed(evt);
-            }
-        });
+        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel94.setText("Hora:");
 
         lbfecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lbfecha.setText("10/05/2021");
@@ -442,727 +597,336 @@ public class VistaCajero extends javax.swing.JFrame {
         lbhora.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lbhora.setText("14:35:04 P.M.");
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel3.setText("Fecha:");
-
-        jLabel53.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel53.setText("Hora:");
-
-        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UI/Logo2.png"))); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel7.setText("Registrar Pedido:");
-
-        jSeparator2.setForeground(new java.awt.Color(252, 162, 95));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel54)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lbhora)
-                                            .addComponent(lbfecha)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(in_text_cedulacliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSeparator2)
-                .addGap(127, 127, 127))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(in_boton_mostrarfactura1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(in_boton_mostrarfactura2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(in_text_numeropedidoreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(in_boton_mostrarfactura, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(in_boton_mostrarpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(in_boton_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel54)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel51)
-                            .addComponent(in_text_cedulacliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbfecha))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel53)
-                            .addComponent(lbhora))
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel7)))
-                .addGap(11, 11, 11)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(in_boton_mostrarpedido)
-                        .addGap(18, 18, 18)
-                        .addComponent(in_boton_mostrarfactura)
-                        .addGap(49, 49, 49)
-                        .addComponent(in_boton_salir))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(in_boton_mostrarfactura1)
-                            .addComponent(in_boton_mostrarfactura2)
-                            .addComponent(jLabel10)
-                            .addComponent(in_text_numeropedidoreporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Inicio", jPanel1);
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel6.setBackground(new java.awt.Color(204, 255, 204));
-
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel13.setText("Cedula:");
-
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel14.setText("Nombres:");
-
-        jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel15.setText("Apellidos:");
-
-        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel16.setText("Direccion:");
-
-        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel17.setText("Celular:");
-
-        cl_boton_anadircliente.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        cl_boton_anadircliente.setText("Añadir Cliente");
-        cl_boton_anadircliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cl_boton_anadirclienteActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cl_text_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cl_text_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cl_text_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cl_text_cedularegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cl_text_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(jLabel93)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cl_boton_anadircliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))))
+                        .addComponent(lbfecha))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(lbhora)))
+                .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(cl_text_cedularegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(cl_text_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(cl_text_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cl_boton_anadircliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(cl_text_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(cl_text_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbfecha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel94)
+                    .addComponent(lbhora))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel9.setText("Registrar Cliente:");
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel12.setText("Cedula Cliente:");
-
-        cl_boton_validarcedula.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        cl_boton_validarcedula.setText("Validar Cedula");
-        cl_boton_validarcedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cl_boton_validarcedulaActionPerformed(evt);
-            }
-        });
-
-        cl_boton_eliminarcliente.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        cl_boton_eliminarcliente.setText("Eliminar Cliente");
-        cl_boton_eliminarcliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cl_boton_eliminarclienteActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel12)
-                .addGap(37, 37, 37)
-                .addComponent(cl_text_cedulavalidar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel77)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cl_boton_validarcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cl_boton_eliminarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cl_boton_eliminarcliente)
-                    .addComponent(cl_boton_validarcedula)
-                    .addComponent(cl_text_cedulavalidar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-
-        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-
-        cl_boton_salir.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        cl_boton_salir.setText("Salir");
-        cl_boton_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cl_boton_salirActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel2.setText("Gestion del Cliente:");
-
-        cl_boton_mostrarcliente.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        cl_boton_mostrarcliente.setText("Mostrar Datos");
-        cl_boton_mostrarcliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cl_boton_mostrarclienteActionPerformed(evt);
-            }
-        });
-
-        jLabel36.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel36.setText("Cedula Cliente:");
-        jLabel36.setToolTipText("");
-
-        jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel37.setText("Display:");
-
-        display_cliente.setColumns(20);
-        display_cliente.setRows(5);
-        jScrollPane4.setViewportView(display_cliente);
-
-        jSeparator7.setForeground(new java.awt.Color(0, 153, 153));
-
-        jLabel57.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel57.setText("Informacion:");
-
-        jSeparator8.setForeground(new java.awt.Color(0, 153, 153));
-
-        jLabel58.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel58.setText("Informacion:");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UI/Cliente1.png"))); // NOI18N
-
-        jSeparator9.setForeground(new java.awt.Color(204, 204, 204));
-
-        jSeparator10.setForeground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel2))
-                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel37))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(527, 527, 527)
-                        .addComponent(jLabel58))
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addComponent(jLabel79)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(in_text_cedulacliente5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addComponent(jPanel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addComponent(jSeparator17)
+                .addGap(127, 127, 127))
+            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(in_boton_salir1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel81)
+                .addGap(20, 20, 20))
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel36)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cl_text_cedulaconsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cl_boton_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cl_boton_mostrarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel9)))
-                .addContainerGap(38, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(5, 5, 5)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel57, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(55, 55, 55)))
-                    .addGap(5, 5, 5)))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel11)
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(jLabel77)
+                        .addGap(18, 18, Short.MAX_VALUE))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel74)
+                            .addComponent(in_text_cedulacliente5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel79)
+                        .addGap(7, 7, 7)))
+                .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel58)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel37)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel36)
-                            .addComponent(cl_text_cedulaconsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addComponent(cl_boton_mostrarcliente)
-                        .addGap(53, 53, 53)
-                        .addComponent(cl_boton_salir))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(409, 409, 409)
-                    .addComponent(jLabel57)
-                    .addGap(2, 2, 2)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(409, Short.MAX_VALUE)))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(in_boton_salir1)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 849, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jMenuBar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
-        jTabbedPane1.addTab("Cliente", jPanel2);
+        jMenu12.setText("Cliente");
+        jMenu12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+
+        jMenuItem2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagenes/Icono11.png"))); // NOI18N
+        jMenuItem2.setText("Añadir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem2);
+
+        jMenuItem1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagenes/Icono 2.png"))); // NOI18N
+        jMenuItem1.setText("Actualizar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem1);
+
+        jMenuItem3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagenes/Icono 3.png"))); // NOI18N
+        jMenuItem3.setText("Consultar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem3);
+
+        jMenuBar2.add(jMenu12);
+
+        jMenu1.setText("Acerca de");
+        jMenu1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+
+        jMenuItem11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagenes/Icono I.png"))); // NOI18N
+        jMenuItem11.setText("Informacion");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem11);
+
+        jMenuBar2.add(jMenu1);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGap(0, 670, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGap(0, 860, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void in_boton_registrarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_registrarpedidoActionPerformed
+    private void in_boton_registrarpedido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_registrarpedido1ActionPerformed
 
-        //         int numeropedido = Integer.parseInt(in_text_numeropedido.getText());
-        //         int cedula = Integer.parseInt(in_text_numeropedido.getText());
+        //        //Simulador
         //
+        //        String numeropedido="A01";
+        //        String cedula = in_text_cedulacliente3.getText();
+        //        String nombre= "JUAN";
+        //        String apellido="PUCHE";
+        //        String dir="Cra 96 ·48-38";
         //
-        //         try {
+        //        int res=JOptionPane.showConfirmDialog(null, "A continuacion se creara un pedido al cliente: C.C 1234 JUAN PUCHE");
+        //
+        //        if(res == JOptionPane.YES_OPTION){
             //
-            //          boolean res = registrarPedido(numeropedido);
-            //        JOptionPane.showMessageDialog(null, (res?"El pedido fue registrado con exito.":"No se pudo registrar el pedido."));
+            //            in_text_numeropedidoAgg4.setText(numeropedido);
+            //            in_text_numeropedidoAgg5.setText(cedula);
+            //            in_text_numeropedidoAgg6.setText(nombre);
+            //            in_text_numeropedidoAgg7.setText(apellido);
+            //            in_text_numeropedidoAgg8.setText(dir);
             //
-            //        } catch (Exception e) {
-            //
-            //             JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
             //        }
         //
-        //
-    }//GEN-LAST:event_in_boton_registrarpedidoActionPerformed
+        //        else {
+            //
+            //            in_text_cedulacliente3.setText(null);
+            //        }
+    }//GEN-LAST:event_in_boton_registrarpedido1ActionPerformed
 
-    private void in_boton_cancelarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_cancelarpedidoActionPerformed
+    private void in_text_cedulacliente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_cedulacliente3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_cedulacliente3ActionPerformed
 
-        //        int numeropedido = Integer.parseInt(in_text_numeropedido.getText());
+    private void in_text_cedulacliente5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_cedulacliente5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_cedulacliente5ActionPerformed
+
+    private void in_text_numeropedidoAgg4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_numeropedidoAgg4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_numeropedidoAgg4ActionPerformed
+
+    private void in_text_numeropedidoAgg5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_numeropedidoAgg5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_numeropedidoAgg5ActionPerformed
+
+    private void in_text_numeropedidoAgg6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_numeropedidoAgg6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_numeropedidoAgg6ActionPerformed
+
+    private void in_text_numeropedidoAgg7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_numeropedidoAgg7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_numeropedidoAgg7ActionPerformed
+
+    private void in_text_numeropedidoAgg8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_numeropedidoAgg8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_numeropedidoAgg8ActionPerformed
+
+    private void in_text_numeropedidoAgg9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_numeropedidoAgg9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_numeropedidoAgg9ActionPerformed
+
+    private void in_text_codigotortaAgg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_codigotortaAgg1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_text_codigotortaAgg1ActionPerformed
+
+    private void in_boton_anadiralpedido2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_anadiralpedido2ActionPerformed
+        //        String codigo = in_text_codigotortaAgg1.getText();
         //
-        //
-        //         try {// En este metodo se consultara solo el estado del pedido
-            //
-            //         boolean res = cancelarpedido(numeropedido);
-            //        JOptionPane.showMessageDialog(null, (res?"El pedido se cancelo satisfactoriamente.":"El pedido no se cancelo satisfactoriamente."));
-            //
-            //        } catch (Exception e) {
-            //
-            //             JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
+        //        if (codigo.isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Campo vacio. Por favor escriba el codigo del producto antes de enviar.");
             //        }
         //
-        //
-    }//GEN-LAST:event_in_boton_cancelarpedidoActionPerformed
-
-    private void in_boton_marcarentregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_marcarentregaActionPerformed
-
-        //        int numeropedido = Integer.parseInt(in_text_numeropedido.getText());
-        //
-        //
-        //         try {// En este metodo marcara un pedido como entregado
+        //        else {
             //
-            //         boolean res = marcarpedido(numeropedido);
-            //        JOptionPane.showMessageDialog(null, (res?"El pedido fue cambiado a (Entregado)":"No se pudo cambiar el estado del pedido."));
+            //            //caja negra
+            //            Torta t = Torta.getTorta(codigo);
             //
-            //        } catch (Exception e) {
-            //
-            //             JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //        }
-        //
-    }//GEN-LAST:event_in_boton_marcarentregaActionPerformed
-
-    private void in_boton_validarcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_validarcedulaActionPerformed
-        ////        int cedula = Integer.parseInt(in_text_numeropedido.getText()); //Convertir texto a int
-        ////            boolean res=validarcedula(cedula);
-        //
-        //            try {
-            //            if(res){
-                //
-                //                JOptionPane.showMessageDialog(null, "El cliente se encientra registrado.");
-                //
-                //            } else{
-                //
-                //                JOptionPane.showMessageDialog(null, "El cliente no se encuentra registrado, por favor registrelo para asociarle un pedido.");
+            //            if (t == null){
+                //                JOptionPane.showMessageDialog(null, "El producto que desea agregar, no existe.");
+                //            }
+            //            else{
                 //
                 //            }
-            //
-            //             }catch (Exception e) {
-            //
-            //             JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //     }
-        //
-    }//GEN-LAST:event_in_boton_validarcedulaActionPerformed
+            //        }
+    }//GEN-LAST:event_in_boton_anadiralpedido2ActionPerformed
 
-    private void in_text_numeropedidoAggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_numeropedidoAggActionPerformed
+    private void in_boton_anadiralpedido3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_anadiralpedido3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_in_text_numeropedidoAggActionPerformed
+    }//GEN-LAST:event_in_boton_anadiralpedido3ActionPerformed
 
-    private void in_text_codigotortaAggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_codigotortaAggActionPerformed
+    private void in_boton_mostrarfactura12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfactura12ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_in_text_codigotortaAggActionPerformed
+    }//GEN-LAST:event_in_boton_mostrarfactura12ActionPerformed
 
-    private void in_boton_anadiralpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_anadiralpedidoActionPerformed
-        int numeropedido = Integer.parseInt(in_text_numeropedidoAgg.getText());
-        String codigotorta = (in_text_codigotortaAgg.getText());
-
-        try {
-
-            Boolean res = anadirpedido(numeropedido,codigotorta);
-            if(res){
-
-                JOptionPane.showMessageDialog(null, "Producto añadido con exito.");
-
-            } else{
-
-                JOptionPane.showMessageDialog(null, "No se pudo añadir el producto, compruebe si el pedido o el producto existen e intente nuevamente.");
-
-            }
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_in_boton_anadiralpedidoActionPerformed
-
-    private void in_boton_anadiralpedido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_anadiralpedido1ActionPerformed
+    private void in_text_cedulacliente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_cedulacliente4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_in_boton_anadiralpedido1ActionPerformed
+    }//GEN-LAST:event_in_text_cedulacliente4ActionPerformed
 
-    private void in_boton_mostrarfacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfacturaActionPerformed
-
-        int numeropedido = Integer.parseInt(in_text_numeropedidoreporte.getText());
-        boolean res=validarpedido(numeropedido);
-
-        try {
-            if(res){
-
-                String respuesta =  mostrarpedidofactura(numeropedido);   //Debe mostrar los datos del pedido (productos)
-
-                display_inicio.setText(respuesta);
-
-            } else{
-
-                JOptionPane.showMessageDialog(null, "No hay pedido asociado a ese numero.");
-
-            }
-
-        }catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_in_boton_mostrarfacturaActionPerformed
-
-    private void in_boton_mostrarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarpedidoActionPerformed
-
-        int numeropedido = Integer.parseInt(in_text_numeropedidoreporte.getText());
-        boolean res=validarpedido(numeropedido);
-
-        try {
-            if(res){
-
-                String respuesta =  mostrarpedidoreporte(numeropedido);   //Debe mostrar los datos del pedido (productos)
-
-                display_inicio.setText(respuesta);
-            } else{
-
-                JOptionPane.showMessageDialog(null, "No hay pedido asociado a ese numero.");
-
-            }
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_in_boton_mostrarpedidoActionPerformed
-
-    private void in_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_salirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_in_boton_salirActionPerformed
-
-    private void in_boton_mostrarfactura1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfactura1ActionPerformed
+    private void in_boton_marcarentrega1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_marcarentrega1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_in_boton_mostrarfactura1ActionPerformed
+    }//GEN-LAST:event_in_boton_marcarentrega1ActionPerformed
 
-    private void in_boton_mostrarfactura2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfactura2ActionPerformed
+    private void in_boton_cancelarpedido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_cancelarpedido1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_in_boton_mostrarfactura2ActionPerformed
+    }//GEN-LAST:event_in_boton_cancelarpedido1ActionPerformed
 
-    private void in_text_cedulacliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_text_cedulacliente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_in_text_cedulacliente1ActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
 
-    private void cl_boton_anadirclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_anadirclienteActionPerformed
+        AnadirCliente fra=new AnadirCliente();
+        fra.setVisible(true);
 
-        String  nombres = (cl_text_nombre.getText());
-        String apellidos = (cl_text_apellidos.getText());
-        String direccion = (cl_text_direccion.getText());
-        int cedula=0;
-        int celular=0;
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-        try {
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
-            cedula =  Integer.parseInt(cl_text_cedularegistro.getText());
-            celular = Integer.parseInt(cl_text_celular.getText());
+        ActualizarCliente fra=new ActualizarCliente();
+        fra.setVisible(true);
 
-        } catch (NumberFormatException e) {
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-            JOptionPane.showMessageDialog(null, "Ha digitado un campo numerico errado, por favor verifique el campo cedula o celular.");
-        }
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
-        try {
+        ConsultarCliente fra=new ConsultarCliente();
+        fra.setVisible(true);
 
-            boolean res = registrarcliente(cedula,nombres,apellidos,celular,direccion);
-            JOptionPane.showMessageDialog(null, (res?"Cliente registrado con exito.":"No se pudo registrar el cliente."));
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-
-        }
-    }//GEN-LAST:event_cl_boton_anadirclienteActionPerformed
-
-    private void cl_boton_validarcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_validarcedulaActionPerformed
-
-        int cedula = Integer.parseInt(cl_text_cedulavalidar.getText()); //Convertir texto a int
-        boolean res=validarcedula(cedula);
-        try{
-            if(res){
-
-                JOptionPane.showMessageDialog(null, "El cliente se encientra registrado.");
-
-            } else{
-
-                JOptionPane.showMessageDialog(null, "El cliente no se encuentra registrado.");
-
-            }
-
-        }catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-        }
-
-    }//GEN-LAST:event_cl_boton_validarcedulaActionPerformed
-
-    private void cl_boton_eliminarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_eliminarclienteActionPerformed
-
-        int cedula = Integer.parseInt(cl_text_cedulavalidar.getText()); //Convertir texto a int
-
-        try {// En este metodo se consultara solo el estado del pedido
-
-            boolean res = eliminarusuario(cedula);
-            JOptionPane.showMessageDialog(null, (res?"Se ha eliminado el cliente de manera exitosa.":"No se pudo eliminar el cliente."));
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-        }
-
-    }//GEN-LAST:event_cl_boton_eliminarclienteActionPerformed
-
-    private void cl_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_salirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_cl_boton_salirActionPerformed
-
-    private void cl_boton_mostrarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_mostrarclienteActionPerformed
-
-        int cedula = Integer.parseInt(cl_text_cedulaconsultar.getText());
-        boolean res=validarcedula(cedula);
-
-        try {
-            if(res){
-
-                String respuesta =  mostrarcliente(cedula);   //Debe mostrar los datos del pedido (productos)
-
-                display_inicio.setText(respuesta);
-
-            } else{
-
-                JOptionPane.showMessageDialog(null, "No existe un cliente asociado con esa cedula.");
-
-            }
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_cl_boton_mostrarclienteActionPerformed
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        Informacion fra=new Informacion();
+        fra.setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1200,120 +964,72 @@ public class VistaCajero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cl_boton_anadircliente;
-    private javax.swing.JButton cl_boton_eliminarcliente;
-    private javax.swing.JButton cl_boton_mostrarcliente;
-    private javax.swing.JButton cl_boton_salir;
-    private javax.swing.JButton cl_boton_validarcedula;
-    private javax.swing.JTextField cl_text_apellidos;
-    private javax.swing.JTextField cl_text_cedulaconsultar;
-    private javax.swing.JTextField cl_text_cedularegistro;
-    private javax.swing.JTextField cl_text_cedulavalidar;
-    private javax.swing.JTextField cl_text_celular;
-    private javax.swing.JTextField cl_text_direccion;
-    private javax.swing.JTextField cl_text_nombre;
-    private javax.swing.JTextArea display_cliente;
-    private javax.swing.JTextArea display_inicio;
-    private javax.swing.JButton in_boton_anadiralpedido;
-    private javax.swing.JButton in_boton_anadiralpedido1;
-    private javax.swing.JButton in_boton_cancelarpedido;
-    private javax.swing.JButton in_boton_marcarentrega;
-    private javax.swing.JButton in_boton_mostrarfactura;
-    private javax.swing.JButton in_boton_mostrarfactura1;
-    private javax.swing.JButton in_boton_mostrarfactura2;
-    private javax.swing.JButton in_boton_mostrarpedido;
-    private javax.swing.JButton in_boton_registrarpedido;
-    private javax.swing.JButton in_boton_salir;
-    private javax.swing.JButton in_boton_validarcedula;
-    private javax.swing.JTextField in_text_cedulacliente;
-    private javax.swing.JTextField in_text_cedulacliente1;
-    private javax.swing.JTextField in_text_cedulacliente2;
-    private javax.swing.JTextField in_text_codigotortaAgg;
-    private javax.swing.JTextField in_text_numeropedidoAgg;
-    private javax.swing.JTextField in_text_numeropedidoreporte;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
+    private javax.swing.JButton in_boton_anadiralpedido2;
+    private javax.swing.JButton in_boton_anadiralpedido3;
+    private javax.swing.JButton in_boton_cancelarpedido1;
+    private javax.swing.JButton in_boton_marcarentrega1;
+    private javax.swing.JButton in_boton_mostrarfactura12;
+    private javax.swing.JButton in_boton_registrarpedido1;
+    private javax.swing.JButton in_boton_salir1;
+    private javax.swing.JTextField in_text_cedulacliente3;
+    private javax.swing.JTextField in_text_cedulacliente4;
+    private javax.swing.JTextField in_text_cedulacliente5;
+    private javax.swing.JTextField in_text_codigotortaAgg1;
+    private javax.swing.JTextField in_text_numeropedidoAgg4;
+    private javax.swing.JTextField in_text_numeropedidoAgg5;
+    private javax.swing.JTextField in_text_numeropedidoAgg6;
+    private javax.swing.JTextField in_text_numeropedidoAgg7;
+    private javax.swing.JTextField in_text_numeropedidoAgg8;
+    private javax.swing.JTextField in_text_numeropedidoAgg9;
     private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
+    private javax.swing.JSeparator jSeparator20;
+    private javax.swing.JSeparator jSeparator21;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbfecha;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JTable tabla_inicio;
     // End of variables declaration//GEN-END:variables
-
-    private Boolean anadirpedido(int numeropedido, String codigotorta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private boolean validarpedido(int numeropedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private String mostrarpedidofactura(int numeropedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private String mostrarpedidoreporte(int numeropedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private boolean registrarcliente(int cedula, String nombres, String apellidos, int celular, String direccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private boolean validarcedula(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private boolean eliminarusuario(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private String mostrarcliente(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
