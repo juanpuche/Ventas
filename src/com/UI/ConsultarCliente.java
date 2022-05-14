@@ -5,6 +5,12 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Torta;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juanfer
@@ -52,7 +58,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         cc_botonsalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        cc_tablaconsultas = new javax.swing.JTable();
+        in_tabla = new javax.swing.JTable();
         cc_botonlimpiar = new javax.swing.JButton();
         cc_botonimprimir = new javax.swing.JButton();
 
@@ -221,7 +227,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
             }
         });
 
-        cc_tablaconsultas.setModel(new javax.swing.table.DefaultTableModel(
+        in_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -229,10 +235,10 @@ public class ConsultarCliente extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Cantidad", "Cod.", "Descripcion", "Precio Unit.", "Importe"
+                "Cedula", "Nombres", "Apellidos", "Celular", "Direccion"
             }
         ));
-        jScrollPane1.setViewportView(cc_tablaconsultas);
+        jScrollPane1.setViewportView(in_tabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -349,14 +355,84 @@ public class ConsultarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cc_botonimprimirActionPerformed
 
     private void cc_botonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cc_botonlimpiarActionPerformed
-        // TODO add your handling code here:
+        limpiarTabla();
     }//GEN-LAST:event_cc_botonlimpiarActionPerformed
 
     private void cc_botonmostrartodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cc_botonmostrartodosActionPerformed
-        // TODO add your handling code here:
+        
+        limpiarTabla();
+        
+        LinkedList<Cliente> SusClientes = Cliente.getTodosLosClientes();
+        
+         DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+         
+         for (int i = 0; i < SusClientes.size(); i++) {
+ 
+               Object[] cliente = new Object [5];
+               
+               Cliente c = SusClientes.get(i);
+
+                cliente [0] = c.getCedula()+"";
+                cliente [1] = c.getNombres(); 
+                cliente [2] = c.getApellidos();
+                cliente [3] = c.getCelular()+"";
+                cliente[4]=c.getDireccion();
+                
+                 model.addRow(cliente);
+
+               
+            
+        }
+
+            in_tabla.setModel(model);
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_cc_botonmostrartodosActionPerformed
 
     private void cc_botonmostrarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cc_botonmostrarclienteActionPerformed
+
+            limpiarTabla();
+            
+           try {
+               
+               int cedula = Integer.parseInt(cc_tcedula.getText());
+               DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+         
+ 
+               Object[] cliente = new Object [5];
+               
+               Cliente c = Cliente.getCliente(cedula);
+
+                cliente [0] = c.getCedula()+"";
+                cliente [1] = c.getNombres(); 
+                cliente [2] = c.getApellidos();
+                cliente [3] = c.getCelular()+"";
+                cliente[4]=c.getDireccion();
+                
+                 model.addRow(cliente);
+
+               
+            
+
+            in_tabla.setModel(model);
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un valor no numerico o invalido en el campo cedula. " + e.getMessage());
+            
+        }
+            
+        
+        
+        
+
+
+
 //
 //        int cedula = Integer.parseInt(cl_text_cedulaconsultar.getText());
 //        boolean res=validarcedula(cedula);
@@ -436,8 +512,8 @@ public class ConsultarCliente extends javax.swing.JFrame {
     private javax.swing.JButton cc_botonmostrarcliente;
     private javax.swing.JButton cc_botonmostrartodos;
     private javax.swing.JButton cc_botonsalir;
-    private javax.swing.JTable cc_tablaconsultas;
     private javax.swing.JTextField cc_tcedula;
+    private javax.swing.JTable in_tabla;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -454,4 +530,19 @@ public class ConsultarCliente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarTabla() {
+        
+        DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+        
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            model.removeRow(0);
+        }
+        
+        in_tabla.setModel(model);
+        
+        
+        
+        
+    }
 }

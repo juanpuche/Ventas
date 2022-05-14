@@ -5,6 +5,13 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Pedido;
+import com.codigo.Torta;
+import com.codigo.Usuario;
+import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juanfer
@@ -23,6 +30,77 @@ public class Factura extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    public Factura(Pedido pedido, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
+        
+        if(pedido==null||SusTortas==null||SusCantidades==null)
+            return;
+            
+        pedido = Pedido.getPedido(pedido);
+        
+        Cliente cliente = Cliente.getCliente((int) pedido.getCedula_cliente());
+        Usuario usuario = Usuario.getUsuario((int) pedido.getCedula_usuario());
+        
+        if(cliente==null||usuario==null){
+            
+            return;
+            
+        }
+        
+        
+        this.setUndecorated(true);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        
+        f_tidpedido.setText(pedido.getId_numero()+"");
+        f_tvendedor.setText(usuario.getNombre() + " " + usuario.getApellido());
+        f_tfecha.setText(pedido.getFecha().toString());
+        cp_testado.setText(pedido.getEstado());
+        
+        f_cedulacliente.setText(cliente.getCedula()+"");
+        f_nombrecliente.setText(cliente.getNombres()+"");
+        
+        //Esto es para calcular el subtotal
+        
+       double subtotal = 0.0;
+        
+        for (int i = 0; i < SusTortas.size(); i++) {
+            subtotal += SusTortas.get(i).getPrecio() * SusCantidades.get(i);
+        }
+        
+        t_subtotal.setText("$" + subtotal);
+        t_total.setText("$" + subtotal);
+        
+        
+        //Llenar Tabla
+        
+         DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+         
+         for (int i = 0; i < SusTortas.size(); i++) {
+             
+             Torta t = SusTortas.get(i);
+              int j = indiceTorta(t.getCodigo(), SusTortas);
+              
+               Object[] producto = new Object [4];
+
+               producto [0] = SusCantidades.get(i);
+               
+                producto [1] = t.getCodigo(); 
+                producto [2] = t.getSabor();
+                producto [3] = t.getPrecio();
+                
+                producto[4]=t.getPrecio()*SusCantidades.get(i);
+                
+                 model.addRow(producto);
+
+               
+            
+        }
+
+            in_tabla.setModel(model);
+        
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,11 +116,11 @@ public class Factura extends javax.swing.JFrame {
         in_boton_mostrarfactura3 = new javax.swing.JButton();
         ac_boton_salir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        f_tvendedor = new javax.swing.JLabel();
+        f_tfecha = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_inicio = new javax.swing.JTable();
+        in_tabla = new javax.swing.JTable();
         jLabel71 = new javax.swing.JLabel();
         jLabel72 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
@@ -50,15 +128,17 @@ public class Factura extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        f_tidpedido = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        f_nombrecliente = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        f_cedulacliente = new javax.swing.JLabel();
         t_subtotal = new javax.swing.JLabel();
         t_iva = new javax.swing.JLabel();
         t_total = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        cp_testado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,16 +183,16 @@ public class Factura extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel3.setText("Nit: 66.943.132");
 
-        jLabel5.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        jLabel5.setText("Juan Puche");
+        f_tvendedor.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        f_tvendedor.setText("Juan Puche");
 
-        jLabel7.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        jLabel7.setText("16/05/2021");
+        f_tfecha.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        f_tfecha.setText("16/05/2021");
 
         jLabel9.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel9.setText("Vendedor:");
 
-        tabla_inicio.setModel(new javax.swing.table.DefaultTableModel(
+        in_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -123,7 +203,7 @@ public class Factura extends javax.swing.JFrame {
                 "Cantidad", "Cod.", "Descripcion", "Precio Unit.", "Importe"
             }
         ));
-        jScrollPane1.setViewportView(tabla_inicio);
+        jScrollPane1.setViewportView(in_tabla);
 
         jLabel71.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jLabel71.setText("Subtotal:");
@@ -144,19 +224,19 @@ public class Factura extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel4.setText("***GRACIAS POR PREFERIRNOS***");
 
-        jLabel6.setText("01");
+        f_tidpedido.setText("01");
 
         jLabel13.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel13.setText("ID_Cliente:");
 
-        jLabel8.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        jLabel8.setText("Juan David");
+        f_nombrecliente.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        f_nombrecliente.setText("Juan David");
 
         jLabel14.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel14.setText("Nombres:");
 
-        jLabel15.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        jLabel15.setText("1007758565");
+        f_cedulacliente.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        f_cedulacliente.setText("1007758565");
 
         t_subtotal.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         t_subtotal.setText("19000");
@@ -170,10 +250,64 @@ public class Factura extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel17.setText("$");
 
+        jLabel16.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        jLabel16.setText("Estado: ");
+
+        cp_testado.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        cp_testado.setText("Entregado");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel71)
+                            .addComponent(jLabel72))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(t_total)
+                            .addComponent(t_iva)
+                            .addComponent(t_subtotal))
+                        .addGap(54, 54, 54)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(f_cedulacliente))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(f_tvendedor)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(35, 35, 35)
+                                .addComponent(f_nombrecliente))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel3)))))))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,66 +322,20 @@ public class Factura extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(266, 266, 266)
-                                .addComponent(jLabel7))
+                                .addComponent(f_tfecha))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(24, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel71)
-                                    .addComponent(jLabel72))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(t_total)
-                                    .addComponent(t_iva)
-                                    .addComponent(t_subtotal))))
-                        .addGap(54, 54, 54)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel13)
+                        .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel8))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jLabel3)))))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(f_tidpedido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cp_testado)
+                        .addGap(32, 32, 32))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(230, Short.MAX_VALUE)
@@ -268,22 +356,25 @@ public class Factura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel6))
+                    .addComponent(f_tidpedido)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel16)
+                        .addComponent(cp_testado)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(f_tfecha)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel5))
+                    .addComponent(f_tvendedor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel15))
+                    .addComponent(f_cedulacliente))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel8))
+                    .addComponent(f_nombrecliente))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -384,31 +475,63 @@ public class Factura extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ac_boton_salir;
+    private javax.swing.JLabel cp_testado;
+    private javax.swing.JLabel f_cedulacliente;
+    private javax.swing.JLabel f_nombrecliente;
+    private javax.swing.JLabel f_tfecha;
+    private javax.swing.JLabel f_tidpedido;
+    private javax.swing.JLabel f_tvendedor;
     private javax.swing.JButton in_boton_mostrarfactura3;
+    private javax.swing.JTable in_tabla;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel78;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel t_iva;
     private javax.swing.JLabel t_subtotal;
     private javax.swing.JLabel t_total;
-    private javax.swing.JTable tabla_inicio;
     // End of variables declaration//GEN-END:variables
+
+ private int indiceTorta(String codigo, LinkedList<Torta> SusTortas) {
+      
+        int res = -1;
+        
+        int i = 0;
+        
+        for (Torta t: SusTortas){
+            
+            if (t.getCodigo()==codigo){
+            
+            
+                
+                return i;
+            }
+            
+            i ++;
+            
+        }
+        
+        return res;
+        
+        
+    }
+
+
+
+
 }
+
+

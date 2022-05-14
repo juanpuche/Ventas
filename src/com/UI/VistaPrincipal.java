@@ -8,8 +8,13 @@ package com.UI;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import  com.codigo.Cliente;
+import com.codigo.Pedido;
+import com.codigo.Torta;
+import java.time.LocalDate;
+import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,14 +22,27 @@ import javax.swing.JOptionPane;
  */
 public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
-   String hora, minutos, segundos, ampm;
-   int ano, mes, dia;
+   String hora, minutos, segundos, ampm, nombreUsuario;
+   int ano, mes, dia, cedulaUsuario;
    Calendar calendario;
    Thread h1;
+   LinkedList<Torta> SusTortas;  
+   LinkedList<Integer>SusCantidades;
+    Pedido pedido;
     
-    
-    public VistaPrincipal() {
-      
+    public VistaPrincipal(int user, String nombre) {
+        cedulaUsuario = user;
+        nombreUsuario = nombre;
+        initComponents();     
+        this.setLocationRelativeTo(null);
+        setTitle("Sistema y Control de Ventas V 1.01");
+        h1=new Thread(this);
+        h1.start();
+        in_tusuario.setText(cedulaUsuario + "");
+        in_tnombrevendedor.setText(nombreUsuario);
+    }
+
+    private VistaPrincipal() {
         initComponents();     
         this.setLocationRelativeTo(null);
         setTitle("Sistema y Control de Ventas V 1.01");
@@ -52,8 +70,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         jLabel77 = new javax.swing.JLabel();
         jSeparator17 = new javax.swing.JSeparator();
         jPanel20 = new javax.swing.JPanel();
-        jLabel65 = new javax.swing.JLabel();
-        in_tmuestrapedido = new javax.swing.JTextField();
         jLabel66 = new javax.swing.JLabel();
         in_tmuestracedula = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
@@ -64,12 +80,14 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         in_tmuestradireccion = new javax.swing.JTextField();
         jLabel70 = new javax.swing.JLabel();
         in_tmuestracelular = new javax.swing.JTextField();
-        jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
         jSeparator16 = new javax.swing.JSeparator();
         jSeparator18 = new javax.swing.JSeparator();
         jSeparator19 = new javax.swing.JSeparator();
         jSeparator20 = new javax.swing.JSeparator();
+        jLabel75 = new javax.swing.JLabel();
+        in_tnombrevendedor = new javax.swing.JTextField();
+        jSeparator22 = new javax.swing.JSeparator();
         jLabel79 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
@@ -130,7 +148,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
 
         in_boton_registrarpedido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        in_boton_registrarpedido.setText("Registrar Pedido");
+        in_boton_registrarpedido.setText("Generar Pedido");
+        in_boton_registrarpedido.setActionCommand("Generar Pedido");
         in_boton_registrarpedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         in_boton_registrarpedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,17 +219,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel65.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel65.setText("Numero Pedido:");
-
-        in_tmuestrapedido.setForeground(new java.awt.Color(153, 153, 153));
-        in_tmuestrapedido.setBorder(null);
-        in_tmuestrapedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_tmuestrapedidoActionPerformed(evt);
-            }
-        });
-
         jLabel66.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel66.setText("Cedula Cliente:");
 
@@ -268,8 +276,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        jSeparator13.setForeground(new java.awt.Color(255, 204, 153));
-
         jSeparator14.setForeground(new java.awt.Color(255, 204, 153));
 
         jSeparator16.setForeground(new java.awt.Color(255, 204, 153));
@@ -280,6 +286,20 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
         jSeparator20.setForeground(new java.awt.Color(255, 204, 153));
 
+        jLabel75.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel75.setText("Vendedor:");
+        jLabel75.setToolTipText("");
+
+        in_tnombrevendedor.setForeground(new java.awt.Color(153, 153, 153));
+        in_tnombrevendedor.setBorder(null);
+        in_tnombrevendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_tnombrevendedorActionPerformed(evt);
+            }
+        });
+
+        jSeparator22.setForeground(new java.awt.Color(255, 204, 153));
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
@@ -287,58 +307,57 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jLabel65)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(in_tmuestrapedido, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel66)
+                    .addComponent(jLabel69)
+                    .addComponent(jLabel75))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel66)
-                            .addComponent(jLabel69))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSeparator20)
-                                    .addComponent(in_tmuestradireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel70)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSeparator16)
-                                    .addComponent(in_tmuestracelular, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                                    .addComponent(jSeparator18)))
-                            .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel20Layout.createSequentialGroup()
-                                    .addComponent(jSeparator13, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                    .addGap(400, 400, 400))
-                                .addGroup(jPanel20Layout.createSequentialGroup()
-                                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel20Layout.createSequentialGroup()
-                                            .addComponent(in_tmuestracedula, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(27, 27, 27)
-                                            .addComponent(jLabel67)
-                                            .addGap(10, 10, 10)
-                                            .addComponent(in_tmuestranombre, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(42, 42, 42)
-                                            .addComponent(jLabel68))
-                                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(10, 10, 10)
+                            .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(in_tmuestracedula, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(in_tmuestraapellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                                        .addComponent(jSeparator19)))))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                        .addComponent(jSeparator20)
+                                        .addComponent(in_tmuestradireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel20Layout.createSequentialGroup()
+                                        .addComponent(jLabel70)
+                                        .addGap(24, 24, 24)
+                                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(in_tmuestracelular)
+                                                .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanel20Layout.createSequentialGroup()
+                                        .addComponent(jLabel67)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(in_tmuestranombre, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(42, 42, 42)
+                                        .addComponent(jLabel68)))))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(in_tmuestraapellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(jSeparator19))
+                        .addContainerGap(83, Short.MAX_VALUE))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator22, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(in_tnombrevendedor))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel65)
-                    .addComponent(in_tmuestrapedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel75)
+                    .addComponent(in_tnombrevendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel66)
                     .addComponent(in_tmuestracedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,24 +369,27 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel69)
-                                    .addComponent(jLabel70)
-                                    .addComponent(in_tmuestracelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(in_tmuestracelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel69))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(in_tmuestradireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(in_tmuestradireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel70))
                         .addGap(5, 5, 5)
                         .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))))
         );
+
+        jLabel75.getAccessibleContext().setAccessibleName("Vendedor:");
 
         jLabel79.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel79.setText("Registrar Pedido:");
@@ -422,7 +444,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                 .addComponent(in_boton_anadir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(in_boton_borrar)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -901,7 +923,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 675, Short.MAX_VALUE)
+            .addGap(0, 688, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -923,31 +945,56 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
     private void in_boton_registrarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_registrarpedidoActionPerformed
 
-//        //Simulador
-//
-//        String numeropedido="A01";
-//        String cedula = in_text_cedulacliente3.getText();
-//        String nombre= "JUAN";
-//        String apellido="PUCHE";
-//        String dir="Cra 96 ·48-38";
-//
-//        int res=JOptionPane.showConfirmDialog(null, "A continuacion se creara un pedido al cliente: C.C 1234 JUAN PUCHE");
-//
-//        if(res == JOptionPane.YES_OPTION){
-//
-//            in_text_numeropedidoAgg4.setText(numeropedido);
-//            in_text_numeropedidoAgg5.setText(cedula);
-//            in_text_numeropedidoAgg6.setText(nombre);
-//            in_text_numeropedidoAgg7.setText(apellido);
-//            in_text_numeropedidoAgg8.setText(dir);
-//
-//        }
-//
-//        else {
-//
-//            in_text_cedulacliente3.setText(null);
-//        }
+        
+        
+        try {
+            
+            int cedula = Integer.parseInt(in_tcedulacliente.getText());
+            
+            Cliente cliente = Cliente.getCliente(cedula);
+            
+            
+            if(cliente==null){
+                
+                JOptionPane.showMessageDialog(null, "El cliente no existe, por favor agreguelo.");
+                
+                return;
 
+            }
+           
+            
+            int res = JOptionPane.showConfirmDialog(null, "Se generará un pedido al cliente: " + cliente.toString());
+            
+            if(res == JOptionPane.YES_OPTION)
+                
+            {
+                
+                in_tnombrevendedor.setText(nombreUsuario);
+                in_tmuestracedula.setText(cedula + "");
+                in_tmuestranombre.setText(cliente.getNombres());
+                in_tmuestraapellidos.setText(cliente.getApellidos());
+                in_tmuestradireccion.setText(cliente.getDireccion());
+                in_tmuestracelular.setText(cliente.getCelular()+"");
+                
+                SusTortas = new LinkedList();
+                
+            }
+            
+            
+            pedido = new Pedido(cedula, LocalDate.now(),"No entregado");
+            
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Usted ingreso un valor no numerico en el campo Cedula Cliente. Por favor verifique e intente nuevamente.");
+
+        }
+        
+        
+
+        
+        
+        
+        
     }//GEN-LAST:event_in_boton_registrarpedidoActionPerformed
 
     private void in_tcedulaclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tcedulaclienteActionPerformed
@@ -957,10 +1004,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     private void in_tusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tusuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_in_tusuarioActionPerformed
-
-    private void in_tmuestrapedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tmuestrapedidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_in_tmuestrapedidoActionPerformed
 
     private void in_tmuestracedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tmuestracedulaActionPerformed
         // TODO add your handling code here:
@@ -987,33 +1030,144 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_in_tcodigotortaActionPerformed
 
     private void in_boton_anadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_anadirActionPerformed
-//        String codigo = in_text_codigotortaAgg1.getText();
-//
-//        if (codigo.isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Campo vacio. Por favor escriba el codigo del producto antes de enviar.");
-//        }
-//
-//        else {
-//
-//            //caja negra
-//            Torta t = Torta.getTorta(codigo);
-//
-//            if (t == null){
-//                JOptionPane.showMessageDialog(null, "El producto que desea agregar, no existe.");
-//            }
-//            else{
-//
-//            }
-//        }
+        
+        String codigo = in_tcodigotorta.getText();
+
+        if (codigo.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campo vacio. Por favor escriba el codigo del producto antes de añadirlo.");
+            return;
+        }
+
+        //caja negra
+        Torta t = Torta.getTorta(codigo);
+
+        if (t == null){
+            JOptionPane.showMessageDialog(null, "El producto que desea agregar, no existe.");
+        }
+        else{
+
+            if(SusTortas==null){
+
+                SusTortas = new LinkedList();
+
+            }
+
+
+            DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+
+            Object[] producto = new Object [4];
+
+                producto [1] = t.getCodigo(); 
+                producto [2] = t.getSabor();
+                producto [3] = t.getPrecio();
+
+                int i = indiceTorta(codigo);
+
+
+
+            if(i<0){
+
+
+            producto [0] = 1;
+            producto [4] = t.getPrecio()* (int) producto[0];
+
+
+                model.addRow(producto);
+                SusTortas.add(t);
+                SusCantidades.add(1);
+
+            } else {
+
+               producto [0] = SusCantidades.get(i);
+               producto [4] = t.getPrecio()* (int) producto[0];
+
+               model.setValueAt(producto [0], i, 0);
+               model.setValueAt(producto [4], i, 4);
+
+               SusCantidades.set(i, 1 + SusCantidades.get(i));
+
+            }
+
+
+            in_tabla.setModel(model);
+            ActualizarSubtotal();
+
+        }
 
     }//GEN-LAST:event_in_boton_anadirActionPerformed
 
     private void in_boton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_borrarActionPerformed
-        // TODO add your handling code here:
+       
+         String codigo = in_tcodigotorta.getText();
+
+        if (codigo.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campo vacio. Por favor escriba el codigo del producto antes de eliminarlo.");
+            
+            return;
+        }
+
+       
+        int i = indiceTorta(codigo);
+        DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+
+            Object[] producto = new Object [4];
+        
+        if(i < 0){
+            
+            JOptionPane.showMessageDialog(null, "Falla al eliminar: No se encontro en la lista.");
+            
+        }else if(SusCantidades.get(i) == 1){
+            SusCantidades.remove(i);
+            SusTortas.remove(i);
+            model.removeRow(i);
+
+        }
+        
+        else{
+            
+            Torta t = Torta.getTorta(codigo);
+            
+            SusCantidades.set(i,1 - SusCantidades.get(i));
+            producto [0] = SusCantidades.get(i);
+            producto [4] = t.getPrecio()* (int) producto[0];
+
+               model.setValueAt(producto [0], i, 0);
+               model.setValueAt(producto [4], i, 4);
+
+        }
+        
+        in_tabla.setModel(model);
+        
+         ActualizarSubtotal();
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_in_boton_borrarActionPerformed
 
     private void in_boton_guardarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_guardarpedidoActionPerformed
-        // TODO add your handling code here:
+
+            boolean res = Pedido.insertarPedido(pedido,SusTortas,SusCantidades);
+            
+            if (res){
+                
+                
+                JOptionPane.showMessageDialog(null, "El pedido se guardo satisfactoriamente.");
+                
+                        Factura fra=new Factura(pedido,SusTortas,SusCantidades);
+                        
+                        fra.setVisible(true);
+   
+            }
+        
+            
+            
+        
+        
+        
     }//GEN-LAST:event_in_boton_guardarpedidoActionPerformed
 
     private void in_tnumeropedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tnumeropedidoActionPerformed
@@ -1022,7 +1176,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
     private void in_boton_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_consultarActionPerformed
        
-        ConsultarPedido fra=new ConsultarPedido();
+        Factura fra=new Factura();
         fra.setVisible(true);
         
         
@@ -1035,7 +1189,37 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         
-        AnadirCliente fra=new AnadirCliente();
+        String numero = (in_tnumeropedido.getText());
+        
+        if(numero.isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "El campo del numero de pedido esta vacio.");
+            return;
+        }
+        
+        Pedido pedido = Pedido.getPedido(numero);
+        
+        if(pedido==null){
+            
+            JOptionPane.showMessageDialog(null, "El pedido no existe.");
+            return;          
+        }
+       
+        
+       LinkedList<Torta> SusTortas = Torta.getTortasPedido();
+       
+       LinkedList<Integer> SusCantidades = Torta.getCantidadesPedido();
+       
+       if(SusTortas==null || SusCantidades==null){
+           
+           JOptionPane.showMessageDialog(null, "El pedido no tiene productos.");
+           
+           return;
+       }
+       
+       
+       
+        Factura fra=new Factura(pedido, SusTortas, SusCantidades);
         fra.setVisible(true);
         
         
@@ -1108,6 +1292,10 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         fra.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void in_tnombrevendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tnombrevendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in_tnombrevendedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1162,12 +1350,11 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextField in_tmuestracelular;
     private javax.swing.JTextField in_tmuestradireccion;
     private javax.swing.JTextField in_tmuestranombre;
-    private javax.swing.JTextField in_tmuestrapedido;
+    private javax.swing.JTextField in_tnombrevendedor;
     private javax.swing.JTextField in_tnumeropedido;
     private javax.swing.JTextField in_tusuario;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
@@ -1177,6 +1364,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
@@ -1210,7 +1398,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
@@ -1219,6 +1406,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
@@ -1276,5 +1464,41 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                 minutos=calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
                 segundos=calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
  
+    }
+
+    private int indiceTorta(String codigo) {
+      
+        int res = -1;
+        
+        int i = 0;
+        
+        for (Torta t: SusTortas){
+            
+            if (t.getCodigo()==codigo){
+            
+            
+                
+                return i;
+            }
+            
+            i ++;
+            
+        }
+        
+        return res;
+        
+        
+    }
+
+    private void ActualizarSubtotal() {
+       
+        double subtotal = 0.0;
+        
+        for (int i = 0; i < SusTortas.size(); i++) {
+            subtotal += SusTortas.get(i).getPrecio() * SusCantidades.get(i);
+        }
+        
+        t_subtotal.setText("$" + subtotal);
+        t_total.setText("$" + subtotal);
     }
 }

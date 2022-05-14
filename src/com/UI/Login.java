@@ -239,88 +239,119 @@ public class Login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_boton_salirActionPerformed
 
+    
     private void boton_iniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_iniciarsesionActionPerformed
 
+        //Captura de Datos 
+ 
+                try
         
-        //Declaracion de la contraseña
-        String contrasena = i_textcontrasena.getText();
-        
-        //Declaracion de los Formularios
-        VistaPrincipal fra=new VistaPrincipal();
-        VistaCajero fra2=new VistaCajero();
-        int user;
-        user=1234;
+                {
+                     int user = Integer.parseInt(i_textususario.getText());
+                    String contrasena = i_textcontrasena.getText();
 
-        //
-        //        try
-        //
-        //        {
-            //           user = Integer.parseInt(i_textususario.getText());
-            //        }
-        //
-        //        catch (Exception e){
-            //            JOptionPane.showMessageDialog(null, "Ha digitado un dato invalido, en el campo usuario. Recuerde que el ususario corresponde a su id_cedula.");
-            //            return;
-            //        }
-        //
-        //        boolean validacion = validarContrasena(user,contrasena);
-        //
-        //        if(validacion){
-            //
-            //             String res = inciarSesion(user, contrasena);
-            //
-            //
-            //         if (res.equals("admin")) {
-                //
-                //             fra.setVisible(true);
-                //                dispose();
-                //         }
-            //
-            //         else{
-                //                        fra2.setVisible(true);
-                //                         dispose();
-                //            }
-            //
-            //        }else{
-            //
-            //            JOptionPane.showMessageDialog(null,"Contraseña Incorrecta");
-            //
-            //        }
-
-//        PRUEBA SIN BD
-//
-//         Se debe autenticar inicio con la base de datos; Linea 234-247 solo para prueba.
-        
-                    if ((user==1234) && contrasena.equals("1234")){
-            
-            
-                            fra.setVisible(true);
+                    if(contrasena.isEmpty() || user<=0){
+                        
+                         JOptionPane.showMessageDialog(null, "Usted tiene un campo vacio, por favor verifique e intente nuevamente.");
+                        
+                         return;
+                    }
+                    
+                    
+                    Usuario usuario = Usuario.getUsuario(user, contrasena);
+                    
+                    
+                    if(usuario == null){
+                        
+                        JOptionPane.showMessageDialog(null, "Usuario o Contraseña, Incorrectos..");
+                        
+                         return;
+                    }
+                    
+                    
+                    if (usuario.getTipoUsuario().equals(Usuario.TIPOADMINISTRADOR)){
+                        
+                        VistaPrincipal fra=new VistaPrincipal(user, usuario.getNombre());
+                        fra.setVisible(true);
             
                             dispose();
-            
-            
-            
-            
-                        }else{
-                                    fra2.setVisible(true);
+                        
+                    }else if(usuario.getTipoUsuario().equals(Usuario.TIPOCAJERO)){
+                        
+                        VistaCajero fra2=new VistaCajero(user, usuario.getNombre());
+                        fra2.setVisible(true);
+                        
                                      dispose();
-                        }
+                    }
+                    
+  
+                       
+                    }
         
+                catch (Exception e){
+                        JOptionPane.showMessageDialog(null, "Ha digitado un caracter no numerico en el campo usuario.");
+                        return;
+                    }
+        
+//               
 
         
     }//GEN-LAST:event_boton_iniciarsesionActionPerformed
 
     private void boton_recuperarcontrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_recuperarcontrasenaActionPerformed
 
-        String cedula = JOptionPane.showInputDialog("Escriba la id_cedula al cual desea recuperar la contraseña.");
+        
+        try{
+            int cedula = Integer.parseInt(JOptionPane.showInputDialog("Escriba la id_cedula al cual desea recuperar la contraseña."));
+            int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingrese dato de verificacion: Por favor ingrese su telefono."));
 
-        String res = recuperarContrasena(cedula);
+            if(cedula<=0){
+                
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese una cedula.");
+                
+                return;
+            }
+            
+            else if (telefono <=0){
+                
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un telefono.");
+                
+                return;
+            }
+                
+            
+            
 
-        if (res.equals("Usuario no existe")){//No existe el usuario
-            JOptionPane.showMessageDialog(null, "Lo sentimos el usuario no existe.");
-        }else{//devuelvo la contraseña en una ventana emergente
-            JOptionPane.showMessageDialog(null, "contraseña: " + res);
+            Usuario URecuperar = Usuario.getUsuario(cedula);
+            
+           if(URecuperar==null){
+               
+               JOptionPane.showMessageDialog(null, "No se encontro el usuario: "
+                       + "Por favor, ingrese una cedula valida.");
+               
+               return;
+           }else if(URecuperar.getCelular()!=telefono){
+               
+               JOptionPane.showMessageDialog(null, "Fallo la recuperacion: Por favor ingrese el dato de recuperacion correcto.");
+               
+               return;
+               
+           }
+           
+           
+          JOptionPane.showMessageDialog(null, "Su contraseña es: " + URecuperar.getContrasena());
+
+
+
+
+          
+        
+        
+        }catch (Exception e){
+                        JOptionPane.showMessageDialog(null, "Ha digitado un caracter no numerico.");
         }
+        
+                       
     }//GEN-LAST:event_boton_recuperarcontrasenaActionPerformed
 
     /**
@@ -379,37 +410,5 @@ public class Login extends javax.swing.JFrame {
     private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables
 
-    private String recuperarContrasena(String cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    private String iniciarSesion(int user, String contrasena) {
-        String res = null;
-        Usuario u = Usuario.getUsuario(user, contrasena);
-        
-        /**
-         * salidas comunes
-         * {
-         *  boolean,
-         *  Usuario,
-         *  LinkedList<Usuario>
-         * }
-         */
-        
-        if (u != null){//satisfactorio
-            res = "r";
-        }else{//no existe o algo malo ocurrió
-            //Haga tal cosa
-        }
-        
-        return res;
-    }
-
-    private String inciarSesion(int user, String contrasena) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private boolean validarContrasena(int user, String contrasena) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

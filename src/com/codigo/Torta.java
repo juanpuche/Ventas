@@ -4,6 +4,8 @@
  */
 package com.codigo;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Admin
@@ -11,6 +13,31 @@ package com.codigo;
 public class Torta {
 
     public static Torta getTorta(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public static boolean eliminarTorta(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean insertarTorta(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Torta> getTodasLasTortas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean actualizarTorta(String codigo, Torta torta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Torta> getTortasPedido() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Integer> getCantidadesPedido() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     private String codigo, sabor;

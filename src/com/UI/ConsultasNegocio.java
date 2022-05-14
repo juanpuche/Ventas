@@ -472,8 +472,7 @@ public class ConsultasNegocio extends javax.swing.JFrame {
     }//GEN-LAST:event_c_boton_mostrarclientesActionPerformed
 
     private void c_boton_consultarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_boton_consultarpedidoActionPerformed
-         ConsultarPedido fra=new ConsultarPedido();
-        fra.setVisible(true);
+        
     }//GEN-LAST:event_c_boton_consultarpedidoActionPerformed
 
     private void c_boton_consultarcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_boton_consultarcedulaActionPerformed

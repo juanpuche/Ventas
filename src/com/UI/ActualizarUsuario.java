@@ -5,6 +5,11 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Torta;
+import com.codigo.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -42,23 +47,20 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         au_tnombre = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         au_tapellidos = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        au_tdireccion = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         au_tcelular = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        au_combobox = new javax.swing.JComboBox<>();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         au_tcontrasena = new javax.swing.JPasswordField();
         jSeparator34 = new javax.swing.JSeparator();
         jSeparator35 = new javax.swing.JSeparator();
-        jSeparator36 = new javax.swing.JSeparator();
         jSeparator37 = new javax.swing.JSeparator();
         jSeparator38 = new javax.swing.JSeparator();
-        jSeparator39 = new javax.swing.JSeparator();
         au_boton_limpiar = new javax.swing.JButton();
         au_boton_salir = new javax.swing.JButton();
+        jSeparator40 = new javax.swing.JSeparator();
         jPanel8 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         au_tcedula = new javax.swing.JTextField();
@@ -108,11 +110,6 @@ public class ActualizarUsuario extends javax.swing.JFrame {
 
         au_tapellidos.setBorder(null);
 
-        jLabel26.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel26.setText("Direccion:");
-
-        au_tdireccion.setBorder(null);
-
         jLabel27.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel27.setText("Celular:");
 
@@ -121,9 +118,9 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel28.setText("Tipo Usuario:");
 
-        jComboBox5.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cajero" }));
-        jComboBox5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        au_combobox.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        au_combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cajero" }));
+        au_combobox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel49.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel49.setText("contraseña:");
@@ -137,21 +134,29 @@ public class ActualizarUsuario extends javax.swing.JFrame {
 
         jSeparator35.setForeground(new java.awt.Color(50, 207, 180));
 
-        jSeparator36.setForeground(new java.awt.Color(50, 207, 180));
-
         jSeparator37.setForeground(new java.awt.Color(50, 207, 180));
 
         jSeparator38.setForeground(new java.awt.Color(50, 207, 180));
 
-        jSeparator39.setForeground(new java.awt.Color(50, 207, 180));
-
         au_boton_limpiar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         au_boton_limpiar.setText("Limpiar");
         au_boton_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        au_boton_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                au_boton_limpiarActionPerformed(evt);
+            }
+        });
 
         au_boton_salir.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         au_boton_salir.setText("Salir");
         au_boton_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        au_boton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                au_boton_salirActionPerformed(evt);
+            }
+        });
+
+        jSeparator40.setForeground(new java.awt.Color(50, 207, 180));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -159,12 +164,10 @@ public class ActualizarUsuario extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,20 +176,22 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                             .addComponent(jSeparator38, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator35)
                             .addComponent(au_tapellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                            .addComponent(au_tdireccion, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(au_tcelular, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel50)
                         .addGap(44, 44, 44))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(au_tnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(jSeparator34, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(au_nuevoidcedula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(au_tcelular)
-                            .addComponent(jSeparator39))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(au_tnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                        .addComponent(jSeparator34, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(au_nuevoidcedula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jSeparator40)
+                                .addGap(122, 122, 122)))
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +200,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                                 .addGap(46, 46, 46)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator37)
-                                    .addComponent(jComboBox5, 0, 122, Short.MAX_VALUE)
+                                    .addComponent(au_combobox, 0, 122, Short.MAX_VALUE)
                                     .addComponent(au_tcontrasena))
                                 .addGap(75, 75, 75))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
@@ -203,10 +208,6 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                                     .addComponent(au_boton_salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(au_boton_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                                 .addGap(60, 60, 60))))))
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jSeparator36, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,33 +240,14 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator38, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel26))
-                            .addComponent(au_tdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel27))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(au_boton_limpiar)
-                                    .addGroup(jPanel9Layout.createSequentialGroup()
-                                        .addComponent(jSeparator39, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(5, 5, 5)
-                                        .addComponent(au_tcelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator36, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
+                        .addGap(1, 1, 1))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel28)
-                                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(au_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -279,7 +261,16 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel49))
                             .addComponent(au_tcontrasena, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(52, 52, 52)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(au_tcelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(au_boton_limpiar)
+                    .addComponent(jSeparator40, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(au_boton_salir)
                 .addGap(26, 26, 26))
         );
@@ -439,33 +430,45 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void au_boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_au_boton_actualizarActionPerformed
-//        String  nombres = (u_text_nombres.getText());
-//        String apellidos = (u_text_apellidos.getText());
-//        String direccion = (u_text_direccion.getText());
-//        //        String contrasena=(u_text_contrasena.getText());
-//        int cedula=0;
-//        int telefono=0;
-//
-//        try {
-//
-//            cedula =  Integer.parseInt(cl_text_cedularegistro.getText());
-//            telefono = Integer.parseInt(cl_text_celular.getText());
-//
-//        } catch (NumberFormatException e) {
-//
-//            JOptionPane.showMessageDialog(null, "Ha digitado un campo numerico errado, por favor verifique el campo cedula o celular.");
-//        }
-//
-//        try {
-//
-//            //            boolean res = registrarusuario(cedula,nombres,apellidos,telefono,direccion,contrasena);
-//            //            JOptionPane.showMessageDialog(null, (res?"Usuario registrado con exito.":"No se pudo registrar el usuario en el sistema."));
-//
-//        } catch (Exception e) {
-//
-//            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-//
-//        }
+
+        try {
+            
+            int cedula = Integer.parseInt(au_tcedula.getText());
+            
+            int cedulanueva = Integer.parseInt(au_nuevoidcedula.getText());
+            String contrasena= (au_tcontrasena.getText());
+            String nombres=(au_tnombre.getText());
+            String apellidos= (au_tapellidos.getText());
+            int celular= Integer.parseInt(au_tcelular.getText());
+            String tipoUsuario=(String) au_combobox.getSelectedItem();
+
+            Usuario usuario = new Usuario(cedulanueva, nombres, apellidos, tipoUsuario, contrasena, celular);
+            
+            boolean res = Usuario.actualizarUsuario(cedula,usuario);
+            
+            if(res){
+                
+                 JOptionPane.showMessageDialog(null, "El usuario ha sido actualizado exitosamente.");
+                
+            }
+            
+            else {
+                
+                
+                JOptionPane.showMessageDialog(null, "No se actualizo el usuario. Verifique e intente nuevamente.");
+                
+            }
+             
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un dato no numerico en un campo que lo espera. Verifique e intente nuevamente.");
+        
+        }
+
+        
+        
     }//GEN-LAST:event_au_boton_actualizarActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -476,6 +479,23 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
         this.setLocation(this.getLocation().x+evt.getX()-x,this.getLocation().y+evt.getY()-y);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void au_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_au_boton_salirActionPerformed
+
+        ActualizarUsuario fra=new ActualizarUsuario();
+        fra.setVisible(false);
+        dispose();
+
+    }//GEN-LAST:event_au_boton_salirActionPerformed
+
+    private void au_boton_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_au_boton_limpiarActionPerformed
+        au_tcedula.setText("");
+        au_nuevoidcedula.setText("");
+        au_tnombre.setText("");
+        au_tapellidos.setText("");
+        au_tcelular.setText("");
+        au_tcontrasena.setText("");
+    }//GEN-LAST:event_au_boton_limpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -516,20 +536,18 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton au_boton_actualizar;
     private javax.swing.JButton au_boton_limpiar;
     private javax.swing.JButton au_boton_salir;
+    private javax.swing.JComboBox<String> au_combobox;
     private javax.swing.JTextField au_nuevoidcedula;
     private javax.swing.JTextField au_tapellidos;
     private javax.swing.JTextField au_tcedula;
     private javax.swing.JTextField au_tcelular;
     private javax.swing.JPasswordField au_tcontrasena;
-    private javax.swing.JTextField au_tdireccion;
     private javax.swing.JTextField au_tnombre;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -545,10 +563,9 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator34;
     private javax.swing.JSeparator jSeparator35;
-    private javax.swing.JSeparator jSeparator36;
     private javax.swing.JSeparator jSeparator37;
     private javax.swing.JSeparator jSeparator38;
-    private javax.swing.JSeparator jSeparator39;
+    private javax.swing.JSeparator jSeparator40;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables

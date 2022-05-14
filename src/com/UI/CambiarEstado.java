@@ -5,6 +5,9 @@
  */
 package com.UI;
 
+import com.codigo.Pedido;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -253,32 +256,9 @@ public class CambiarEstado extends javax.swing.JFrame {
 
     private void ce_botonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ce_botonlimpiarActionPerformed
 
-        //        String  nombres = (cl_text_nombre.getText());
-        //        String apellidos = (cl_text_apellidos.getText());
-        //        String direccion = (cl_text_direccion.getText());
-        //        int cedula=0;
-        //        int celular=0;
-        //
-        //        try {
-            //
-            //            cedula =  Integer.parseInt(cl_text_cedularegistro.getText());
-            //            celular = Integer.parseInt(cl_text_celular.getText());
-            //
-            //        } catch (NumberFormatException e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha digitado un campo numerico errado, por favor verifique el campo cedula o celular.");
-            //        }
-        //
-        //        try {
-            //
-            //            boolean res = registrarcliente(cedula,nombres,apellidos,celular,direccion);
-            //            JOptionPane.showMessageDialog(null, (res?"Cliente registrado con exito.":"No se pudo registrar el cliente."));
-            //
-            //        } catch (Exception e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //
-            //        }
+   ce_tnumero.setText("");
+        
+        
     }//GEN-LAST:event_ce_botonlimpiarActionPerformed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
@@ -293,19 +273,24 @@ public class CambiarEstado extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void ce_botonnoentregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ce_botonnoentregadoActionPerformed
-        // TODO add your handling code here:
+        cambiarestado(Pedido.ESTADO_NO_ENTREGADO);
     }//GEN-LAST:event_ce_botonnoentregadoActionPerformed
 
     private void ce_botonentregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ce_botonentregarActionPerformed
-        // TODO add your handling code here:
+        
+      cambiarestado(Pedido.ESTADO_ENTREGADO);
+        
+        
     }//GEN-LAST:event_ce_botonentregarActionPerformed
 
     private void ce_botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ce_botoncancelarActionPerformed
-        // TODO add your handling code here:
+      cambiarestado(Pedido.ESTADO_CANCELADO);
     }//GEN-LAST:event_ce_botoncancelarActionPerformed
 
     private void ce_botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ce_botonsalirActionPerformed
-        // TODO add your handling code here:
+         CambiarEstado fra=new CambiarEstado();
+        fra.setVisible(false);
+        dispose();
     }//GEN-LAST:event_ce_botonsalirActionPerformed
 
     /**
@@ -361,4 +346,44 @@ public class CambiarEstado extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator23;
     // End of variables declaration//GEN-END:variables
+
+    private void cambiarestado(String estado) {
+        
+          String codigo = ce_tnumero.getText();
+        
+        if(codigo.isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Se encontro el campo vacio.");
+            
+        }
+        
+        Pedido pedido = Pedido.getPedido(codigo);
+        
+        if(pedido==null){
+            
+            JOptionPane.showMessageDialog(null, "El pedido no existe.");
+
+        }
+        
+        
+        pedido.setEstado(estado);
+        
+        if(Pedido.actualizarPedido(pedido)){
+            
+             JOptionPane.showMessageDialog(null, "El pedido ha sido actualizado satisfactoriamente.");
+            
+            
+        }
+        
+        
+        else{
+            
+            JOptionPane.showMessageDialog(null, "El pedido no se actualizo.");
+            
+            
+        }
+        
+        
+        
+    }
 }

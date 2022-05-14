@@ -5,6 +5,10 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -49,7 +53,7 @@ public class AnadirUsuario extends javax.swing.JFrame {
         anu_tcelular = new javax.swing.JTextField();
         anu_botonanadirususario = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        au_combobox = new javax.swing.JComboBox<>();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         anu_tcontrasena = new javax.swing.JPasswordField();
@@ -132,9 +136,9 @@ public class AnadirUsuario extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel28.setText("Tipo Usuario:");
 
-        jComboBox5.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cajero" }));
-        jComboBox5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        au_combobox.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        au_combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cajero" }));
+        au_combobox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel49.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel49.setText("contraseña:");
@@ -159,10 +163,20 @@ public class AnadirUsuario extends javax.swing.JFrame {
         anu_botonlimpiar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         anu_botonlimpiar.setText("Limpiar");
         anu_botonlimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        anu_botonlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anu_botonlimpiarActionPerformed(evt);
+            }
+        });
 
         anu_botonsalir.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         anu_botonsalir.setText("Salir");
         anu_botonsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        anu_botonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anu_botonsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -197,7 +211,7 @@ public class AnadirUsuario extends javax.swing.JFrame {
                                 .addGap(47, 47, 47)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator37)
-                                    .addComponent(jComboBox5, 0, 122, Short.MAX_VALUE)
+                                    .addComponent(au_combobox, 0, 122, Short.MAX_VALUE)
                                     .addComponent(anu_tcontrasena))
                                 .addGap(75, 75, 75))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
@@ -271,7 +285,7 @@ public class AnadirUsuario extends javax.swing.JFrame {
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel28)
-                                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(au_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -450,11 +464,64 @@ public class AnadirUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void anu_botonvalidarusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anu_botonvalidarusuarioActionPerformed
-        // TODO add your handling code here:
+        
+         try {
+            
+             int cedula = Integer.parseInt(anu_tcedula.getText()); //Convertir texto a int
+             
+             if (cedula <=0){
+             
+                 JOptionPane.showMessageDialog(null, "Por favor ingrese una cedula.");
+                 
+                 return;
+            
+             }
+            
+             Usuario c = Usuario.getUsuario(cedula);
+            
+             if (c==null){
+                 
+                 
+                 JOptionPane.showMessageDialog(null, "El usuario no existe.");
+                 
+                 return;
+             }
+             
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Por favor ingrese una cedula.");
+            
+        }
+  
+        
+        
+        
     }//GEN-LAST:event_anu_botonvalidarusuarioActionPerformed
 
     private void anu_botonelminarususarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anu_botonelminarususarioActionPerformed
-        // TODO add your handling code here:
+        try {
+            
+             int cedula = Integer.parseInt(anu_tcedula.getText());
+             
+             boolean u_eliminado = Usuario.eliminarUsuario(cedula);
+             
+             if (u_eliminado) {
+                
+                 JOptionPane.showMessageDialog(null, "Se ha eliminado el usuario eliminado satisfactoriamente.");
+            }
+             else{
+                 
+                  JOptionPane.showMessageDialog(null, "No se elimino el cliente. Verifique e intente nuevamente.");
+                 
+                 
+             }
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Por favor verifique si ha ingresado una cedula valida.");
+        
+        }
     }//GEN-LAST:event_anu_botonelminarususarioActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -467,34 +534,74 @@ public class AnadirUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void anu_botonanadirususarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anu_botonanadirususarioActionPerformed
-        //        String  nombres = (u_text_nombres.getText());
-        //        String apellidos = (u_text_apellidos.getText());
-        //        String direccion = (u_text_direccion.getText());
-        //        //        String contrasena=(u_text_contrasena.getText());
-        //        int cedula=0;
-        //        int telefono=0;
-        //
-        //        try {
-            //
-            //            cedula =  Integer.parseInt(cl_text_cedularegistro.getText());
-            //            telefono = Integer.parseInt(cl_text_celular.getText());
-            //
-            //        } catch (NumberFormatException e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha digitado un campo numerico errado, por favor verifique el campo cedula o celular.");
-            //        }
-        //
-        //        try {
-            //
-            //            //            boolean res = registrarusuario(cedula,nombres,apellidos,telefono,direccion,contrasena);
-            //            //            JOptionPane.showMessageDialog(null, (res?"Usuario registrado con exito.":"No se pudo registrar el usuario en el sistema."));
-            //
-            //        } catch (Exception e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //
-            //        }
+       
+          try {
+            
+            int cedula = Integer.parseInt(anu_tcedula.getText());
+            String contrasena= (anu_tcontrasena.getText());
+            String nombres=(anu_tnombres.getText());
+            String apellidos= (anu_tapellidos.getText());
+            int celular= Integer.parseInt(anu_tcelular.getText());
+            String tipoUsuario=(String) au_combobox.getSelectedItem();
+            
+            Usuario usuario = new Usuario(cedula, contrasena, nombres, apellidos, tipoUsuario, celular);
+            
+            boolean res = Usuario.insertarUsuario(cedula);
+            
+            if(res){
+                
+                 JOptionPane.showMessageDialog(null, "El usuario se registro exitosamente.");
+                
+            }
+            
+            else {
+                
+                
+                JOptionPane.showMessageDialog(null, "No se registro se registro. Verifique e intente nuevamente.");
+                
+            }
+             
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un dato no numerico, en un campo obligatorio. Verifique e intente nuevamente.");
+        
+        }
+
+        
+        
+        
+        
     }//GEN-LAST:event_anu_botonanadirususarioActionPerformed
+
+    private void anu_botonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anu_botonlimpiarActionPerformed
+            
+        
+            anu_tcedula.setText("");
+            anu_tcedulaanadir.setText("");
+            anu_tnombres.setText("");
+            anu_tapellidos.setText("");
+            anu_tdireccion.setText("");
+            anu_tcelular.setText("");
+            anu_tcontrasena.setText("");        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_anu_botonlimpiarActionPerformed
+
+    private void anu_botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anu_botonsalirActionPerformed
+        
+        
+        AnadirUsuario fra=new AnadirUsuario();
+        fra.setVisible(false);
+        dispose();
+
+        
+        
+    }//GEN-LAST:event_anu_botonsalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -545,7 +652,7 @@ public class AnadirUsuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField anu_tcontrasena;
     private javax.swing.JTextField anu_tdireccion;
     private javax.swing.JTextField anu_tnombres;
-    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> au_combobox;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;

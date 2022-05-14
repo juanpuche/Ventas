@@ -4,11 +4,35 @@
  */
 package com.codigo;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Admin
  */
 public class Cliente {
+
+    public static Cliente getCliente(int cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean eliminarCliente(int cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean insertarCliente(Cliente cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean actualizarCliente(Cliente cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Cliente> getTodosLosClientes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
     private int cedula, celular;
     private String nombres, apellidos, direccion;

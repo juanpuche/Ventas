@@ -5,6 +5,10 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Torta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -39,7 +43,7 @@ public class AnadirProducto extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        anp_tcodiggo = new javax.swing.JTextField();
+        anp_tcodigov = new javax.swing.JTextField();
         anp_botonvalidarproducto = new javax.swing.JButton();
         anp_botoneliminarproducto = new javax.swing.JButton();
         jSeparator31 = new javax.swing.JSeparator();
@@ -64,6 +68,8 @@ public class AnadirProducto extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         anp_botonlimpiar = new javax.swing.JButton();
         anp_botonsalir = new javax.swing.JButton();
+        anp_botonanadir = new javax.swing.JButton();
+        jSeparator48 = new javax.swing.JSeparator();
         jSeparator46 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,7 +120,7 @@ public class AnadirProducto extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel29.setText("Codigo Producto:");
 
-        anp_tcodiggo.setBorder(null);
+        anp_tcodigov.setBorder(null);
 
         anp_botonvalidarproducto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         anp_botonvalidarproducto.setText("Validar Producto");
@@ -146,7 +152,7 @@ public class AnadirProducto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator31)
-                    .addComponent(anp_tcodiggo, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                    .addComponent(anp_tcodigov, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(anp_botonvalidarproducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -164,7 +170,7 @@ public class AnadirProducto extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel29)
-                            .addComponent(anp_tcodiggo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(anp_tcodigov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(54, Short.MAX_VALUE))
@@ -215,31 +221,59 @@ public class AnadirProducto extends javax.swing.JFrame {
         anp_botonlimpiar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         anp_botonlimpiar.setText("Limpiar");
         anp_botonlimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        anp_botonlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anp_botonlimpiarActionPerformed(evt);
+            }
+        });
 
         anp_botonsalir.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         anp_botonsalir.setText("Salir");
         anp_botonsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        anp_botonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anp_botonsalirActionPerformed(evt);
+            }
+        });
+
+        anp_botonanadir.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        anp_botonanadir.setText("Añadir Producto");
+        anp_botonanadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        anp_botonanadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anp_botonanadirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(anp_botonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(anp_botonlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(anp_botonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(anp_botonlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(anp_botonanadir, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(20, 20, 20)
+                .addComponent(anp_botonanadir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(anp_botonlimpiar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(anp_botonsalir)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
+
+        jSeparator48.setForeground(new java.awt.Color(251, 197, 135));
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -271,7 +305,8 @@ public class AnadirProducto extends javax.swing.JFrame {
                                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator45)
                                     .addComponent(jSeparator44)
-                                    .addComponent(ap_tpeso, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)))
+                                    .addComponent(ap_tpeso, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                                    .addComponent(jSeparator48)))
                             .addGroup(jPanel25Layout.createSequentialGroup()
                                 .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -307,10 +342,12 @@ public class AnadirProducto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
-                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel86)
-                            .addComponent(anp_tsabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel25Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(anp_tsabor, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator43, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -321,7 +358,9 @@ public class AnadirProducto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel88)
-                            .addComponent(ap_tpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ap_tpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator48, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator45, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,37 +439,71 @@ public class AnadirProducto extends javax.swing.JFrame {
 
     private void anp_botonvalidarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anp_botonvalidarproductoActionPerformed
 
-//        String codigo = (pr_text_codigovalidar.getText()); //Convertir texto a int
-//        boolean res = validarProducto(codigo);
-//        try{
-//            if(res){
-//
-//                JOptionPane.showMessageDialog(null, "El producto se encientra registrado en el catalogo del sistema.");
-//
-//            } else{
-//
-//                JOptionPane.showMessageDialog(null, "El producto no se encientra registrado en el catalogo del sistema.");
-//
-//            }
-//
-//        }catch (Exception e) {
-//
-//            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-//        }
+         try {
+            
+             String codigo = (anp_tcodigov.getText()); //Convertir texto a int
+             
+             if (codigo ==null){
+             
+                 JOptionPane.showMessageDialog(null, "Por favor ingrese el codigo del producto.");
+                 
+                 return;
+            
+             }
+            
+             Torta t = Torta.getTorta(codigo);
+            
+             if (codigo==null){
+                 
+                 
+                 JOptionPane.showMessageDialog(null, "El producto no se econtro.");
+                 
+                 return;
+             }
+             
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Por favor ingrese un codigo de producto valido.");
+            
+        }
+  
+        
+        
     }//GEN-LAST:event_anp_botonvalidarproductoActionPerformed
 
     private void anp_botoneliminarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anp_botoneliminarproductoActionPerformed
-//        String codigo = (pr_text_codigovalidar.getText()); //Convertir texto a int
-//
-//        try {// En este metodo se consultara solo el estado del pedido
-//
-//            boolean res = eliminarproducto(codigo);
-//            JOptionPane.showMessageDialog(null, (res?"Se ha eliminado el producto del sistema de manera exitosa.":"No se pudo eliminar el producto del sistema."));
-//
-//        } catch (Exception e) {
-//
-//            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-//        }
+
+         try {
+            
+              String codigo = (anp_tcodigov.getText());
+             
+             boolean producto_eliminado = Torta.eliminarTorta(codigo);
+             
+             if (producto_eliminado) {
+                
+                 JOptionPane.showMessageDialog(null, "El producto se ha eliminado satisfactoriamente.");
+            }
+             else{
+                 
+                  JOptionPane.showMessageDialog(null, "No se elimino el producto. Verifique e intente nuevamente.");
+                 
+                 
+             }
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Por favor verifique si ha ingresado un codigoo de producto valido.");
+        
+        }
+
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_anp_botoneliminarproductoActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -441,6 +514,60 @@ public class AnadirProducto extends javax.swing.JFrame {
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
         this.setLocation(this.getLocation().x+evt.getX()-x,this.getLocation().y+evt.getY()-y);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void anp_botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anp_botonsalirActionPerformed
+        AnadirProducto fra=new AnadirProducto();
+        fra.setVisible(false);
+        dispose();
+
+    }//GEN-LAST:event_anp_botonsalirActionPerformed
+
+    private void anp_botonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anp_botonlimpiarActionPerformed
+       
+             anp_tcodigov.setText("");
+             anp_tcodigo.setText("");
+             anp_tsabor.setText("");
+             anp_tprecio.setText("");
+             ap_tpeso.setText("");
+        
+        
+       
+    }//GEN-LAST:event_anp_botonlimpiarActionPerformed
+
+    private void anp_botonanadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anp_botonanadirActionPerformed
+
+        try {
+
+            
+             String codigo = anp_tcodigo.getText();
+             String sabor = anp_tsabor.getText();
+             double precio = Double.parseDouble(anp_tprecio.getText());
+             double peso = Double.parseDouble(ap_tpeso.getText());
+            
+            
+            Torta torta = new Torta(codigo, sabor, peso, precio);
+
+            boolean res = Torta.insertarTorta(codigo);
+
+            if(res){
+
+                JOptionPane.showMessageDialog(null, "El producto se añadio exitosamente.");
+
+            }
+
+            else {
+
+                JOptionPane.showMessageDialog(null, "No se añadio el producto. Verifique e intente nuevamente.");
+
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Ha ingresado un dato no numerico. Verifique e intente nuevamente.");
+
+        }
+
+    }//GEN-LAST:event_anp_botonanadirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -478,12 +605,13 @@ public class AnadirProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton anp_botonanadir;
     private javax.swing.JButton anp_botoneliminarproducto;
     private javax.swing.JButton anp_botonlimpiar;
     private javax.swing.JButton anp_botonsalir;
     private javax.swing.JButton anp_botonvalidarproducto;
-    private javax.swing.JTextField anp_tcodiggo;
     private javax.swing.JTextField anp_tcodigo;
+    private javax.swing.JTextField anp_tcodigov;
     private javax.swing.JTextField anp_tprecio;
     private javax.swing.JTextField anp_tsabor;
     private javax.swing.JTextField ap_tpeso;
@@ -511,5 +639,6 @@ public class AnadirProducto extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator45;
     private javax.swing.JSeparator jSeparator46;
     private javax.swing.JSeparator jSeparator47;
+    private javax.swing.JSeparator jSeparator48;
     // End of variables declaration//GEN-END:variables
 }

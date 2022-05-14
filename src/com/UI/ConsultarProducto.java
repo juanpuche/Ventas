@@ -5,6 +5,13 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Torta;
+import java.util.LinkedList;
+import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juanfer
@@ -37,10 +44,10 @@ public class ConsultarProducto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jSeparator23 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        cl_boton_mostrarcliente = new javax.swing.JButton();
+        cl_boton_mostrarproducto = new javax.swing.JButton();
         cl_boton_mostrarcliente1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        in_boton_mostrarfactura3 = new javax.swing.JButton();
+        in_tabla = new javax.swing.JButton();
         in_boton_mostrarfactura4 = new javax.swing.JButton();
         jPanel26 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
@@ -83,12 +90,13 @@ public class ConsultarProducto extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        cl_boton_mostrarcliente.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        cl_boton_mostrarcliente.setText("Mostrar Cliente");
-        cl_boton_mostrarcliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cl_boton_mostrarcliente.addActionListener(new java.awt.event.ActionListener() {
+        cl_boton_mostrarproducto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        cl_boton_mostrarproducto.setText("Mostrar Cliente");
+        cl_boton_mostrarproducto.setActionCommand("Mostrar Producto");
+        cl_boton_mostrarproducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cl_boton_mostrarproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cl_boton_mostrarclienteActionPerformed(evt);
+                cl_boton_mostrarproductoActionPerformed(evt);
             }
         });
 
@@ -108,7 +116,7 @@ public class ConsultarProducto extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(cl_boton_mostrarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cl_boton_mostrarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(cl_boton_mostrarcliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -118,7 +126,7 @@ public class ConsultarProducto extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cl_boton_mostrarcliente)
+                    .addComponent(cl_boton_mostrarproducto)
                     .addComponent(cl_boton_mostrarcliente1))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -167,12 +175,12 @@ public class ConsultarProducto extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
 
-        in_boton_mostrarfactura3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        in_boton_mostrarfactura3.setText("Limpiar");
-        in_boton_mostrarfactura3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        in_boton_mostrarfactura3.addActionListener(new java.awt.event.ActionListener() {
+        in_tabla.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        in_tabla.setText("Limpiar");
+        in_tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        in_tabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_mostrarfactura3ActionPerformed(evt);
+                in_tablaActionPerformed(evt);
             }
         });
 
@@ -232,13 +240,13 @@ public class ConsultarProducto extends javax.swing.JFrame {
 
         cpr_tablaconsultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Cantidad", "Cod.", "Descripcion", "Precio Unit.", "Importe"
+                "Cod.", "Descripcion", "Peso", "Precio"
             }
         ));
         jScrollPane1.setViewportView(cpr_tablaconsultas);
@@ -261,7 +269,7 @@ public class ConsultarProducto extends javax.swing.JFrame {
                                 .addComponent(jLabel11))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(156, 156, 156)
-                                .addComponent(in_boton_mostrarfactura3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(in_tabla, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)
                                 .addComponent(in_boton_mostrarfactura4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -287,7 +295,7 @@ public class ConsultarProducto extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(in_boton_mostrarfactura3)
+                    .addComponent(in_tabla)
                     .addComponent(in_boton_mostrarfactura4))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -317,43 +325,80 @@ public class ConsultarProducto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cl_boton_mostrarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_mostrarclienteActionPerformed
-        //
-        //        int cedula = Integer.parseInt(cl_text_cedulaconsultar.getText());
-        //        boolean res=validarcedula(cedula);
-        //
-        //        try {
-            //            if(res){
-                //
-                //                String respuesta =  mostrarcliente(cedula);   //Debe mostrar los datos del pedido (productos)
-                //
-                //                //                display_inicio.setText(respuesta);
-                //
-                //            } else{
-                //
-                //                JOptionPane.showMessageDialog(null, "No existe un cliente asociado con esa cedula.");
-                //
-                //            }
-            //
-            //        } catch (Exception e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //        }
-    }//GEN-LAST:event_cl_boton_mostrarclienteActionPerformed
+    private void cl_boton_mostrarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_mostrarproductoActionPerformed
+     
+            limpiarTabla();
+            
+           try {
+               
+               String codigo = cl_tcedulavalidar.getText();
+               
+               DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+         
+ 
+               Object[] torta = new Object [4];
+               
+               Torta t = Torta.getTorta(codigo);
+
+                torta [0] = t.getCodigo();
+                torta [1] = t.getSabor(); 
+                torta[2] = t.getPeso();
+                torta[3] = t.getPrecio();
+              
+                
+                 model.addRow(torta);
+
+               
+            
+
+            in_tabla.setModel((ButtonModel) model);
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un valor no numerico o invalido en el campo codigo del producto. " + e.getMessage());
+            
+        }
+            
+    }//GEN-LAST:event_cl_boton_mostrarproductoActionPerformed
 
     private void cl_boton_mostrarcliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_mostrarcliente1ActionPerformed
-        // TODO add your handling code here:
+         LinkedList<Torta> SusTortas = Torta.getTodasLasTortas();
+        
+         DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+         
+         for (int i = 0; i < SusTortas.size(); i++) {
+ 
+               Object[] torta = new Object [4];
+               
+               Torta t = SusTortas.get(i);
+
+                torta [0] = t.getCodigo();
+                torta [1] = t.getSabor(); 
+                torta[2] = t.getPeso()+"";
+                torta[3] = t.getPrecio()+"";
+                
+                 model.addRow(torta);
+
+               
+            
+        }
+
+            in_tabla.setModel((ButtonModel) model);
+        
+        
+        
     }//GEN-LAST:event_cl_boton_mostrarcliente1ActionPerformed
 
     private void ac_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ac_boton_salirActionPerformed
-        ActualizarCliente fra=new ActualizarCliente();
+        ConsultarProducto fra=new ConsultarProducto();
         fra.setVisible(false);
         dispose();
     }//GEN-LAST:event_ac_boton_salirActionPerformed
 
-    private void in_boton_mostrarfactura3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfactura3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_in_boton_mostrarfactura3ActionPerformed
+    private void in_tablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tablaActionPerformed
+        limpiarTabla();
+    }//GEN-LAST:event_in_tablaActionPerformed
 
     private void in_boton_mostrarfactura4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfactura4ActionPerformed
         // TODO add your handling code here:
@@ -405,12 +450,12 @@ public class ConsultarProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ac_boton_salir;
-    private javax.swing.JButton cl_boton_mostrarcliente;
     private javax.swing.JButton cl_boton_mostrarcliente1;
+    private javax.swing.JButton cl_boton_mostrarproducto;
     private javax.swing.JTextField cl_tcedulavalidar;
     private javax.swing.JTable cpr_tablaconsultas;
-    private javax.swing.JButton in_boton_mostrarfactura3;
     private javax.swing.JButton in_boton_mostrarfactura4;
+    private javax.swing.JButton in_tabla;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -426,4 +471,15 @@ public class ConsultarProducto extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarTabla() {
+      DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+        
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            model.removeRow(0);
+        }
+        
+        in_tabla.setModel((ButtonModel) model);
+        
+    }
 }

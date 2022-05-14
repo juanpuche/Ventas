@@ -20,6 +20,14 @@ public class VistaCajero extends javax.swing.JFrame {
         setTitle("Sistema y Control de Ventas V 1.01");
     }
 
+    VistaCajero(int user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    VistaCajero(int user, String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

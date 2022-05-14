@@ -5,24 +5,47 @@
 package com.codigo;
 
 import com.bd.BaseDeDatosTortas;
+import java.util.LinkedList;
 
 /**
  *
  * @author Admin
  */
 public class Usuario {
+
+    public static String TIPOADMINISTRADOR = "Administrador", TIPOCAJERO = "Cajero";
+
+    public static Usuario getUsuario(int cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean eliminarUsuario(int cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean insertarUsuario(int cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Usuario> getTodosLosUsuarios() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean actualizarUsuario(int cedula, Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private int cedula;
     private String nombre, apellido, tipoUsuario, contrasena;
-    private int telefono;
+    private int celular;
 
-    public Usuario(int cedula, String nombre, String apellido, String tipoUsuario, String contrasena, int telefono) {
+    public Usuario(int cedula,String contrasena, String nombre, String apellido, String tipoUsuario, int celular) {
         this.cedula = cedula;
+        this.contrasena = contrasena;
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoUsuario = tipoUsuario;
-        this.contrasena = contrasena;
-        this.telefono = telefono;
+        this.celular = celular;
     }
 
     public String getContrasena() {
@@ -62,12 +85,12 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public int getCelular() {
+        return celular;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setCelular(int celular) {
+        this.celular = celular;
     }
 
     @Override
@@ -75,11 +98,11 @@ public class Usuario {
         StringBuilder sb = new StringBuilder();
         sb.append("Usuario{");
         sb.append("cedula=").append(cedula);
+        sb.append(", contrasena=").append(contrasena);
         sb.append(", nombre=").append(nombre);
         sb.append(", apellido=").append(apellido);
         sb.append(", tipoUsuario=").append(tipoUsuario);
-        sb.append(", contrasena=").append(contrasena);
-        sb.append(", telefono=").append(telefono);
+        sb.append(", telefono=").append(celular);
         sb.append('}');
         return sb.toString();
     }
@@ -88,8 +111,10 @@ public class Usuario {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+
     public static Usuario getUsuario(int usuario, String contrasena){
         Usuario res = null;
+        
         
         String sentencia ="";
         

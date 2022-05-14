@@ -5,6 +5,9 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -358,32 +361,44 @@ public class ActualizarCliente extends javax.swing.JFrame {
 
     private void ac_boton_actualizarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ac_boton_actualizarclienteActionPerformed
 
-//        String  nombres = (cl_text_nombre.getText());
-//        String apellidos = (cl_text_apellidos.getText());
-//        String direccion = (cl_text_direccion.getText());
-//        int cedula=0;
-//        int celular=0;
-//
-//        try {
-//
-//            cedula =  Integer.parseInt(cl_text_cedularegistro.getText());
-//            celular = Integer.parseInt(cl_text_celular.getText());
-//
-//        } catch (NumberFormatException e) {
-//
-//            JOptionPane.showMessageDialog(null, "Ha digitado un campo numerico errado, por favor verifique el campo cedula o celular.");
-//        }
-//
-//        try {
-//
-//            boolean res = registrarcliente(cedula,nombres,apellidos,celular,direccion);
-//            JOptionPane.showMessageDialog(null, (res?"Cliente registrado con exito.":"No se pudo registrar el cliente."));
-//
-//        } catch (Exception e) {
-//
-//            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-//
-//        }
+
+        
+         try {
+            
+            int cedula = Integer.parseInt(ac_textcedula.getText());
+            String nombres= (ac_tnombre.getText());
+            String apellidos= (ac_tapellidos.getText());
+            String direccion= (ac_tdireccion.getText());
+            int celular= Integer.parseInt(cl_tcelular.getText());
+            
+            Cliente cliente = new Cliente(cedula, celular, nombres, apellidos, direccion);
+            
+            boolean res = Cliente.actualizarCliente(cliente);
+            
+            if(res){
+                
+                 JOptionPane.showMessageDialog(null, "El cliete ha sido actualizado exitosamente.");
+                
+            }
+            
+            else {
+                
+                
+                JOptionPane.showMessageDialog(null, "No se actualizo el cliente. Verifique e intente nuevamente.");
+                
+            }
+             
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un dato no numerico en un campo que lo espera. Verifique e intente nuevamente.");
+        
+        }
+
+        
+        
+        
     }//GEN-LAST:event_ac_boton_actualizarclienteActionPerformed
 
     private void ac_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ac_boton_salirActionPerformed
@@ -396,7 +411,18 @@ public class ActualizarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_ac_boton_salirActionPerformed
 
     private void ac_botonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ac_botonlimpiarActionPerformed
-        // TODO add your handling code here:
+      
+        
+        
+        ac_textcedula.setText("");
+        ac_tnombre.setText("");
+        ac_tapellidos.setText("");
+        ac_tdireccion.setText("");
+        cl_tcelular.setText("");
+        
+        
+        
+        
     }//GEN-LAST:event_ac_botonlimpiarActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed

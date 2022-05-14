@@ -5,6 +5,10 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Torta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -212,10 +216,20 @@ public class ActualizarProducto extends javax.swing.JFrame {
         ap_botonlimpiar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         ap_botonlimpiar.setText("Limpiar");
         ap_botonlimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ap_botonlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ap_botonlimpiarActionPerformed(evt);
+            }
+        });
 
         ap_botonsalir.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         ap_botonsalir.setText("Salir");
         ap_botonsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ap_botonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ap_botonsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -304,10 +318,12 @@ public class ActualizarProducto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
-                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel86)
-                            .addComponent(ap_tsabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel25Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(ap_tsabor, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator43, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -392,7 +408,40 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ap_botonactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ap_botonactualizarActionPerformed
-        // TODO add your handling code here:
+          try {
+            
+            String codigo=(ap_tcodigo.getText()); 
+            String codigonuevo= (ap_tcodigonuevo.getText());
+            String sabor= (ap_tsabor.getText()); 
+            double precio = Double.parseDouble(ap_tprecio.getText());
+            double peso = Double.parseDouble(ap_tpeso.getText());
+           
+            
+            Torta torta = new Torta(codigonuevo, sabor, peso, precio);
+            
+            boolean res = Torta.actualizarTorta(codigo, torta);
+            
+            if(res){
+                
+                 JOptionPane.showMessageDialog(null, "El producto ha sido actualizado exitosamente.");
+                
+            }
+            
+            else {
+                
+                
+                JOptionPane.showMessageDialog(null, "No se actualizo el producto. Verifique e intente nuevamente.");
+                
+            }
+             
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un dato no numerico en un campo que lo espera. Verifique e intente nuevamente.");
+        
+        }
+
     }//GEN-LAST:event_ap_botonactualizarActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -403,6 +452,20 @@ public class ActualizarProducto extends javax.swing.JFrame {
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
        this.setLocation(this.getLocation().x+evt.getX()-x,this.getLocation().y+evt.getY()-y);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void ap_botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ap_botonsalirActionPerformed
+      ActualizarProducto fra=new ActualizarProducto();
+        fra.setVisible(false);
+        dispose();
+    }//GEN-LAST:event_ap_botonsalirActionPerformed
+
+    private void ap_botonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ap_botonlimpiarActionPerformed
+        ap_tcodigo.setText("");
+        ap_tcodigonuevo.setText("");
+        ap_tsabor.setText("");
+        ap_tprecio.setText("");
+        ap_tprecio.setText("");
+    }//GEN-LAST:event_ap_botonlimpiarActionPerformed
 
     /**
      * @param args the command line arguments

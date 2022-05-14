@@ -5,6 +5,12 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import com.codigo.Usuario;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juanfer
@@ -38,19 +44,19 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel37 = new javax.swing.JLabel();
-        in_boton_mostrarfactura3 = new javax.swing.JButton();
+        in_boton_limpiar = new javax.swing.JButton();
         in_boton_mostrarfactura4 = new javax.swing.JButton();
         cl_boton_salir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        cu_tablaconsultas = new javax.swing.JTable();
+        in_tabla = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         u_text_cedulavalidaru = new javax.swing.JTextField();
-        u_boton_eliminarususario = new javax.swing.JButton();
+        u_boton_mostrarusuario = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel30 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
-        u_boton_eliminarususario1 = new javax.swing.JButton();
+        u_boton_mostrartodos = new javax.swing.JButton();
         jLabel60 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel83 = new javax.swing.JLabel();
@@ -83,12 +89,12 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel37.setText("Display:");
 
-        in_boton_mostrarfactura3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        in_boton_mostrarfactura3.setText("Limpiar");
-        in_boton_mostrarfactura3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        in_boton_mostrarfactura3.addActionListener(new java.awt.event.ActionListener() {
+        in_boton_limpiar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        in_boton_limpiar.setText("Limpiar");
+        in_boton_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        in_boton_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                in_boton_mostrarfactura3ActionPerformed(evt);
+                in_boton_limpiarActionPerformed(evt);
             }
         });
 
@@ -104,8 +110,13 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         cl_boton_salir.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         cl_boton_salir.setText("Salir");
         cl_boton_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cl_boton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cl_boton_salirActionPerformed(evt);
+            }
+        });
 
-        cu_tablaconsultas.setModel(new javax.swing.table.DefaultTableModel(
+        in_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -113,10 +124,10 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Cantidad", "Cod.", "Descripcion", "Precio Unit.", "Importe"
+                "Id_Cedula", "Nombres", "Apellidos", "Celular", "Tipo Usuario"
             }
         ));
-        jScrollPane1.setViewportView(cu_tablaconsultas);
+        jScrollPane1.setViewportView(in_tabla);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -126,7 +137,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel37)
                 .addGap(36, 36, 36)
-                .addComponent(in_boton_mostrarfactura3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(in_boton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(in_boton_mostrarfactura4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(307, Short.MAX_VALUE))
@@ -149,7 +160,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
-                    .addComponent(in_boton_mostrarfactura3)
+                    .addComponent(in_boton_limpiar)
                     .addComponent(in_boton_mostrarfactura4))
                 .addGap(18, 18, 18)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,28 +182,28 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
         u_text_cedulavalidaru.setBorder(null);
 
-        u_boton_eliminarususario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        u_boton_eliminarususario.setText("Mostrar Usuario");
-        u_boton_eliminarususario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        u_boton_eliminarususario.addActionListener(new java.awt.event.ActionListener() {
+        u_boton_mostrarusuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        u_boton_mostrarusuario.setText("Mostrar Usuario");
+        u_boton_mostrarusuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        u_boton_mostrarusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                u_boton_eliminarususarioActionPerformed(evt);
+                u_boton_mostrarusuarioActionPerformed(evt);
             }
         });
 
         jSeparator8.setForeground(new java.awt.Color(255, 153, 102));
 
         jLabel30.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel30.setText("Registrar Usuario:");
+        jLabel30.setText("Informacion:");
 
         jSeparator11.setForeground(new java.awt.Color(204, 204, 204));
 
-        u_boton_eliminarususario1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        u_boton_eliminarususario1.setText("Mostrar Todos");
-        u_boton_eliminarususario1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        u_boton_eliminarususario1.addActionListener(new java.awt.event.ActionListener() {
+        u_boton_mostrartodos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        u_boton_mostrartodos.setText("Mostrar Todos");
+        u_boton_mostrartodos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        u_boton_mostrartodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                u_boton_eliminarususario1ActionPerformed(evt);
+                u_boton_mostrartodosActionPerformed(evt);
             }
         });
 
@@ -213,9 +224,9 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                             .addComponent(jSeparator8)
                             .addComponent(u_text_cedulavalidaru, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                         .addGap(82, 82, 82)
-                        .addComponent(u_boton_eliminarususario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(u_boton_mostrarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(u_boton_eliminarususario1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(u_boton_mostrartodos, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jLabel30)))
@@ -233,8 +244,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(u_boton_eliminarususario)
-                        .addComponent(u_boton_eliminarususario1)))
+                        .addComponent(u_boton_mostrarusuario)
+                        .addComponent(u_boton_mostrartodos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -331,17 +342,82 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void u_boton_eliminarususarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_boton_eliminarususarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_u_boton_eliminarususarioActionPerformed
+    private void u_boton_mostrarusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_boton_mostrarusuarioActionPerformed
+        
+           limpiarTabla();
+            
+           try {
+               
+               int cedula = Integer.parseInt(u_text_cedulavalidaru.getText());
+               DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+         
+ 
+               Object[] usuario = new Object [5];
+               
+               Usuario u = Usuario.getUsuario(cedula);
 
-    private void u_boton_eliminarususario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_boton_eliminarususario1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_u_boton_eliminarususario1ActionPerformed
+                usuario [0] = u.getCedula()+"";
+                usuario [1] = u.getNombre(); 
+                usuario [2] = u.getApellido();
+                usuario [3] = u.getCelular()+"";
+                usuario[4]=u.getTipoUsuario();
+                
+                 model.addRow(usuario);
 
-    private void in_boton_mostrarfactura3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfactura3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_in_boton_mostrarfactura3ActionPerformed
+               
+            
+
+            in_tabla.setModel(model);
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un valor no numerico o invalido en el campo cedula." + e.getMessage());
+            
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_u_boton_mostrarusuarioActionPerformed
+
+    private void u_boton_mostrartodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_boton_mostrartodosActionPerformed
+    
+        limpiarTabla();
+        
+        LinkedList<Usuario> SusUsuarios = Usuario.getTodosLosUsuarios();
+        
+         DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+         
+         for (int i = 0; i < SusUsuarios.size(); i++) {
+ 
+               Object[] usuario = new Object [5];
+               
+               Usuario u = SusUsuarios.get(i);
+
+                usuario [0] = u.getCedula()+"";
+                usuario [1] = u.getNombre(); 
+                usuario [2] = u.getApellido();
+                usuario [3] = u.getCelular()+"";
+                usuario[4]=u.getTipoUsuario();
+                
+                 model.addRow(usuario);
+
+               
+            
+        }
+
+            in_tabla.setModel(model);
+        
+                
+    }//GEN-LAST:event_u_boton_mostrartodosActionPerformed
+
+    private void in_boton_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_limpiarActionPerformed
+            
+        limpiarTabla();        
+
+    }//GEN-LAST:event_in_boton_limpiarActionPerformed
 
     private void in_boton_mostrarfactura4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_mostrarfactura4ActionPerformed
         // TODO add your handling code here:
@@ -355,6 +431,14 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
        this.setLocation(this.getLocation().x+evt.getX()-x,this.getLocation().y+evt.getY()-y);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void cl_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl_boton_salirActionPerformed
+         
+          ConsultarUsuario fra=new ConsultarUsuario();
+          fra.setVisible(false);
+          dispose();
+                         
+    }//GEN-LAST:event_cl_boton_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,9 +477,9 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cl_boton_salir;
-    private javax.swing.JTable cu_tablaconsultas;
-    private javax.swing.JButton in_boton_mostrarfactura3;
+    private javax.swing.JButton in_boton_limpiar;
     private javax.swing.JButton in_boton_mostrarfactura4;
+    private javax.swing.JTable in_tabla;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel29;
@@ -412,8 +496,20 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JButton u_boton_eliminarususario;
-    private javax.swing.JButton u_boton_eliminarususario1;
+    private javax.swing.JButton u_boton_mostrartodos;
+    private javax.swing.JButton u_boton_mostrarusuario;
     private javax.swing.JTextField u_text_cedulavalidaru;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarTabla() {
+     
+        DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
+        
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            model.removeRow(0);
+        }
+        
+        in_tabla.setModel(model);
+        
+    }
 }

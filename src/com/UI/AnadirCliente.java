@@ -5,6 +5,9 @@
  */
 package com.UI;
 
+import com.codigo.Cliente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juanfer
@@ -142,6 +145,11 @@ public class AnadirCliente extends javax.swing.JFrame {
         anc_botonlimpiar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         anc_botonlimpiar.setText("Limpiar");
         anc_botonlimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        anc_botonlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anc_botonlimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -298,11 +306,12 @@ public class AnadirCliente extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ac_botoneliminar)
-                    .addComponent(anc_botonvalidar)
-                    .addComponent(jLabel12)
-                    .addComponent(anc_tcedula))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(anc_tcedula)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ac_botoneliminar)
+                        .addComponent(anc_botonvalidar)
+                        .addComponent(jLabel12)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -389,68 +398,112 @@ public class AnadirCliente extends javax.swing.JFrame {
 
     private void anc_botonanadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anc_botonanadirActionPerformed
 
-        //        String  nombres = (cl_text_nombre.getText());
-        //        String apellidos = (cl_text_apellidos.getText());
-        //        String direccion = (cl_text_direccion.getText());
-        //        int cedula=0;
-        //        int celular=0;
-        //
-        //        try {
-            //
-            //            cedula =  Integer.parseInt(cl_text_cedularegistro.getText());
-            //            celular = Integer.parseInt(cl_text_celular.getText());
-            //
-            //        } catch (NumberFormatException e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha digitado un campo numerico errado, por favor verifique el campo cedula o celular.");
-            //        }
-        //
-        //        try {
-            //
-            //            boolean res = registrarcliente(cedula,nombres,apellidos,celular,direccion);
-            //            JOptionPane.showMessageDialog(null, (res?"Cliente registrado con exito.":"No se pudo registrar el cliente."));
-            //
-            //        } catch (Exception e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //
-            //        }
+         try {
+            
+            int cedula = Integer.parseInt(anc_tcedulaanadir.getText());
+            String nombres= (anc_tapellidos.getText());
+            String apellidos= (anc_tcedulaanadir.getText());
+            String direccion= (anc_tdireccion.getText());
+            int celular= Integer.parseInt(anc_tcelular.getText());
+            
+            Cliente cliente = new Cliente(cedula, celular, nombres, apellidos, direccion);
+            
+            boolean res = Cliente.insertarCliente(cliente);
+            
+            if(res){
+                
+                 JOptionPane.showMessageDialog(null, "El cliente se añadio exitosamente.");
+                
+            }
+            
+            else {
+                
+                
+                JOptionPane.showMessageDialog(null, "No se añadio el cliente. Verifique e intente nuevamente.");
+                
+            }
+             
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Ha ingresado un dato no numerico. Verifique e intente nuevamente.");
+        
+        }
+
+        
+        
+        
     }//GEN-LAST:event_anc_botonanadirActionPerformed
 
     private void anc_botonvalidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anc_botonvalidarActionPerformed
 
-        //        int cedula = Integer.parseInt(cl_text_cedulavalidar.getText()); //Convertir texto a int
-        //        boolean res=validarcedula(cedula);
-        //        try{
-            //            if(res){
-                //
-                //                JOptionPane.showMessageDialog(null, "El cliente se encientra registrado.");
-                //
-                //            } else{
-                //
-                //                JOptionPane.showMessageDialog(null, "El cliente no se encuentra registrado.");
-                //
-                //            }
-            //
-            //        }catch (Exception e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //        }
+        
+        
+        try {
+            
+             int cedula = Integer.parseInt(anc_tcedula.getText()); //Convertir texto a int
+             
+             if (cedula <=0){
+             
+                 JOptionPane.showMessageDialog(null, "Por favor ingrese una cedula.");
+                 
+                 return;
+            
+             }
+            
+             Cliente c = Cliente.getCliente(cedula);
+            
+             if (c==null){
+                 
+                 
+                 JOptionPane.showMessageDialog(null, "El cliente no existe.");
+                 
+                 return;
+             }
+             
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Por favor ingrese una cedula.");
+            
+        }
+  
+               
     }//GEN-LAST:event_anc_botonvalidarActionPerformed
 
     private void ac_botoneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ac_botoneliminarActionPerformed
 
-        //        int cedula = Integer.parseInt(cl_text_cedulavalidar.getText()); //Convertir texto a int
-        //
-        //        try {// En este metodo se consultara solo el estado del pedido
-            //
-            //            boolean res = eliminarusuario(cedula);
-            //            JOptionPane.showMessageDialog(null, (res?"Se ha eliminado el cliente de manera exitosa.":"No se pudo eliminar el cliente."));
-            //
-            //        } catch (Exception e) {
-            //
-            //            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e.getMessage());
-            //        }
+       
+        try {
+            
+             int cedula = Integer.parseInt(anc_tcedula.getText());
+             
+             boolean c_eliminado = Cliente.eliminarCliente(cedula);
+             
+             if (c_eliminado) {
+                
+                 JOptionPane.showMessageDialog(null, "Cliente eliminado satisfactoriamente.");
+            }
+             else{
+                 
+                  JOptionPane.showMessageDialog(null, "No se elimino el cliente. Verifique e intente nuevamente.");
+                 
+                 
+             }
+        
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Por favor verifique si ha ingresado una cedula valida.");
+        
+        }
+
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_ac_botoneliminarActionPerformed
 
     private void anc_botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anc_botonsalirActionPerformed
@@ -469,6 +522,17 @@ public class AnadirCliente extends javax.swing.JFrame {
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
         this.setLocation(this.getLocation().x+evt.getX()-x,this.getLocation().y+evt.getY()-y);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void anc_botonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anc_botonlimpiarActionPerformed
+     
+        anc_tcedula.setText("");
+        anc_tcedulaanadir.setText("");
+        anc_tnombre.setText("");
+        anc_tapellidos.setText("");
+        anc_tdireccion.setText("");
+        anc_tcelular.setText("");
+
+    }//GEN-LAST:event_anc_botonlimpiarActionPerformed
 
     /**
      * @param args the command line arguments
