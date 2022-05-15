@@ -4,7 +4,7 @@
  */
 package com.codigo;
 
-import com.bd.BaseDeDatosTortas;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -34,12 +34,15 @@ public class Usuario {
     public static boolean actualizarUsuario(int cedula, Usuario usuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    private int cedula;
-    private String nombre, apellido, tipoUsuario, contrasena;
-    private int celular;
 
-    public Usuario(int cedula,String contrasena, String nombre, String apellido, String tipoUsuario, int celular) {
+    public static Usuario getUsuario(int user, String contrasena) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    private long cedula, celular;
+    private String nombre, apellido, tipoUsuario, contrasena;
+
+    public Usuario(long cedula,String contrasena, String nombre, String apellido, String tipoUsuario, long celular) {
         this.cedula = cedula;
         this.contrasena = contrasena;
         this.nombre = nombre;
@@ -57,7 +60,7 @@ public class Usuario {
     }
 
  
-    public int getCedula() {
+    public long getCedula() {
         return cedula;
     }
 
@@ -85,12 +88,31 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public int getCelular() {
+    public long getCelular() {
         return celular;
     }
 
     public void setCelular(int celular) {
         this.celular = celular;
+    }
+    
+    public static Usuario MapToUsuario(HashMap<String, Object> vals){
+        Usuario res = null;
+        
+        try {
+            long cedula = (long) vals.get("cedula");
+            String contrasena = (String) vals.get("contrasena");
+            String nombre = (String) vals.get("nombres");
+            String apellido = (String) vals.get("apellidos");
+            long celular = (long) vals.get("celular");
+            String tipo_usuario = (String) vals.get("tipousuario");
+            
+            res = new Usuario(cedula, contrasena, nombre, apellido,tipo_usuario, celular);        
+            return res;
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un erro: " + e.getMessage());
+        }
+        return null;
     }
 
     @Override
@@ -107,23 +129,4 @@ public class Usuario {
         return sb.toString();
     }
         
-    private static Usuario convertirObjectToUsuario(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-
-    public static Usuario getUsuario(int usuario, String contrasena){
-        Usuario res = null;
-        
-        
-        String sentencia ="";
-        
-        Object obj = BaseDeDatosTortas.getselect(sentencia);
-        
-        res = convertirObjectToUsuario(obj);
-        
-        return res;
-    }    
-    
-    
 }

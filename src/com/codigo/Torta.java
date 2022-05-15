@@ -4,6 +4,7 @@
  */
 package com.codigo;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -90,4 +91,20 @@ public class Torta {
         return sb.toString();
     }
     
+    public static Torta MapToTorta(HashMap<String, Object> vals){
+        Torta res = null;
+        
+        try {
+            String codigo = (String) vals.get("codigo");
+            String sabor = (String) vals.get("sabor");
+            double peso = (double) vals.get("peso");
+            double precio = (double) vals.get("precio");
+            
+            res = new Torta(codigo, sabor, peso, precio);        
+            return res;
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un erro: " + e.getMessage());
+        }
+        return null;
+    }
 }

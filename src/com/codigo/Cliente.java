@@ -4,6 +4,8 @@
  */
 package com.codigo;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -34,10 +36,10 @@ public class Cliente {
 
    
     
-    private int cedula, celular;
+    private long cedula, celular;
     private String nombres, apellidos, direccion;
 
-    public Cliente(int cedula, int celular, String nombres, String apellidos, String direccion) {
+    public Cliente(long cedula, long celular, String nombres, String apellidos, String direccion) {
         this.cedula = cedula;
         this.celular = celular;
         this.nombres = nombres;
@@ -45,15 +47,15 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public int getCedula() {
+    public long getCedula() {
         return cedula;
     }
 
-    public int getCelular() {
+    public long getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(long celular) {
         this.celular = celular;
     }
 
@@ -94,5 +96,22 @@ public class Cliente {
         return sb.toString();
     }
     
+    public static Cliente MapToCliente(HashMap<String, Object> vals){
+        Cliente res = null;
+        
+        try {
+            long cedula = (long) vals.get("cedula");
+            String nombres = (String) vals.get("nombres");
+            String apellidos = (String) vals.get("apellidos");
+            long celular = (long) vals.get("celular");
+            String direccion = (String) vals.get("direccion");
+            
+            res = new Cliente(cedula,celular,nombres,apellidos,direccion);        
+            return res;
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un erro: " + e.getMessage());
+        }
+        return null;
+    }
     
 }

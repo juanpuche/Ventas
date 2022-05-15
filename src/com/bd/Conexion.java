@@ -66,7 +66,6 @@ class Conexion {
             System.out.println("Connection closed !!");
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
     }

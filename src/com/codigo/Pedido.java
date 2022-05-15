@@ -5,6 +5,7 @@
 package com.codigo;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -13,9 +14,10 @@ import java.util.LinkedList;
  */
 public class Pedido {
 
-    public static String ESTADO_ENTREGADO="Entregado";
-    public static String ESTADO_CANCELADO="Cancelado";
-    public static String ESTADO_NO_ENTREGADO="No entregado";
+    public static String 
+            ESTADO_ENTREGADO="Entregado",
+            ESTADO_CANCELADO="Cancelado",
+            ESTADO_NO_ENTREGADO="No entregado";
 
     public static boolean insertarPedido(Pedido pedido, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -29,27 +31,48 @@ public class Pedido {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    private int id_numero, id_torta, cantidad_tortas;
-    private long cedula_cliente, cedula_usuario;
+    private int cantidad_tortas;
+    private long cedula_cliente, cedula_usuario, id_numero;
     private LocalDate fecha;
-    private String estado;
+    private String estado, id_torta;
 
-    public Pedido(int id_numero, long cedula_cliente, LocalDate fecha, String estado) {
+    public Pedido(long id_numero, String id_torta, int cantidad_tortas, long cedula_cliente, long cedula_usuario, LocalDate fecha, String estado) {
         this.id_numero = id_numero;
+        this.id_torta = id_torta;
+        this.cantidad_tortas = cantidad_tortas;
         this.cedula_cliente = cedula_cliente;
+        this.cedula_usuario = cedula_usuario;
         this.fecha = fecha;
         this.estado = estado;
     }
 
-    public Pedido(long cedula_cliente, LocalDate fecha, String estado) {
-        this.id_numero = Integer.MIN_VALUE;
+    public Pedido(String id_torta, int cantidad_tortas, long cedula_cliente, long cedula_usuario, LocalDate fecha, String estado) {
+        this.id_torta = id_torta;
+        this.cantidad_tortas = cantidad_tortas;
         this.cedula_cliente = cedula_cliente;
+        this.cedula_usuario = cedula_usuario;
         this.fecha = fecha;
         this.estado = estado;
+    }
+
+    public String getId_torta() {
+        return id_torta;
+    }
+
+    public void setId_torta(String id_torta) {
+        this.id_torta = id_torta;
+    }
+
+    public int getCantidad_tortas() {
+        return cantidad_tortas;
+    }
+
+    public void setCantidad_tortas(int cantidad_tortas) {
+        this.cantidad_tortas = cantidad_tortas;
     }
     
 
-    public int getId_numero() {
+    public long getId_numero() {
         return id_numero;
     }
 
@@ -85,30 +108,35 @@ public class Pedido {
         this.cedula_usuario = cedula_usuario;
     }
     
-    public static boolean crearNuevoPedido(Pedido p){
-        String sentenciSQL = "INSERT INTO `tortas`.`pedido`\n" +
-            "(\n" +//`numero`,
-            "`fecha`,\n" +
-            "`estado`,\n" +
-            "`cedula_cliente`,\n" +
-            "`codigo_torta`,\n" +
-            "`cedula_usuario`)\n" +
-            "VALUES\n" +
-            p.fecha.toString() + ",\n" +
-            p.estado + ",\n" +
-            p.cedula_cliente + ",\n" +
-            p.id_torta + ",\n" +
-            //p.cantidad_tortas + ",\n" +
-            p.cedula_usuario + ");";
-        
-        
-        
-        return true;
-    }
-
     public static Pedido getPedido(Pedido pedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+     public static Pedido MapToTorta(HashMap<String, Object> vals){
+         Pedido res = null;
+        
+        try {
+            long numero = (long) vals.get("numero");
+            int cantidadTorta = (int) vals.get("cantidad");
+            LocalDate fecha = LocalDate.parse((String) vals.get("fecha"));
+            String estado = (String) vals.get("estado");
+            long cedula_cliente = (long) vals.get("cedula_cliente");
+            String codigo_torta = (String) vals.get("codigo_torta");
+            long cedula_usuario =  (long) vals.get("cedula_usuario");
+            
+            res = new Pedido(
+                    numero, 
+                    codigo_torta, 
+                    cantidadTorta, 
+                    cedula_cliente, 
+                    cedula_usuario, 
+                    fecha, 
+                    estado);        
+            return res;
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un erro: " + e.getMessage());
+        }
+        return null;
+     }
     
 }
