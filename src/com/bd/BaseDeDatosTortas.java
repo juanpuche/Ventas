@@ -4,6 +4,11 @@
  */
 package com.bd;
 
+import com.codigo.Cliente;
+import com.codigo.Torta;
+import com.codigo.Usuario;
+import java.util.LinkedList;
+
 /**
  *
  * @author Admin
@@ -27,4 +32,30 @@ public class BaseDeDatosTortas {
     public static Object getselect(String sentencia){
         return  null;
     }
+
+    public static boolean validarCosulta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Usuario> obtenerConsulta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Cliente> obtenerConsultaCliente(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean validarCosultaCliente(String consulta,Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean validarCosultaTorta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Torta> obtenerConsultaTorta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }

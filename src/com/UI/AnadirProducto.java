@@ -547,7 +547,7 @@ public class AnadirProducto extends javax.swing.JFrame {
             
             Torta torta = new Torta(codigo, sabor, peso, precio);
 
-            boolean res = Torta.insertarTorta(codigo);
+            boolean res = Torta.insertarTorta(torta);
 
             if(res){
 

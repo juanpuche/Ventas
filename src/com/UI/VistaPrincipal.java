@@ -13,6 +13,7 @@ import  com.codigo.Cliente;
 import com.codigo.Pedido;
 import com.codigo.Torta;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
@@ -1206,9 +1207,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         }
        
         
-       LinkedList<Torta> SusTortas = Torta.getTortasPedido();
-       
-       LinkedList<Integer> SusCantidades = Torta.getCantidadesPedido();
+        HashMap<Torta, Integer> SusTortas = Torta.getTortasPedido(numero);
        
        if(SusTortas==null || SusCantidades==null){
            
@@ -1219,7 +1218,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
        
        
        
-        Factura fra=new Factura(pedido, SusTortas, SusCantidades);
+        Factura fra=new Factura(pedido, SusTortas);
         fra.setVisible(true);
         
         

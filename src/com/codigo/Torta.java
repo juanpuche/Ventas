@@ -4,6 +4,8 @@
  */
 package com.codigo;
 
+import com.bd.BaseDeDatosTortas;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -13,33 +15,108 @@ import java.util.LinkedList;
 public class Torta {
 
     public static Torta getTorta(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String consulta ="SET @codigo_to_select = ?;\n" +
+"SELECT torta.*\n" +
+"    FROM torta\n" +
+"    WHERE torta.codigo = @codigo_to_select;";
+        
+        
+        
+        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsultaTorta(consulta,codigo);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res.get(0);
     }
 
 
     public static boolean eliminarTorta(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String consulta= "DELETE FROM `tortas`.`torta`\n" +
+"WHERE <{where_expression}>;" ;
+        
+        return BaseDeDatosTortas.validarCosultaTorta(consulta,codigo);
+        
+        
     }
 
-    public static boolean insertarTorta(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static boolean insertarTorta(Torta torta) {
+        
+        String consulta ="INSERT INTO `tortas`.`torta`\n" +
+"(`codigo`,\n" +
+"`sabor`,\n" +
+"`peso`,\n" +
+"`precio`)\n" +
+"VALUES\n" +
+"(?,?,?,?);";
+        
+        return BaseDeDatosTortas.validarCosultaTorta(consulta, torta.getCodigo(),torta.getSabor(),torta.getPeso(),torta.getPrecio());
+        
     }
 
     public static LinkedList<Torta> getTodasLasTortas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta="SELECT torta.*\n" +
+        "    FROM torta\n";
+        
+        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsultaTorta(consulta);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res;
     }
 
     public static boolean actualizarTorta(String codigo, Torta torta) {
+        
+         String consulta =" UPDATE `tortas`.`torta`\n" +
+"SET\n" +
+"`codigo` = ?\n" +
+"`sabor` = ?\n" +
+"`peso` = ?\n" +
+"`precio` = ?\n" +
+"WHERE `codigo` = ?;";
+         
+         return BaseDeDatosTortas.validarCosultaTorta(consulta, torta.getCodigo(),torta.getSabor(),torta.getPeso(),torta.getPrecio(),torta.getCodigo());
+    }
+
+    public static HashMap<Torta, Integer> getTortasPedido(String numero) {
+        
+        String consulta = "SELECT * FROM tortas.pedido\n" +
+"inner join torta\n" +
+"on\n" +
+"pedido.codigo_torta=torta.codigo where numero=?;";
+        
+        LinkedList<Torta> SusTortas = BaseDeDatosTortas.obtenerConsultaTorta(consulta);
+        
+        return reordenartortas(SusTortas);
+    }
+
+    
+    //IMPLEMENTARRRRRR..
+    private static HashMap<Torta, Integer> reordenartortas(LinkedList<Torta> SusTortas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static LinkedList<Torta> getTortasPedido() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static LinkedList<Integer> getCantidadesPedido() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     private String codigo, sabor;
     private double peso, precio;
 

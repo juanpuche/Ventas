@@ -4,6 +4,7 @@
  */
 package com.codigo;
 
+import com.bd.BaseDeDatosTortas;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
@@ -18,7 +19,30 @@ public class Pedido {
     public static String ESTADO_NO_ENTREGADO="No entregado";
 
     public static boolean insertarPedido(Pedido pedido, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        String consulta = "INSERT INTO `tortas`.`pedido`\n" +
+"(`numero`,\n" +
+"`fecha`,\n" +
+"`estado`,\n" +
+"`cantidad`,\n" +
+"`cedula_cliente`,\n" +
+"`codigo_torta`,\n" +
+"`cedula_usuario`)\n" +
+"VALUES\n" +
+"(?,?,?,?,?,?,?);";
+        
+        return BaseDeDatosTortas.validarCosultaPedido(consulta,
+                pedido.getId_numero(),
+                pedido.getFecha(),
+                pedido.getEstado(),
+                pedido.getCantidad(),
+                pedido.getCedula_cliente(),
+                pedido.getId_Torta(),
+                pedido.getCedula_usuario();
+                
+                     
+                
+        
     }
 
     public static Pedido getPedido(String numero) {
@@ -26,7 +50,11 @@ public class Pedido {
     }
 
     public static boolean actualizarPedido(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        
+        
+        
+        
     }
     
     private int id_numero, id_torta, cantidad_tortas;
@@ -86,7 +114,7 @@ public class Pedido {
     }
     
     public static boolean crearNuevoPedido(Pedido p){
-        String sentenciSQL = "INSERT INTO `tortas`.`pedido`\n" +
+        String sentenciaSQL = "INSERT INTO `tortas`.`pedido`\n" +
             "(\n" +//`numero`,
             "`fecha`,\n" +
             "`estado`,\n" +

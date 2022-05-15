@@ -546,7 +546,7 @@ public class AnadirUsuario extends javax.swing.JFrame {
             
             Usuario usuario = new Usuario(cedula, contrasena, nombres, apellidos, tipoUsuario, celular);
             
-            boolean res = Usuario.insertarUsuario(cedula);
+            boolean res = Usuario.insertarUsuario(usuario);
             
             if(res){
                 

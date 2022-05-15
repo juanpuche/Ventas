@@ -16,23 +16,103 @@ public class Usuario {
     public static String TIPOADMINISTRADOR = "Administrador", TIPOCAJERO = "Cajero";
 
     public static Usuario getUsuario(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        
+        String consulta="SELECT usuario.*\n" +
+"    FROM usuario\n" +
+"    WHERE usuario.cedula = ?";
+        
+        LinkedList<Usuario> res = BaseDeDatosTortas.obtenerConsulta(consulta,cedula);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res.get(0);
     }
 
     public static boolean eliminarUsuario(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        String consulta = "DELETE FROM `tortas`.`usuario`\n" +
+        "WHERE cedula = ?;";
+        
+        return BaseDeDatosTortas.validarCosulta(consulta,cedula);
+        
     }
 
-    public static boolean insertarUsuario(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     public static LinkedList<Usuario> getTodosLosUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta="SELECT usuario.*\n" +
+        "    FROM usuario\n";
+        
+        LinkedList<Usuario> res = BaseDeDatosTortas.obtenerConsulta(consulta);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res;
     }
 
     public static boolean actualizarUsuario(int cedula, Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta="UPDATE `tortas`.`usuario`\n" +
+"SET\n" +
+"`cedula` = ?,\n" +
+"`contrasena` = ?,\n" +
+"`nombres` = ?,\n" +
+"`apellidos` = ?,\n" +
+"`celular` = ?,\n" +
+"`tipousuario` = ?\n" +
+"WHERE `cedula` = ?;";
+        
+        return BaseDeDatosTortas.validarCosulta(consulta, 
+               usuario.getCedula(),
+               usuario.getContrasena(),
+               usuario.getNombre(),
+               usuario.getApellido(),
+               usuario.getCelular(),
+               usuario.getTipoUsuario(),
+               cedula);
+    }
+
+    public static boolean insertarUsuario(Usuario usuario) {
+        
+        
+       String consulta ="INSERT INTO `tortas`.`usuario`\n" +
+"(`cedula`,\n" +
+"`contrasena`,\n" +
+"`nombres`,\n" +
+"`apellidos`,\n" +
+"`celular`,\n" +
+"`tipousuario`)\n" +
+"VALUES\n" +
+"(?,?,?,?,?,?);";
+       
+       return BaseDeDatosTortas.validarCosulta(consulta, 
+               usuario.getCedula(),
+               usuario.getContrasena(),
+               usuario.getNombre(),
+               usuario.getApellido(),
+               usuario.getCelular(),
+               usuario.getTipoUsuario());
+        
     }
     
     private int cedula;
