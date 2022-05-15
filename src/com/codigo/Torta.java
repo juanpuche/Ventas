@@ -23,7 +23,7 @@ public class Torta {
         
         
         
-        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsulta(consulta,codigo);
+        LinkedList<Torta> res = MapToTortas(BaseDeDatosTortas.obtenerConsulta(consulta,codigo));
         
         if (res==null){
             
@@ -69,7 +69,7 @@ public class Torta {
         String consulta="SELECT torta.*\n" +
         "    FROM torta\n";
         
-        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsulta(consulta);
+        LinkedList<Torta> res = MapToTortas(BaseDeDatosTortas.obtenerConsulta(consulta));
         
         if (res==null){
             
@@ -106,7 +106,7 @@ public class Torta {
 "on\n" +
 "pedido.codigo_torta=torta.codigo where numero=?;";
         
-        LinkedList<Torta> Tortas = BaseDeDatosTortas.obtenerConsulta(consulta);
+        LinkedList<Torta> Tortas = MapToTortas(BaseDeDatosTortas.obtenerConsulta(consulta));
         
         reordenartortas(SusTortas, SusTortas, SusCantidades);
         

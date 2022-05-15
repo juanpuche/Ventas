@@ -25,7 +25,7 @@ public class Cliente {
 "    FROM cliente\n" +
 "    WHERE cliente.cedula = @cedula_to_select;";
         
-        LinkedList<Cliente> res = BaseDeDatosTortas.obtenerConsultaCliente(consulta,cedula);
+        LinkedList<Cliente> res = MapToClientes(BaseDeDatosTortas.obtenerConsulta(consulta,cedula));
         
         if (res==null){
             
@@ -97,7 +97,7 @@ public class Cliente {
         String consulta="SELECT cliente.*\n" +
         "    FROM cliente\n";
         
-        LinkedList<Cliente> res = BaseDeDatosTortas.obtenerConsulta(consulta);
+        LinkedList<Cliente> res = MapToClientes(BaseDeDatosTortas.obtenerConsulta(consulta));
         
         if (res==null){
             
@@ -194,7 +194,7 @@ public class Cliente {
         return null;
     }
     
-    public static LinkedList<Cliente> MapToCliente(LinkedList<HashMap<String, Object>> val){
+    public static LinkedList<Cliente> MapToClientes(LinkedList<HashMap<String, Object>> val){
         if (val == null)
             return null;
         

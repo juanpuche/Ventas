@@ -23,7 +23,7 @@ public class Usuario {
 "    FROM usuario\n" +
 "    WHERE usuario.cedula = ?";
         
-        LinkedList<Usuario> res = BaseDeDatosTortas.obtenerConsulta(consulta,cedula);
+        LinkedList<Usuario> res = MapToUsuarios(BaseDeDatosTortas.obtenerConsulta(consulta,cedula));
         
         if (res==null){
             
@@ -55,7 +55,7 @@ public class Usuario {
         String consulta="SELECT usuario.*\n" +
         "    FROM usuario\n";
         
-        LinkedList<Usuario> res = BaseDeDatosTortas.obtenerConsulta(consulta);
+        LinkedList<Usuario> res = MapToUsuarios(BaseDeDatosTortas.obtenerConsulta(consulta));
         
         if (res==null){
             
@@ -125,7 +125,7 @@ public class Usuario {
 "    WHERE usuario.cedula = @cedula_to_select;";
         
         
-         LinkedList<Usuario> res = BaseDeDatosTortas.validarCosulta(consulta,cedula);
+         LinkedList<Usuario> res = MapToUsuarios(BaseDeDatosTortas.obtenerConsulta(consulta,user, contrasena));
         
         if (res==null){
             

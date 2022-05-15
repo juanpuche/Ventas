@@ -40,7 +40,7 @@ public class Pedido {
 "VALUES\n" +
 "(?,?,?,?,?,?,?);";
         
-        return BaseDeDatosTortas.validarCosultaPedido(consulta,
+        return BaseDeDatosTortas.validarCosulta(consulta,
                 pedido.getId_numero(),
                 pedido.getFecha(),
                 pedido.getEstado(),
@@ -66,7 +66,8 @@ public class Pedido {
         
         
         
-         LinkedList<Pedido> res = BaseDeDatosTortas.validarCosulta(consulta,numero);
+        
+         LinkedList<Pedido> res = MapToPedidos(BaseDeDatosTortas.obtenerConsulta(consulta,numero));
         
         if (res==null){
             
@@ -90,17 +91,22 @@ public class Pedido {
         
         String consulta="UPDATE `tortas`.`pedido`\n" +
 "SET\n" +
-"`numero` = ?,\n" +
 "`fecha` = ?,\n" +
 "`estado` = ?,\n" +
 "`cantidad` = ?,\n" +
 "`cedula_cliente` = ?,\n" +
 "`codigo_torta` = ?,\n" +
 "`cedula_usuario` = ?\n" +
-"WHERE `numero` = ?AND `cedula_cliente` = ?AND `codigo_torta` = ? AND `cedula_usuario` = ?;";
+"WHERE `numero` = ? ;";
         
         
-        return BaseDeDatosTortas.validarCosultaPedido(consulta,numero);
+        return BaseDeDatosTortas.validarCosulta(consulta,
+                pedido.getFecha(), 
+                pedido.getEstado(),
+                pedido.getCantidad_tortas(),
+                pedido.getCedula_cliente(),
+                pedido.getCantidad_tortas(),
+                pedido.getCedula_usuario());
         
         
         
@@ -243,7 +249,7 @@ public class Pedido {
         return null;
     }
     
-    public static LinkedList<Pedido> MapToPedido(LinkedList<HashMap<String, Object>> val){
+    public static LinkedList<Pedido> MapToPedidos(LinkedList<HashMap<String, Object>> val){
         if (val == null)
             return null;
         

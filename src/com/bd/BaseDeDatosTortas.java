@@ -19,11 +19,11 @@ import java.util.LinkedList;
  * @author Admin
  */
 public class BaseDeDatosTortas {
-    private static final int puerto = 3308;
+    private static final int puerto = 3306;
     private static final String 
             baseDeDatos = "tortas",
             usuariobd = "root",
-            passbd = "2711",
+            passbd = "1234",
             Driver = "com.mysql.cj.jdbc.Driver",
             URL = "localhost";
     
@@ -53,26 +53,26 @@ public class BaseDeDatosTortas {
 //                "Admin"
 //        ));
 
-           LinkedList<Map<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
-           System.out.println(rs.size());
-           for (Map<String, Object> r : rs) {
-               for (String obj1 : r.keySet()) {
-                   
-                   StringBuilder str = new StringBuilder();
-                   str.append(obj1);
-                   str.append(": ");
-                   str.append(r.get(obj1));
-                   str.append("\t");
-                   System.out.print(str.toString());
-               }
-               System.out.println("");
-        }
+//           LinkedList<Map<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
+//           System.out.println(rs.size());
+//           for (Map<String, Object> r : rs) {
+//               for (String obj1 : r.keySet()) {
+//                   
+//                   StringBuilder str = new StringBuilder();
+//                   str.append(obj1);
+//                   str.append(": ");
+//                   str.append(r.get(obj1));
+//                   str.append("\t");
+//                   System.out.print(str.toString());
+//               }
+//               System.out.println("");
+//        }
     }
     
-    public static LinkedList<Map<String,Object>> obtenerConsulta(String consulta,Object... parametros) {
+    public static LinkedList<HashMap<String,Object>> obtenerConsulta(String consulta,Object... parametros) {
         Statement statement = null;
         ResultSet set = null;
-        LinkedList<Map<String,Object>> res = null;
+        LinkedList<HashMap<String,Object>> res = null;
         try {
             statement = con.getConnection().createStatement();
             PreparedStatement smt = con.getConnection().prepareStatement(consulta);
@@ -83,7 +83,7 @@ public class BaseDeDatosTortas {
             res = new LinkedList<>();
             
             while(set.next()) {
-                Map<String, Object> map = new HashMap<>();
+                HashMap<String, Object> map = new HashMap<>();
                 
                 for (int i = 1; i <= nColumnas; i++) {
                     map.put(rsmdt.getColumnName(i), set.getObject(i));
