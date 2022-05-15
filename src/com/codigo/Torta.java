@@ -183,4 +183,16 @@ public class Torta {
         }
         return null;
     }
+    
+    public static LinkedList<Torta> MapToTortas(LinkedList<HashMap<String, Object>> val){
+        if (val == null)
+            return null;
+        
+        LinkedList<Torta> res = new LinkedList<>();
+        for (int i = 0; i < val.size(); i++) {
+            res.add(MapToTorta(val.get(i)));
+        }
+        
+        return res;
+    }
 }

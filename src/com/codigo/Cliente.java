@@ -194,4 +194,16 @@ public class Cliente {
         return null;
     }
     
+    public static LinkedList<Cliente> MapToCliente(LinkedList<HashMap<String, Object>> val){
+        if (val == null)
+            return null;
+        
+        LinkedList<Cliente> res = new LinkedList<>();
+        for (int i = 0; i < val.size(); i++) {
+            res.add(MapToCliente(val.get(i)));
+        }
+        
+        return res;
+    }
+    
 }
