@@ -9,6 +9,7 @@ import com.codigo.Cliente;
 import com.codigo.Pedido;
 import com.codigo.Torta;
 import com.codigo.Usuario;
+import java.util.HashMap;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
@@ -99,6 +100,7 @@ public class Factura extends javax.swing.JFrame {
             in_tabla.setModel(model);
         
     }
+
 
 
     /**

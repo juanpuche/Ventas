@@ -13,6 +13,7 @@ import  com.codigo.Cliente;
 import com.codigo.Pedido;
 import com.codigo.Torta;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
@@ -981,7 +982,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
             }
             
             
-            pedido = new Pedido(cedula, LocalDate.now(),"No entregado");
+//            pedido = new Pedido(cedula, LocalDate.now(),"No entregado");
+            pedido = new Pedido(cliente.getCedula(),cedulaUsuario,LocalDate.now(),Pedido.ESTADO_NO_ENTREGADO);
             
         } catch (Exception e) {
 
@@ -1206,9 +1208,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         }
        
         
-       LinkedList<Torta> SusTortas = Torta.getTortasPedido();
-       
-       LinkedList<Integer> SusCantidades = Torta.getCantidadesPedido();
+         Torta.getTortasPedido(numero, SusTortas, SusCantidades);
        
        if(SusTortas==null || SusCantidades==null){
            

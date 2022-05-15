@@ -288,10 +288,12 @@ public class Login extends javax.swing.JFrame {
                        
                     }
         
-                catch (Exception e){
-                        JOptionPane.showMessageDialog(null, "Ha digitado un caracter no numerico en el campo usuario.");
-                        return;
-                    }
+                catch (NumberFormatException e){
+                
+                    JOptionPane.showMessageDialog(null, "Ha digitado un caracter no numerico en el campo usuario.");
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error"+ex.getMessage());
+                }
         
 //               
 

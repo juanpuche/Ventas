@@ -4,6 +4,7 @@
  */
 package com.codigo;
 
+import com.bd.BaseDeDatosTortas;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -19,8 +20,38 @@ public class Pedido {
             ESTADO_CANCELADO="Cancelado",
             ESTADO_NO_ENTREGADO="No entregado";
 
+    public Pedido(long cedula_cliente, long cedula_usuario, LocalDate fecha, String estado) {
+        this.cedula_cliente = cedula_cliente;
+        this.cedula_usuario = cedula_usuario;
+        this.fecha = fecha;
+        this.estado = estado;
+    }
+
     public static boolean insertarPedido(Pedido pedido, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        String consulta = "INSERT INTO `tortas`.`pedido`\n" +
+"(`numero`,\n" +
+"`fecha`,\n" +
+"`estado`,\n" +
+"`cantidad`,\n" +
+"`cedula_cliente`,\n" +
+"`codigo_torta`,\n" +
+"`cedula_usuario`)\n" +
+"VALUES\n" +
+"(?,?,?,?,?,?,?);";
+        
+        return BaseDeDatosTortas.validarCosultaPedido(consulta,
+                pedido.getId_numero(),
+                pedido.getFecha(),
+                pedido.getEstado(),
+                pedido.getCantidad_tortas(),
+                pedido.getCedula_cliente(),
+                pedido.getId_torta(),
+                pedido.getCedula_usuario());
+                
+                     
+                
+        
     }
 
     public static Pedido getPedido(String numero) {
@@ -28,7 +59,11 @@ public class Pedido {
     }
 
     public static boolean actualizarPedido(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        
+        
+        
+        
     }
     
     private int cantidad_tortas;
@@ -108,6 +143,27 @@ public class Pedido {
         this.cedula_usuario = cedula_usuario;
     }
     
+    public static boolean crearNuevoPedido(Pedido p){
+        String sentenciaSQL = "INSERT INTO `tortas`.`pedido`\n" +
+            "(\n" +//`numero`,
+            "`fecha`,\n" +
+            "`estado`,\n" +
+            "`cedula_cliente`,\n" +
+            "`codigo_torta`,\n" +
+            "`cedula_usuario`)\n" +
+            "VALUES\n" +
+            p.fecha.toString() + ",\n" +
+            p.estado + ",\n" +
+            p.cedula_cliente + ",\n" +
+            p.id_torta + ",\n" +
+            //p.cantidad_tortas + ",\n" +
+            p.cedula_usuario + ");";
+        
+        
+        
+        return true;
+    }
+
     public static Pedido getPedido(Pedido pedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

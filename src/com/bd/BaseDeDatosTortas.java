@@ -10,8 +10,12 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
+import com.codigo.Cliente;
+import com.codigo.Torta;
+import com.codigo.Usuario;
+import java.time.LocalDate;
+import java.util.LinkedList;
 
 /**
  *
@@ -132,4 +136,34 @@ public class BaseDeDatosTortas {
         }
         return res;
     }
+
+    public static boolean validarCosulta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Usuario> obtenerConsulta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Cliente> obtenerConsultaCliente(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean validarCosultaCliente(String consulta,Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean validarCosultaTorta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static LinkedList<Torta> obtenerConsultaTorta(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean validarCosultaPedido(String consulta, Object... parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+   
 }

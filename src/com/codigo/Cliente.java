@@ -4,8 +4,8 @@
  */
 package com.codigo;
 
-import java.time.LocalDate;
 import java.util.HashMap;
+import com.bd.BaseDeDatosTortas;
 import java.util.LinkedList;
 
 /**
@@ -15,23 +15,103 @@ import java.util.LinkedList;
 public class Cliente {
 
     public static Cliente getCliente(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         
+        String consulta="SET @cedula_to_select = ?;\n" +
+"SELECT pedido.*\n" +
+"    FROM pedido, cliente\n" +
+"    WHERE `cliente`.`cedula` = `pedido`.`cedula_cliente`\n" +
+"          AND cliente.cedula = @cedula_to_select;\n" +
+"SELECT cliente.*\n" +
+"    FROM cliente\n" +
+"    WHERE cliente.cedula = @cedula_to_select;";
+        
+        LinkedList<Cliente> res = BaseDeDatosTortas.obtenerConsultaCliente(consulta,cedula);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res.get(0);
     }
 
     public static boolean eliminarCliente(int cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String consulta="DELETE FROM `tortas`.`cliente`\n" +
+"WHERE ?;";
+        
+                return BaseDeDatosTortas.validarCosultaCliente(consulta,cedula);
+                
     }
 
     public static boolean insertarCliente(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String consulta = "INSERT INTO `tortas`.`cliente`\n" +
+"(`cedula`,\n" +
+"`nombres`,\n" +
+"`apellidos`,\n" +
+"`celular`,\n" +
+"`direccion`)\n" +
+"VALUES\n" +
+"(?,?,?,?,?,?);";
+        
+        return BaseDeDatosTortas.validarCosultaCliente(consulta, 
+                cliente.getCedula(),
+                cliente.getNombres(),
+                cliente.getApellidos(),
+                cliente.getCelular(),
+                cliente.getDireccion());
+        
+        
     }
 
     public static boolean actualizarCliente(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        String consulta = "UPDATE `tortas`.`cliente`\n" +
+"SET\n" +
+"`cedula` = ?\n" +
+"`nombres` = ?\n" +
+"`apellidos` = ?\n" +
+"`celular` = ?\n" +
+"`direccion` = ?\n" +
+"WHERE `cedula` = ?;";
+        
+        return BaseDeDatosTortas.validarCosultaCliente(consulta, 
+                
+                cliente.getCedula(),
+                cliente.getNombres(),
+                cliente.getApellidos(),
+                cliente.getCelular(),
+                cliente.getDireccion(),cliente.getCedula());
+        
     }
 
     public static LinkedList<Cliente> getTodosLosClientes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta="SELECT cliente.*\n" +
+        "    FROM cliente\n";
+        
+        LinkedList<Cliente> res = BaseDeDatosTortas.obtenerConsultaCliente(consulta);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res;
     }
 
    
