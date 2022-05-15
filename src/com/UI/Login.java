@@ -263,7 +263,7 @@ public class Login extends javax.swing.JFrame {
                     
                     if(usuario == null){
                         
-                        JOptionPane.showMessageDialog(null, "Usuario o Contraseña, Incorrectos..");
+                        JOptionPane.showMessageDialog(null, "Usuario o Contraseña, Incorrectos.");
                         
                          return;
                     }
@@ -278,8 +278,10 @@ public class Login extends javax.swing.JFrame {
                         
                     }else if(usuario.getTipoUsuario().equals(Usuario.TIPOCAJERO)){
                         
+                        
                         VistaCajero fra2=new VistaCajero(user, usuario.getNombre());
                         fra2.setVisible(true);
+                         
                         
                                      dispose();
                     }

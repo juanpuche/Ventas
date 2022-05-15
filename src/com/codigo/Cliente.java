@@ -47,7 +47,7 @@ public class Cliente {
         String consulta="DELETE FROM `tortas`.`cliente`\n" +
 "WHERE ?;";
         
-                return BaseDeDatosTortas.validarCosultaCliente(consulta,cedula);
+                return BaseDeDatosTortas.validarCosulta(consulta,cedula);
                 
     }
 
@@ -62,7 +62,7 @@ public class Cliente {
 "VALUES\n" +
 "(?,?,?,?,?,?);";
         
-        return BaseDeDatosTortas.validarCosultaCliente(consulta, 
+        return BaseDeDatosTortas.validarCosulta(consulta, 
                 cliente.getCedula(),
                 cliente.getNombres(),
                 cliente.getApellidos(),
@@ -83,7 +83,7 @@ public class Cliente {
 "`direccion` = ?\n" +
 "WHERE `cedula` = ?;";
         
-        return BaseDeDatosTortas.validarCosultaCliente(consulta, 
+        return BaseDeDatosTortas.validarCosulta(consulta, 
                 
                 cliente.getCedula(),
                 cliente.getNombres(),
@@ -97,7 +97,7 @@ public class Cliente {
         String consulta="SELECT cliente.*\n" +
         "    FROM cliente\n";
         
-        LinkedList<Cliente> res = BaseDeDatosTortas.obtenerConsultaCliente(consulta);
+        LinkedList<Cliente> res = BaseDeDatosTortas.obtenerConsulta(consulta);
         
         if (res==null){
             

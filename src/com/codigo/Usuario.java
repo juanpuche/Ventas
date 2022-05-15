@@ -117,7 +117,30 @@ public class Usuario {
     }
 
     public static Usuario getUsuario(int user, String contrasena) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        
+        String consulta = "SET @cedula_to_select = ?;\n" +
+"SELECT usuario.*\n" +
+"    FROM usuario\n" +
+"    WHERE usuario.cedula = @cedula_to_select;";
+        
+        
+         LinkedList<Usuario> res = BaseDeDatosTortas.validarCosulta(consulta,cedula);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res.get(0);
+    
     }
     
     private long cedula, celular;

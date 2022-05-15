@@ -23,7 +23,7 @@ public class Torta {
         
         
         
-        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsultaTorta(consulta,codigo);
+        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsulta(consulta,codigo);
         
         if (res==null){
             
@@ -46,7 +46,7 @@ public class Torta {
         String consulta= "DELETE FROM `tortas`.`torta`\n" +
 "WHERE <{where_expression}>;" ;
         
-        return BaseDeDatosTortas.validarCosultaTorta(consulta,codigo);
+        return BaseDeDatosTortas.validarCosulta(consulta,codigo);
         
         
     }
@@ -61,7 +61,7 @@ public class Torta {
 "VALUES\n" +
 "(?,?,?,?);";
         
-        return BaseDeDatosTortas.validarCosultaTorta(consulta, torta.getCodigo(),torta.getSabor(),torta.getPeso(),torta.getPrecio());
+        return BaseDeDatosTortas.validarCosulta(consulta, torta.getCodigo(),torta.getSabor(),torta.getPeso(),torta.getPrecio());
         
     }
 
@@ -69,7 +69,7 @@ public class Torta {
         String consulta="SELECT torta.*\n" +
         "    FROM torta\n";
         
-        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsultaTorta(consulta);
+        LinkedList<Torta> res = BaseDeDatosTortas.obtenerConsulta(consulta);
         
         if (res==null){
             
@@ -96,7 +96,7 @@ public class Torta {
 "`precio` = ?\n" +
 "WHERE `codigo` = ?;";
          
-         return BaseDeDatosTortas.validarCosultaTorta(consulta, torta.getCodigo(),torta.getSabor(),torta.getPeso(),torta.getPrecio(),torta.getCodigo());
+         return BaseDeDatosTortas.validarCosulta(consulta, torta.getCodigo(),torta.getSabor(),torta.getPeso(),torta.getPrecio(),torta.getCodigo());
     }
 
     public static void/*HashMap<Torta, Integer>*/ getTortasPedido(String numero, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
@@ -106,7 +106,7 @@ public class Torta {
 "on\n" +
 "pedido.codigo_torta=torta.codigo where numero=?;";
         
-        LinkedList<Torta> Tortas = BaseDeDatosTortas.obtenerConsultaTorta(consulta);
+        LinkedList<Torta> Tortas = BaseDeDatosTortas.obtenerConsulta(consulta);
         
         reordenartortas(SusTortas, SusTortas, SusCantidades);
         

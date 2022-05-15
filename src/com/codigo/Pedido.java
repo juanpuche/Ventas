@@ -55,11 +55,59 @@ public class Pedido {
     }
 
     public static Pedido getPedido(String numero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String consulta="SET @numero_to_select = ?;\n" +
+"SET @cedula_usuario_to_select = ?;\n" +
+"SET @codigo_torta_to_select = ?;\n" +
+"SET @cedula_cliente_to_select = ?;\n" +
+"SELECT pedido.*\n" +
+"    FROM pedido\n" +
+"    WHERE pedido.numero = @numero_to_select AND pedido.cedula_usuario = @cedula_usuario_to_select AND pedido.codigo_torta = @codigo_torta_to_select AND pedido.cedula_cliente = @cedula_cliente_to_select;";
+        
+        
+        
+         LinkedList<Pedido> res = BaseDeDatosTortas.validarCosulta(consulta,numero);
+        
+        if (res==null){
+            
+            return null;
+            
+        }
+        
+        if(res.size()==0){
+            
+            return null;
+            
+            
+        }
+        return res.get(0);
+        
+        
     }
 
     public static boolean actualizarPedido(Pedido pedido) {
        
+        
+        String consulta="UPDATE `tortas`.`pedido`\n" +
+"SET\n" +
+"`numero` = ?,\n" +
+"`fecha` = ?,\n" +
+"`estado` = ?,\n" +
+"`cantidad` = ?,\n" +
+"`cedula_cliente` = ?,\n" +
+"`codigo_torta` = ?,\n" +
+"`cedula_usuario` = ?\n" +
+"WHERE `numero` = ?AND `cedula_cliente` = ?AND `codigo_torta` = ? AND `cedula_usuario` = ?;";
+        
+        
+        return BaseDeDatosTortas.validarCosultaPedido(consulta,numero);
+        
+        
+        
+        
+        
+        
+        
         
         
         
