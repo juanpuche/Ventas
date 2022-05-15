@@ -16,7 +16,7 @@ public class Cliente {
 
     public static Cliente getCliente(int cedula) {
          
-        String consulta="SET @cedula_to_select = ?;\n" +
+        String consulta=
 "SELECT pedido.*\n" +
 "    FROM pedido, cliente\n" +
 "    WHERE `cliente`.`cedula` = `pedido`.`cedula_cliente`\n" +

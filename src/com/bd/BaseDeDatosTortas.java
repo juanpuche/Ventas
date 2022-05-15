@@ -53,7 +53,7 @@ public class BaseDeDatosTortas {
 //                "Admin"
 //        ));
 
-//           LinkedList<Map<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
+//           LinkedList<HashMap<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
 //           System.out.println(rs.size());
 //           for (Map<String, Object> r : rs) {
 //               for (String obj1 : r.keySet()) {
@@ -70,6 +70,7 @@ public class BaseDeDatosTortas {
     }
     
     public static LinkedList<HashMap<String,Object>> obtenerConsulta(String consulta,Object... parametros) {
+        BaseDeDatosTortas.con.conectarBd();
         Statement statement = null;
         ResultSet set = null;
         LinkedList<HashMap<String,Object>> res = null;
@@ -77,6 +78,7 @@ public class BaseDeDatosTortas {
             statement = con.getConnection().createStatement();
             PreparedStatement smt = con.getConnection().prepareStatement(consulta);
             agregarParametros(smt,parametros);
+            System.out.println(consulta);
             set = smt.executeQuery();
             ResultSetMetaData rsmdt = set.getMetaData();
             int nColumnas = rsmdt.getColumnCount();
@@ -92,9 +94,10 @@ public class BaseDeDatosTortas {
                 
                 res.add(map);
             }
-            
+            BaseDeDatosTortas.con.desconectarBd();
             return res;
         } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
         } finally { // Close in order: ResultSet, Statement, Connection.
             try {
                 set.close();
@@ -109,6 +112,7 @@ public class BaseDeDatosTortas {
             } catch (SQLException e) {
             }
         }
+         BaseDeDatosTortas.con.desconectarBd();
         return res;
     }
 
@@ -119,6 +123,7 @@ public class BaseDeDatosTortas {
         if(!con.conectarBd())
             return false;        
         
+        BaseDeDatosTortas.con.conectarBd();
         Connection Conexion = con.getConnection();
         Statement statement = null;
         try {
@@ -126,6 +131,7 @@ public class BaseDeDatosTortas {
             PreparedStatement smt = Conexion.prepareStatement(consulta);
             agregarParametros(smt,parametros);            
             return !smt.execute();
+            
         } catch (SQLException e) {
         } finally {
             try {
@@ -136,7 +142,9 @@ public class BaseDeDatosTortas {
                 Conexion.close();
             } catch (SQLException e) {
             }
+             BaseDeDatosTortas.con.desconectarBd();
         }
+        BaseDeDatosTortas.con.desconectarBd();
         return false;
     }
 

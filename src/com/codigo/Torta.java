@@ -16,10 +16,9 @@ public class Torta {
 
     public static Torta getTorta(String codigo) {
         
-        String consulta ="SET @codigo_to_select = ?;\n" +
-"SELECT torta.*\n" +
+        String consulta ="SELECT TORTA.*\n" +
 "    FROM torta\n" +
-"    WHERE torta.codigo = @codigo_to_select;";
+"    WHERE torta.codigo = ?";
         
         
         
@@ -44,7 +43,7 @@ public class Torta {
     public static boolean eliminarTorta(String codigo) {
         
         String consulta= "DELETE FROM `tortas`.`torta`\n" +
-"WHERE <{where_expression}>;" ;
+            "WHERE codigo = ?;";
         
         return BaseDeDatosTortas.validarCosulta(consulta,codigo);
         
@@ -66,8 +65,9 @@ public class Torta {
     }
 
     public static LinkedList<Torta> getTodasLasTortas() {
-        String consulta="SELECT torta.*\n" +
-        "    FROM torta\n";
+        String consulta="SELECT TORTA.*\n" +
+"    FROM torta\n" +
+"    WHERE torta.codigo = ?";
         
         LinkedList<Torta> res = MapToTortas(BaseDeDatosTortas.obtenerConsulta(consulta));
         

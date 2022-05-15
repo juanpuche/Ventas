@@ -119,10 +119,10 @@ public class Usuario {
     public static Usuario getUsuario(int user, String contrasena) {
        
         
-        String consulta = "SET @cedula_to_select = ?;\n" +
-"SELECT usuario.*\n" +
-"    FROM usuario\n" +
-"    WHERE usuario.cedula = @cedula_to_select;";
+        String consulta =
+                "SELECT usuario.*\n" +
+                "    FROM usuario\n" +
+                "    WHERE usuario.cedula = ? AND usuario.contrasena = ?;";
         
         
          LinkedList<Usuario> res = MapToUsuarios(BaseDeDatosTortas.obtenerConsulta(consulta,user, contrasena));
@@ -204,11 +204,11 @@ public class Usuario {
         Usuario res = null;
         
         try {
-            long cedula = (long) vals.get("cedula");
+            long cedula = (int) vals.get("cedula");
             String contrasena = (String) vals.get("contrasena");
             String nombre = (String) vals.get("nombres");
             String apellido = (String) vals.get("apellidos");
-            long celular = (long) vals.get("celular");
+            long celular = (int) vals.get("celular");
             String tipo_usuario = (String) vals.get("tipousuario");
             
             res = new Usuario(cedula, contrasena, nombre, apellido,tipo_usuario, celular);        

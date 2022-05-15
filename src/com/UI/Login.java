@@ -248,8 +248,9 @@ public class Login extends javax.swing.JFrame {
         
                 {
                      int user = Integer.parseInt(i_textususario.getText());
-                    String contrasena = i_textcontrasena.getText();
+                    String contrasena = new String(i_textcontrasena.getPassword());
 
+                    
                     if(contrasena.isEmpty() || user<=0){
                         
                          JOptionPane.showMessageDialog(null, "Usted tiene un campo vacio, por favor verifique e intente nuevamente.");
@@ -257,9 +258,11 @@ public class Login extends javax.swing.JFrame {
                          return;
                     }
                     
-                    
+                    System.out.println("Usuario: " + user);
+                    System.out.println("Contraseña: " + contrasena);
                     Usuario usuario = Usuario.getUsuario(user, contrasena);
                     
+                    System.out.println(usuario.toString());
                     
                     if(usuario == null){
                         

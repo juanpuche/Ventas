@@ -150,7 +150,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
         in_boton_registrarpedido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         in_boton_registrarpedido.setText("Generar Pedido");
-        in_boton_registrarpedido.setActionCommand("Generar Pedido");
         in_boton_registrarpedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         in_boton_registrarpedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,6 +375,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel20Layout.createSequentialGroup()
                                 .addComponent(in_tmuestracelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
                                 .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel69))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -389,8 +389,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                         .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))))
         );
-
-        jLabel75.getAccessibleContext().setAccessibleName("Vendedor:");
 
         jLabel79.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel79.setText("Registrar Pedido:");
@@ -494,13 +492,13 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         jLabel78.setText("TOTAL:");
 
         t_subtotal.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        t_subtotal.setText("19000");
+        t_subtotal.setText("0");
 
         t_iva.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         t_iva.setText("0");
 
         t_total.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        t_total.setText("19000");
+        t_total.setText("0");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -649,6 +647,11 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         in_boton_salir.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         in_boton_salir.setText("Salir");
         in_boton_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        in_boton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in_boton_salirActionPerformed(evt);
+            }
+        });
 
         jPanel32.setBackground(new java.awt.Color(255, 204, 153));
 
@@ -985,9 +988,12 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 //            pedido = new Pedido(cedula, LocalDate.now(),"No entregado");
             pedido = new Pedido(cliente.getCedula(),cedulaUsuario,LocalDate.now(),Pedido.ESTADO_NO_ENTREGADO);
             
-        } catch (Exception e) {
-
+        }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Usted ingreso un valor no numerico en el campo Cedula Cliente. Por favor verifique e intente nuevamente.");
+            
+        }catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Ocurrio un error"+e.getMessage());
 
         }
         
@@ -1178,20 +1184,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
     private void in_boton_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_consultarActionPerformed
        
-        Factura fra=new Factura();
-        fra.setVisible(true);
-        
-        
-    }//GEN-LAST:event_in_boton_consultarActionPerformed
-
-    private void in_boton_cambiarestadopedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_cambiarestadopedidoActionPerformed
-        CambiarEstado fra=new CambiarEstado();
-        fra.setVisible(true);
-    }//GEN-LAST:event_in_boton_cambiarestadopedidoActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
-        String numero = (in_tnumeropedido.getText());
+         String numero = (in_tnumeropedido.getText());
         
         if(numero.isEmpty()){
             
@@ -1221,6 +1214,22 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
        
         Factura fra=new Factura(pedido, SusTortas, SusCantidades);
         fra.setVisible(true);
+        
+    }//GEN-LAST:event_in_boton_consultarActionPerformed
+
+    private void in_boton_cambiarestadopedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_cambiarestadopedidoActionPerformed
+        CambiarEstado fra=new CambiarEstado();
+        fra.setVisible(true);
+    }//GEN-LAST:event_in_boton_cambiarestadopedidoActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        
+        
+        AnadirCliente fra=new AnadirCliente();
+        fra.setVisible(true);
+        
+        
+      
         
         
         
@@ -1295,6 +1304,11 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     private void in_tnombrevendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_tnombrevendedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_in_tnombrevendedorActionPerformed
+
+    private void in_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_salirActionPerformed
+       
+        System.exit(0);
+    }//GEN-LAST:event_in_boton_salirActionPerformed
 
     /**
      * @param args the command line arguments
