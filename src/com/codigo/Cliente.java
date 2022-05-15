@@ -14,16 +14,12 @@ import java.util.LinkedList;
  */
 public class Cliente {
 
-    public static Cliente getCliente(int cedula) {
+    public static Cliente getCliente(long cedula) {
          
         String consulta=
-"SELECT pedido.*\n" +
-"    FROM pedido, cliente\n" +
-"    WHERE `cliente`.`cedula` = `pedido`.`cedula_cliente`\n" +
-"          AND cliente.cedula = @cedula_to_select;\n" +
 "SELECT cliente.*\n" +
 "    FROM cliente\n" +
-"    WHERE cliente.cedula = @cedula_to_select;";
+"    WHERE cliente.cedula = ?;";
         
         LinkedList<Cliente> res = MapToClientes(BaseDeDatosTortas.obtenerConsulta(consulta,cedula));
         
@@ -116,10 +112,10 @@ public class Cliente {
 
    
     
-    private long cedula, celular;
+    private int cedula, celular;
     private String nombres, apellidos, direccion;
 
-    public Cliente(long cedula, long celular, String nombres, String apellidos, String direccion) {
+    public Cliente(int cedula, int celular, String nombres, String apellidos, String direccion) {
         this.cedula = cedula;
         this.celular = celular;
         this.nombres = nombres;
@@ -127,15 +123,15 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public long getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
-    public long getCelular() {
+    public int getCelular() {
         return celular;
     }
 
-    public void setCelular(long celular) {
+    public void setCelular(int celular) {
         this.celular = celular;
     }
 
@@ -180,10 +176,10 @@ public class Cliente {
         Cliente res = null;
         
         try {
-            long cedula = (long) vals.get("cedula");
+            int cedula = (int) vals.get("cedula");
             String nombres = (String) vals.get("nombres");
             String apellidos = (String) vals.get("apellidos");
-            long celular = (long) vals.get("celular");
+            int celular = (int) vals.get("celular");
             String direccion = (String) vals.get("direccion");
             
             res = new Cliente(cedula,celular,nombres,apellidos,direccion);        

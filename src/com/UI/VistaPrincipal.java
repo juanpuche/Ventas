@@ -948,9 +948,6 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void in_boton_registrarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_registrarpedidoActionPerformed
-
-        
-        
         try {
             
             int cedula = Integer.parseInt(in_tcedulacliente.getText());

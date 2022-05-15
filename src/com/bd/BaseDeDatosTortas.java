@@ -10,7 +10,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.Map;
 import java.sql.PreparedStatement;
 import java.util.LinkedList;
 
@@ -19,11 +18,11 @@ import java.util.LinkedList;
  * @author Admin
  */
 public class BaseDeDatosTortas {
-    private static final int puerto = 3306;
+    private static final int puerto = 3306;//3306
     private static final String 
             baseDeDatos = "tortas",
             usuariobd = "root",
-            passbd = "1234",
+            passbd = "1234",//1234
             Driver = "com.mysql.cj.jdbc.Driver",
             URL = "localhost";
     
@@ -53,32 +52,40 @@ public class BaseDeDatosTortas {
 //                "Admin"
 //        ));
 
-//           LinkedList<HashMap<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
-//           System.out.println(rs.size());
-//           for (Map<String, Object> r : rs) {
-//               for (String obj1 : r.keySet()) {
-//                   
-//                   StringBuilder str = new StringBuilder();
-//                   str.append(obj1);
-//                   str.append(": ");
-//                   str.append(r.get(obj1));
-//                   str.append("\t");
-//                   System.out.print(str.toString());
-//               }
-//               System.out.println("");
-//        }
+        LinkedList<HashMap<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT cliente.*\n" +
+"    FROM cliente\n" +
+"    WHERE cliente.cedula = ?", Long.parseLong("22"));
+        System.out.println(rs.size());
+        for (HashMap<String, Object> r : rs) {
+            for (String obj1 : r.keySet()) {
+
+                StringBuilder str = new StringBuilder();
+                str.append(obj1);
+                str.append(": ");
+                str.append(r.get(obj1));
+                str.append("\t");
+                System.out.print(str.toString());
+            }
+            System.out.println("");
+        }
     }
     
     public static LinkedList<HashMap<String,Object>> obtenerConsulta(String consulta,Object... parametros) {
-        BaseDeDatosTortas.con.conectarBd();
+        if (con == null)
+            return null;
+        
+        if(!con.conectarBd())
+            return null;
+        
         Statement statement = null;
         ResultSet set = null;
         LinkedList<HashMap<String,Object>> res = null;
+        Connection Conexion = con.getConnection();
+        System.out.println(consulta);
         try {
-            statement = con.getConnection().createStatement();
+//            statement = con.getConnection().createStatement();
             PreparedStatement smt = con.getConnection().prepareStatement(consulta);
             agregarParametros(smt,parametros);
-            System.out.println(consulta);
             set = smt.executeQuery();
             ResultSetMetaData rsmdt = set.getMetaData();
             int nColumnas = rsmdt.getColumnCount();
@@ -95,24 +102,13 @@ public class BaseDeDatosTortas {
                 res.add(map);
             }
             BaseDeDatosTortas.con.desconectarBd();
-            return res;
         } catch (SQLException e) {
             System.out.println("error: " + e.getMessage());
         } finally { // Close in order: ResultSet, Statement, Connection.
-            try {
-                set.close();
-            } catch (SQLException e) {
-            }
-            try {
-                statement.close();
-            } catch (SQLException e) {
-            }
-            try {
-                con.getConnection().close();
-            } catch (SQLException e) {
-            }
+            BaseDeDatosTortas.con.desconectarBd();
         }
          BaseDeDatosTortas.con.desconectarBd();
+         System.out.println("Todo bien");
         return res;
     }
 
@@ -153,7 +149,11 @@ public class BaseDeDatosTortas {
             return;
         
         for (int i = 0; i < parametros.length; i++) {
-            smt.setObject(i+1, parametros[i] );
+            if ( parametros[i] instanceof Long){
+                smt.setLong(i+1,  (long) parametros[i]);
+            }else{
+                smt.setObject(i+1, parametros[i] );
+            }
         }
     }
    
