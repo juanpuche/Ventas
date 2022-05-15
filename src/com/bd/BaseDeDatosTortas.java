@@ -11,10 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
-import com.codigo.Cliente;
-import com.codigo.Torta;
-import com.codigo.Usuario;
-import java.time.LocalDate;
+import java.sql.PreparedStatement;
 import java.util.LinkedList;
 
 /**
@@ -39,22 +36,24 @@ public class BaseDeDatosTortas {
     
     public static void main(String[] args) {
         BaseDeDatosTortas.con.conectarBd();
-//        System.out.println(BaseDeDatosTortas.executeUpdate("SELECT * FROM market_place.persona;INSERT INTO `tortas`.`usuario`\n" +
-//                "(`cedula`,\n" +
-//                "`nombres`,\n" +
-//                "`apellidos`,\n" +
-//                "`telefono`,\n" +
-//                "`tipousuario`,\n" +
-//                "`contrasena`)\n" +
-//                "VALUES\n" +
-//                "(1,\n" +
-//                "'juan',\n" +
-//                "'Garzón',\n" +
-//                "31756773,\n" +
-//                "'Admin',\n" +
-//                "'2711');"));
+//        System.out.println(BaseDeDatosTortas.validarCosulta("INSERT INTO `tortas`.`usuario`\n" +
+//            "(`cedula`,\n" +
+//            "`contrasena`,\n" +
+//            "`nombres`,\n" +
+//            "`apellidos`,\n" +
+//            "`celular`,\n" +
+//            "`tipousuario`)\n" +
+//            "VALUES\n" +
+//            "(?,?,?,?,?,?);",
+//                1,
+//                "2711",
+//                "juan",
+//                "Garzón",
+//                31756773,
+//                "Admin"
+//        ));
 
-           LinkedList<Map<String,Object>> rs = BaseDeDatosTortas.executeQuery("SELECT * FROM tortas.usuario;");
+           LinkedList<Map<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
            System.out.println(rs.size());
            for (Map<String, Object> r : rs) {
                for (String obj1 : r.keySet()) {
@@ -70,15 +69,18 @@ public class BaseDeDatosTortas {
         }
     }
     
-    public static LinkedList<Map<String,Object>> executeQuery(String query) {
+    public static LinkedList<Map<String,Object>> obtenerConsulta(String consulta,Object... parametros) {
         Statement statement = null;
         ResultSet set = null;
+        LinkedList<Map<String,Object>> res = null;
         try {
             statement = con.getConnection().createStatement();
-            set = statement.executeQuery(query);
-            LinkedList<Map<String,Object>> res = new LinkedList<>();
+            PreparedStatement smt = con.getConnection().prepareStatement(consulta);
+            agregarParametros(smt,parametros);
+            set = smt.executeQuery();
             ResultSetMetaData rsmdt = set.getMetaData();
             int nColumnas = rsmdt.getColumnCount();
+            res = new LinkedList<>();
             
             while(set.next()) {
                 Map<String, Object> map = new HashMap<>();
@@ -107,22 +109,23 @@ public class BaseDeDatosTortas {
             } catch (SQLException e) {
             }
         }
-        return null;
+        return res;
     }
 
-    public static int executeUpdate(String update) {
+    public static boolean validarCosulta(String consulta,Object... parametros) {
         if (con == null)
-            return -1;
+            return false;
         
         if(!con.conectarBd())
-            return -1;        
+            return false;        
         
         Connection Conexion = con.getConnection();
-        int res = Integer.MIN_VALUE;
         Statement statement = null;
         try {
             statement = Conexion.createStatement();
-            res = statement.executeUpdate(update);
+            PreparedStatement smt = Conexion.prepareStatement(consulta);
+            agregarParametros(smt,parametros);            
+            return !smt.execute();
         } catch (SQLException e) {
         } finally {
             try {
@@ -134,36 +137,16 @@ public class BaseDeDatosTortas {
             } catch (SQLException e) {
             }
         }
-        return res;
+        return false;
     }
 
-    public static boolean validarCosulta(String consulta, Object... parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private static void agregarParametros(PreparedStatement smt, Object[] parametros) throws SQLException {
+        if (parametros == null)
+            return;
+        
+        for (int i = 0; i < parametros.length; i++) {
+            smt.setObject(i+1, parametros[i] );
+        }
     }
-
-    public static LinkedList<Usuario> obtenerConsulta(String consulta, Object... parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static LinkedList<Cliente> obtenerConsultaCliente(String consulta, Object... parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static boolean validarCosultaCliente(String consulta,Object... parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static boolean validarCosultaTorta(String consulta, Object... parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static LinkedList<Torta> obtenerConsultaTorta(String consulta, Object... parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static boolean validarCosultaPedido(String consulta, Object... parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
    
 }
