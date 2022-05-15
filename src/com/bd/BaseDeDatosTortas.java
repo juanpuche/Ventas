@@ -10,7 +10,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.Map;
 import java.sql.PreparedStatement;
 import java.util.LinkedList;
 
@@ -19,11 +18,11 @@ import java.util.LinkedList;
  * @author Admin
  */
 public class BaseDeDatosTortas {
-    private static final int puerto = 3306;
+    private static final int puerto = 3306;//3306
     private static final String 
             baseDeDatos = "tortas",
             usuariobd = "root",
-            passbd = "1234",
+            passbd = "1234",//
             Driver = "com.mysql.cj.jdbc.Driver",
             URL = "localhost";
     
@@ -36,45 +35,53 @@ public class BaseDeDatosTortas {
     
     public static void main(String[] args) {
         BaseDeDatosTortas.con.conectarBd();
-//        System.out.println(BaseDeDatosTortas.validarCosulta("INSERT INTO `tortas`.`usuario`\n" +
-//            "(`cedula`,\n" +
-//            "`contrasena`,\n" +
-//            "`nombres`,\n" +
-//            "`apellidos`,\n" +
-//            "`celular`,\n" +
-//            "`tipousuario`)\n" +
-//            "VALUES\n" +
-//            "(?,?,?,?,?,?);",
-//                1,
-//                "2711",
-//                "juan",
-//                "Garzón",
-//                31756773,
-//                "Admin"
-//        ));
+        System.out.println(BaseDeDatosTortas.validarCosulta("INSERT INTO `tortas`.`usuario`\n" +
+            "(`cedula`,\n" +
+            "`contrasena`,\n" +
+            "`nombres`,\n" +
+            "`apellidos`,\n" +
+            "`celular`,\n" +
+            "`tipousuario`)\n" +
+            "VALUES\n" +
+            "(?,?,?,?,?,?);",
+                1,
+                "2711",
+                "juan",
+                "Garzón",
+                31756773,
+                "Admin"
+        ));
 
-//           LinkedList<Map<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
-//           System.out.println(rs.size());
-//           for (Map<String, Object> r : rs) {
-//               for (String obj1 : r.keySet()) {
-//                   
-//                   StringBuilder str = new StringBuilder();
-//                   str.append(obj1);
-//                   str.append(": ");
-//                   str.append(r.get(obj1));
-//                   str.append("\t");
-//                   System.out.print(str.toString());
-//               }
-//               System.out.println("");
-//        }
+           LinkedList<HashMap<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT * FROM tortas.usuario;");
+           System.out.println(rs.size());
+           for (HashMap<String, Object> r : rs) {
+               for (String obj1 : r.keySet()) {
+                   
+                   StringBuilder str = new StringBuilder();
+                   str.append(obj1);
+                   str.append(": ");
+                   str.append(r.get(obj1));
+                   str.append("\t");
+                   System.out.print(str.toString());
+               }
+               System.out.println("");
+        }
     }
     
     public static LinkedList<HashMap<String,Object>> obtenerConsulta(String consulta,Object... parametros) {
+        if (con == null)
+            return null;
+        
+        if(!con.conectarBd())
+            return null;
+        
         Statement statement = null;
         ResultSet set = null;
         LinkedList<HashMap<String,Object>> res = null;
+        
+        Connection Conexion = con.getConnection();
         try {
-            statement = con.getConnection().createStatement();
+//            statement = con.getConnection().createStatement();
             PreparedStatement smt = con.getConnection().prepareStatement(consulta);
             agregarParametros(smt,parametros);
             set = smt.executeQuery();
@@ -92,22 +99,10 @@ public class BaseDeDatosTortas {
                 
                 res.add(map);
             }
-            
-            return res;
+            BaseDeDatosTortas.con.desconectarBd();
         } catch (SQLException e) {
         } finally { // Close in order: ResultSet, Statement, Connection.
-            try {
-                set.close();
-            } catch (SQLException e) {
-            }
-            try {
-                statement.close();
-            } catch (SQLException e) {
-            }
-            try {
-                con.getConnection().close();
-            } catch (SQLException e) {
-            }
+            BaseDeDatosTortas.con.desconectarBd();
         }
         return res;
     }
