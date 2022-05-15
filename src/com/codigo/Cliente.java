@@ -41,7 +41,7 @@ public class Cliente {
     public static boolean eliminarCliente(int cedula) {
         
         String consulta="DELETE FROM `tortas`.`cliente`\n" +
-"WHERE ?;";
+"WHERE cliente.cedula = ?;";
         
                 return BaseDeDatosTortas.validarCosulta(consulta,cedula);
                 
@@ -56,7 +56,7 @@ public class Cliente {
 "`celular`,\n" +
 "`direccion`)\n" +
 "VALUES\n" +
-"(?,?,?,?,?,?);";
+"(?,?,?,?,?);";
         
         return BaseDeDatosTortas.validarCosulta(consulta, 
                 cliente.getCedula(),

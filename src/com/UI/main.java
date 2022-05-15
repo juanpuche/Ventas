@@ -16,11 +16,14 @@ public class main {
 //        VistaPrincipal VP = new VistaPrincipal(12, "puche");
 //        VP.setVisible(true);
         
-            Login L = new Login();
-            L.setVisible(true);
+//            Login L = new Login();
+//            L.setVisible(true);
             
 //            Factura F=new Factura();
 //            F.setVisible(true);
+
+         AnadirCliente F=new AnadirCliente();
+         F.setVisible(true);
         
      
         
