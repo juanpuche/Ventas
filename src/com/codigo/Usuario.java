@@ -195,6 +195,18 @@ public class Usuario {
         }
         return null;
     }
+    
+    public static LinkedList<Usuario> MapToUsuarios(LinkedList<HashMap<String, Object>> val){
+        if (val == null)
+            return null;
+        
+        LinkedList<Usuario> res = new LinkedList<>();
+        for (int i = 0; i < val.size(); i++) {
+            res.add(MapToUsuario(val.get(i)));
+        }
+        
+        return res;
+    }
 
     @Override
     public String toString() {

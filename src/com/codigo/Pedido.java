@@ -168,7 +168,7 @@ public class Pedido {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-     public static Pedido MapToTorta(HashMap<String, Object> vals){
+     public static Pedido MapToPedido(HashMap<String, Object> vals){
          Pedido res = null;
         
         try {
@@ -193,6 +193,18 @@ public class Pedido {
             System.out.println("Ha ocurrido un erro: " + e.getMessage());
         }
         return null;
-     }
+    }
+    
+    public static LinkedList<Pedido> MapToPedido(LinkedList<HashMap<String, Object>> val){
+        if (val == null)
+            return null;
+        
+        LinkedList<Pedido> res = new LinkedList<>();
+        for (int i = 0; i < val.size(); i++) {
+            res.add(MapToPedido(val.get(i)));
+        }
+        
+        return res;
+    }
     
 }
