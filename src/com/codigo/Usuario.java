@@ -204,12 +204,19 @@ public class Usuario {
         Usuario res = null;
         
         try {
+            System.out.println("cedula");
             long cedula = (int) vals.get("cedula");
+            System.out.println("contrasena");
             String contrasena = (String) vals.get("contrasena");
+            System.out.println("nombres");
             String nombre = (String) vals.get("nombres");
+            System.out.println("apellidos");
             String apellido = (String) vals.get("apellidos");
+            System.out.println("celular");
             long celular = (int) vals.get("celular");
+            System.out.println("tipousuario");
             String tipo_usuario = (String) vals.get("tipousuario");
+            System.out.println("tipousuario");
             
             res = new Usuario(cedula, contrasena, nombre, apellido,tipo_usuario, celular);        
             return res;

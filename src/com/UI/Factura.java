@@ -9,7 +9,6 @@ import com.codigo.Cliente;
 import com.codigo.Pedido;
 import com.codigo.Torta;
 import com.codigo.Usuario;
-import java.util.HashMap;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,17 +30,28 @@ public class Factura extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public Factura(Pedido pedido, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
+    public Factura(Pedido pedido ) {
         
-        if(pedido==null||SusTortas==null||SusCantidades==null)
+        if(pedido==null)
             return;
             
-        pedido = Pedido.getPedido(pedido);
+        LinkedList<Pedido> pedidos = Pedido.getPedidos(pedido);
+        
+        if (pedidos == null){
+            return;
+        }
+        
+        System.out.println(pedido.toString());
+        
+        LinkedList<Torta> SusTortas = new LinkedList<>();        
+        LinkedList<Integer> SusCantidades = new LinkedList<>();
+        
+        Torta.extraerTortas(pedidos, SusTortas, SusCantidades);
         
         Cliente cliente = Cliente.getCliente((int) pedido.getCedula_cliente());
         Usuario usuario = Usuario.getUsuario((int) pedido.getCedula_usuario());
         
-        if(cliente==null||usuario==null){
+        if(cliente==null||usuario==null || SusTortas == null || SusCantidades==null ){
             
             return;
             
@@ -52,9 +62,9 @@ public class Factura extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-        f_tidpedido.setText(pedido.getId_numero()+"");
+        f_tidpedido.setText(pedidos.getFirst().getId_numero()+"");
         f_tvendedor.setText(usuario.getNombre() + " " + usuario.getApellido());
-        f_tfecha.setText(pedido.getFecha().toString());
+        f_tfecha.setText(pedido.getFechaTexto());
         cp_testado.setText(pedido.getEstado());
         
         f_cedulacliente.setText(cliente.getCedula()+"");
@@ -64,7 +74,10 @@ public class Factura extends javax.swing.JFrame {
         
        double subtotal = 0.0;
         
+        System.out.println("*********************");
         for (int i = 0; i < SusTortas.size(); i++) {
+            System.out.println(SusTortas.get(i).toString());
+            System.out.println(SusCantidades.get(i));
             subtotal += SusTortas.get(i).getPrecio() * SusCantidades.get(i);
         }
         
@@ -81,7 +94,7 @@ public class Factura extends javax.swing.JFrame {
              Torta t = SusTortas.get(i);
               int j = indiceTorta(t.getCodigo(), SusTortas);
               
-               Object[] producto = new Object [4];
+               Object[] producto = new Object [5];
 
                producto [0] = SusCantidades.get(i);
                
@@ -196,10 +209,7 @@ public class Factura extends javax.swing.JFrame {
 
         in_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Cantidad", "Cod.", "Descripcion", "Precio Unit.", "Importe"
@@ -287,17 +297,10 @@ public class Factura extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(f_cedulacliente))
+                        .addComponent(jLabel13))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(f_tvendedor)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(35, 35, 35)
-                                .addComponent(f_nombrecliente))))
+                        .addComponent(jLabel14))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,22 +316,15 @@ public class Factura extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(in_boton_mostrarfactura3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(ac_boton_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(266, 266, 266)
-                                .addComponent(f_tfecha))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -337,12 +333,28 @@ public class Factura extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cp_testado)
-                        .addGap(32, 32, 32))))
+                        .addGap(32, 32, 32))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(f_cedulacliente)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(f_tvendedor)
+                                        .addGap(141, 141, 141)
+                                        .addComponent(f_tfecha))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(f_nombrecliente))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(18, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(230, Short.MAX_VALUE)
+                    .addContainerGap(277, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(222, Short.MAX_VALUE)))
+                    .addContainerGap(269, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,12 +368,13 @@ public class Factura extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(f_tidpedido)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
-                        .addComponent(cp_testado)))
+                        .addComponent(cp_testado))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(f_tidpedido)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addGap(20, 20, 20)
@@ -409,7 +422,7 @@ public class Factura extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +447,7 @@ public class Factura extends javax.swing.JFrame {
 
     private void ac_boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ac_boton_salirActionPerformed
 
-        ActualizarCliente fra=new ActualizarCliente();
+        Factura fra=new Factura();
         fra.setVisible(false);
         dispose();
 
@@ -530,9 +543,6 @@ public class Factura extends javax.swing.JFrame {
         
         
     }
-
-
-
 
 }
 

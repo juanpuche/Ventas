@@ -12,8 +12,7 @@ import javax.swing.JOptionPane;
 import  com.codigo.Cliente;
 import com.codigo.Pedido;
 import com.codigo.Torta;
-import java.time.LocalDate;
-import java.util.HashMap;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
@@ -123,6 +122,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         jLabel94 = new javax.swing.JLabel();
         lbfecha = new javax.swing.JLabel();
         lbhora = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -468,10 +468,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
         in_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Cantidad", "Cod.", "Descripcion", "Precio Unit.", "Importe"
@@ -698,6 +695,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -705,17 +704,22 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel77)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addComponent(jLabel79)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel79)
+                                .addGap(19, 19, 19))
+                            .addComponent(jPanel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(in_tusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(jPanel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addComponent(jSeparator17)
                 .addGap(127, 127, 127))
@@ -756,7 +760,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel74)
-                            .addComponent(in_tusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(in_tusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -983,7 +988,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
             
             
 //            pedido = new Pedido(cedula, LocalDate.now(),"No entregado");
-            pedido = new Pedido(cliente.getCedula(),cedulaUsuario,LocalDate.now(),Pedido.ESTADO_NO_ENTREGADO);
+            pedido = new Pedido(cliente.getCedula(),cedulaUsuario,LocalDateTime.now(),Pedido.ESTADO_NO_ENTREGADO);
             
         }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Usted ingreso un valor no numerico en el campo Cedula Cliente. Por favor verifique e intente nuevamente.");
@@ -1036,6 +1041,26 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
     private void in_boton_anadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_boton_anadirActionPerformed
         
+        if (SusTortas == null)
+            SusTortas = new LinkedList<>();
+        
+        System.out.println("Tortas:");
+        
+        for (Torta SusTorta : SusTortas) {
+            System.out.println(SusTorta.getCodigo());
+        }
+        
+        if (SusCantidades == null)
+            SusCantidades = new LinkedList<>();
+        
+        System.out.println("SusCantidades: ");
+        
+        for (Integer SusCantidade : SusCantidades) {
+            System.out.println(SusCantidade);
+        }
+        
+        
+        
         String codigo = in_tcodigotorta.getText();
 
         if (codigo.isEmpty()){
@@ -1060,7 +1085,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
             DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
 
-            Object[] producto = new Object [4];
+            Object[] producto = new Object [5];
 
                 producto [1] = t.getCodigo(); 
                 producto [2] = t.getSabor();
@@ -1083,13 +1108,13 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
 
             } else {
 
+               SusCantidades.set(i, 1 + SusCantidades.get(i));
                producto [0] = SusCantidades.get(i);
                producto [4] = t.getPrecio()* (int) producto[0];
 
                model.setValueAt(producto [0], i, 0);
                model.setValueAt(producto [4], i, 4);
 
-               SusCantidades.set(i, 1 + SusCantidades.get(i));
 
             }
 
@@ -1115,7 +1140,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         int i = indiceTorta(codigo);
         DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
 
-            Object[] producto = new Object [4];
+            Object[] producto = new Object [5];
         
         if(i < 0){
             
@@ -1132,7 +1157,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
             
             Torta t = Torta.getTorta(codigo);
             
-            SusCantidades.set(i,1 - SusCantidades.get(i));
+            SusCantidades.set(i,(SusCantidades.get(i)-1));
             producto [0] = SusCantidades.get(i);
             producto [4] = t.getPrecio()* (int) producto[0];
 
@@ -1162,10 +1187,16 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
                 
                 JOptionPane.showMessageDialog(null, "El pedido se guardo satisfactoriamente.");
                 
-                        Factura fra=new Factura(pedido,SusTortas,SusCantidades);
+                        Factura fra=new Factura(pedido);
                         
                         fra.setVisible(true);
    
+            }
+            
+            else{
+                
+                JOptionPane.showMessageDialog(null, "El pedido no se guardo.");
+                
             }
         
             
@@ -1196,20 +1227,10 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
             JOptionPane.showMessageDialog(null, "El pedido no existe.");
             return;          
         }
-       
         
-         Torta.getTortasPedido(numero, SusTortas, SusCantidades);
+        System.out.println(pedido.toString());
        
-       if(SusTortas==null || SusCantidades==null){
-           
-           JOptionPane.showMessageDialog(null, "El pedido no tiene productos.");
-           
-           return;
-       }
-       
-       
-       
-        Factura fra=new Factura(pedido, SusTortas, SusCantidades);
+        Factura fra=new Factura(pedido);
         fra.setVisible(true);
         
     }//GEN-LAST:event_in_boton_consultarActionPerformed
@@ -1364,6 +1385,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextField in_tnombrevendedor;
     private javax.swing.JTextField in_tnumeropedido;
     private javax.swing.JTextField in_tusuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel66;
@@ -1485,10 +1507,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements Runnable {
         
         for (Torta t: SusTortas){
             
-            if (t.getCodigo()==codigo){
-            
-            
-                
+            if (t.getCodigo().equals(codigo)){
                 return i;
             }
             

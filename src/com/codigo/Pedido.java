@@ -5,7 +5,8 @@
 package com.codigo;
 
 import com.bd.BaseDeDatosTortas;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -20,7 +21,7 @@ public class Pedido {
             ESTADO_CANCELADO="Cancelado",
             ESTADO_NO_ENTREGADO="No entregado";
 
-    public Pedido(long cedula_cliente, long cedula_usuario, LocalDate fecha, String estado) {
+    public Pedido(int cedula_cliente, int cedula_usuario, LocalDateTime fecha, String estado) {
         this.cedula_cliente = cedula_cliente;
         this.cedula_usuario = cedula_usuario;
         this.fecha = fecha;
@@ -30,39 +31,50 @@ public class Pedido {
     public static boolean insertarPedido(Pedido pedido, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
       
         String consulta = "INSERT INTO `tortas`.`pedido`\n" +
-"(`numero`,\n" +
-"`fecha`,\n" +
+"(`fecha`,\n" +
 "`estado`,\n" +
 "`cantidad`,\n" +
 "`cedula_cliente`,\n" +
 "`codigo_torta`,\n" +
 "`cedula_usuario`)\n" +
 "VALUES\n" +
-"(?,?,?,?,?,?,?);";
+"(?,?,?,?,?,?);";
         
-        return BaseDeDatosTortas.validarCosulta(consulta,
-                pedido.getId_numero(),
-                pedido.getFecha(),
+        
+        
+        for (int i = 0; i < SusTortas.size(); i++) {
+            if (!BaseDeDatosTortas.validarCosulta(consulta,
+                pedido.getFechaTexto(),
                 pedido.getEstado(),
-                pedido.getCantidad_tortas(),
+                SusCantidades.get(i),
                 pedido.getCedula_cliente(),
-                pedido.getId_torta(),
-                pedido.getCedula_usuario());
+                SusTortas.get(i).getCodigo(),
+                pedido.getCedula_usuario())){
+                
+                //En caso de que ocurra un errorr se deben eliminar automaticamente las tortas que ya se hayan pedido
+                return false;
+            }
+        }
+        
+        return true;
                 
                      
                 
         
     }
+    
+    public String getFechaTexto(){
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+        return fecha.format(format);  
+        
+    }
 
     public static Pedido getPedido(String numero) {
         
-        String consulta="SET @numero_to_select = ?;\n" +
-"SET @cedula_usuario_to_select = ?;\n" +
-"SET @codigo_torta_to_select = ?;\n" +
-"SET @cedula_cliente_to_select = ?;\n" +
+        String consulta=
 "SELECT pedido.*\n" +
 "    FROM pedido\n" +
-"    WHERE pedido.numero = @numero_to_select AND pedido.cedula_usuario = @cedula_usuario_to_select AND pedido.codigo_torta = @codigo_torta_to_select AND pedido.cedula_cliente = @cedula_cliente_to_select;";
+"    WHERE pedido.numero = ? ;";
         
         
         
@@ -87,7 +99,8 @@ public class Pedido {
     }
 
     public static boolean actualizarPedido(Pedido pedido) {
-       
+        System.out.println("***************************");
+        System.out.println(pedido.toString());
         
         String consulta="UPDATE `tortas`.`pedido`\n" +
 "SET\n" +
@@ -101,12 +114,13 @@ public class Pedido {
         
         
         return BaseDeDatosTortas.validarCosulta(consulta,
-                pedido.getFecha(), 
+                pedido.getFechaTexto(), 
                 pedido.getEstado(),
                 pedido.getCantidad_tortas(),
                 pedido.getCedula_cliente(),
-                pedido.getCantidad_tortas(),
-                pedido.getCedula_usuario());
+                pedido.getId_torta(),
+                pedido.getCedula_usuario(),
+                pedido.getId_numero());
         
         
         
@@ -121,11 +135,11 @@ public class Pedido {
     }
     
     private int cantidad_tortas;
-    private long cedula_cliente, cedula_usuario, id_numero;
-    private LocalDate fecha;
+    private int cedula_cliente, cedula_usuario, id_numero;
+    private LocalDateTime fecha;
     private String estado, id_torta;
 
-    public Pedido(long id_numero, String id_torta, int cantidad_tortas, long cedula_cliente, long cedula_usuario, LocalDate fecha, String estado) {
+    public Pedido(int id_numero, String id_torta, int cantidad_tortas, int cedula_cliente, int cedula_usuario, LocalDateTime fecha, String estado) {
         this.id_numero = id_numero;
         this.id_torta = id_torta;
         this.cantidad_tortas = cantidad_tortas;
@@ -135,7 +149,7 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Pedido(String id_torta, int cantidad_tortas, long cedula_cliente, long cedula_usuario, LocalDate fecha, String estado) {
+    public Pedido(String id_torta, int cantidad_tortas, int cedula_cliente, int cedula_usuario, LocalDateTime fecha, String estado) {
         this.id_torta = id_torta;
         this.cantidad_tortas = cantidad_tortas;
         this.cedula_cliente = cedula_cliente;
@@ -161,15 +175,15 @@ public class Pedido {
     }
     
 
-    public long getId_numero() {
+    public int getId_numero() {
         return id_numero;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
@@ -181,58 +195,70 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public long getCedula_cliente() {
+    public int getCedula_cliente() {
         return cedula_cliente;
     }
 
-    public void setCedula_cliente(long cedula_cliente) {
+    public void setCedula_cliente(int cedula_cliente) {
         this.cedula_cliente = cedula_cliente;
     }
 
-    public long getCedula_usuario() {
+    public int getCedula_usuario() {
         return cedula_usuario;
     }
 
-    public void setCedula_usuario(long cedula_usuario) {
+    public void setCedula_usuario(int cedula_usuario) {
         this.cedula_usuario = cedula_usuario;
     }
     
-    public static boolean crearNuevoPedido(Pedido p){
-        String sentenciaSQL = "INSERT INTO `tortas`.`pedido`\n" +
-            "(\n" +//`numero`,
-            "`fecha`,\n" +
-            "`estado`,\n" +
-            "`cedula_cliente`,\n" +
-            "`codigo_torta`,\n" +
-            "`cedula_usuario`)\n" +
-            "VALUES\n" +
-            p.fecha.toString() + ",\n" +
-            p.estado + ",\n" +
-            p.cedula_cliente + ",\n" +
-            p.id_torta + ",\n" +
-            //p.cantidad_tortas + ",\n" +
-            p.cedula_usuario + ");";
-        
-        
-        
-        return true;
-    }
 
-    public static Pedido getPedido(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static LinkedList<Pedido> getPedidos(Pedido pedido) {
+       
+        String consulta = "SELECT pedido.* \n" +
+"    FROM pedido\n" +
+"    WHERE pedido.cedula_usuario = ?  AND pedido.cedula_cliente = ? AND pedido.fecha = ?;";
+        
+        LinkedList<Pedido> pedidos = MapToPedidos(BaseDeDatosTortas.obtenerConsulta(
+                consulta, 
+                pedido.getCedula_usuario(),
+                pedido.getCedula_cliente(),
+                pedido.getFechaTexto()
+            )
+        );
+        
+        if(pedido==null){
+            
+            return null;
+            
+        }if(pedidos.size()== 0){
+            
+            
+            return null;
+            
+        }        
+        
+        return pedidos;
     }
     
      public static Pedido MapToPedido(HashMap<String, Object> vals){
-         Pedido res = null;
-        
+        Pedido res = null;
+         System.out.println(vals);
         try {
-            long numero = (long) vals.get("numero");
+            System.out.println("numero");
+            int numero = (int) vals.get("numero");
+            System.out.println("cantidad");
             int cantidadTorta = (int) vals.get("cantidad");
-            LocalDate fecha = LocalDate.parse((String) vals.get("fecha"));
+            System.out.println("fecha");
+            LocalDateTime fecha =(LocalDateTime) vals.get("fecha");
+//            LocalDateTime fecha = (new Timestamp(Dfecha.getTime())).toLocalDateTime();
+            System.out.println("estado");
             String estado = (String) vals.get("estado");
-            long cedula_cliente = (long) vals.get("cedula_cliente");
+            System.out.println("cedula_cliente");
+            int cedula_cliente = (int) vals.get("cedula_cliente");
+            System.out.println("codigo_torta");
             String codigo_torta = (String) vals.get("codigo_torta");
-            long cedula_usuario =  (long) vals.get("cedula_usuario");
+            System.out.println("cedula_usuario");
+            int cedula_usuario =  (int) vals.get("cedula_usuario");
             
             res = new Pedido(
                     numero, 
@@ -250,6 +276,8 @@ public class Pedido {
     }
     
     public static LinkedList<Pedido> MapToPedidos(LinkedList<HashMap<String, Object>> val){
+        System.out.println(val);
+        
         if (val == null)
             return null;
         
@@ -260,5 +288,10 @@ public class Pedido {
         
         return res;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "cantidad_tortas=" + cantidad_tortas + ", cedula_cliente=" + cedula_cliente + ", cedula_usuario=" + cedula_usuario + ", id_numero=" + id_numero + ", fecha=" + fecha + ", estado=" + estado + ", id_torta=" + id_torta + '}';
+    }
+
 }

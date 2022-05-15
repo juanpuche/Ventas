@@ -99,22 +99,21 @@ public class Torta {
          return BaseDeDatosTortas.validarCosulta(consulta, torta.getCodigo(),torta.getSabor(),torta.getPeso(),torta.getPrecio(),torta.getCodigo());
     }
 
-    public static void/*HashMap<Torta, Integer>*/ getTortasPedido(String numero, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
+    public static void extraerTortas(LinkedList<Pedido> pedidos, LinkedList<Torta> SusTortas, LinkedList<Integer> SusCantidades) {
+      
+        if (pedidos != null){
+            for (Pedido pedido : pedidos) {
+                System.out.println(pedido.toString());
+            }
+        }
+        System.out.println(SusTortas);
+        System.out.println(SusCantidades);
         
-        String consulta = "SELECT * FROM tortas.pedido\n" +
-"inner join torta\n" +
-"on\n" +
-"pedido.codigo_torta=torta.codigo where numero=?;";
-        
-        LinkedList<Torta> Tortas = MapToTortas(BaseDeDatosTortas.obtenerConsulta(consulta));
-        
-        reordenartortas(SusTortas, SusTortas, SusCantidades);
-        
-        return ;
-    }
-
-    private static void reordenartortas(LinkedList<Torta> SusTortas, LinkedList<Torta> SusTortas0, LinkedList<Integer> SusCantidades) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (Pedido pedido : pedidos) {
+            SusTortas.add(Torta.getTorta(pedido.getId_torta()));
+            SusCantidades.add(pedido.getCantidad_tortas());
+            
+        }
     }
 
     private String codigo, sabor;
@@ -148,6 +147,7 @@ public class Torta {
     }
 
     public double getPrecio() {
+        System.out.println("precio: " + precio);
         return precio;
     }
 
@@ -171,9 +171,13 @@ public class Torta {
         Torta res = null;
         
         try {
+            System.out.println("codigo");
             String codigo = (String) vals.get("codigo");
+            System.out.println("sabor");
             String sabor = (String) vals.get("sabor");
+            System.out.println("peso");
             double peso = (double) vals.get("peso");
+            System.out.println("precio");
             double precio = (double) vals.get("precio");
             
             res = new Torta(codigo, sabor, peso, precio);        

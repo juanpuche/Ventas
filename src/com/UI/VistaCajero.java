@@ -8,7 +8,7 @@ package com.UI;
 import com.codigo.Cliente;
 import com.codigo.Pedido;
 import com.codigo.Torta;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -870,7 +870,8 @@ public class VistaCajero extends javax.swing.JFrame implements Runnable {
             return;
         }
 
-        Torta.getTortasPedido(numero, SusTortas, SusCantidades);
+        LinkedList<Pedido> pedidos = Pedido.getPedidos(pedido);
+        Torta.extraerTortas(pedidos, SusTortas, SusCantidades);
 
         if(SusTortas==null || SusCantidades==null){
 
@@ -879,7 +880,7 @@ public class VistaCajero extends javax.swing.JFrame implements Runnable {
             return;
         }
 
-        Factura fra=new Factura(pedido, SusTortas, SusCantidades);
+        Factura fra=new Factura(pedido);
         fra.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -937,7 +938,7 @@ public class VistaCajero extends javax.swing.JFrame implements Runnable {
             }
 
             //            pedido = new Pedido(cedula, LocalDate.now(),"No entregado");
-            pedido = new Pedido(cliente.getCedula(),cedulaUsuario,LocalDate.now(),Pedido.ESTADO_NO_ENTREGADO);
+            pedido = new Pedido(cliente.getCedula(),cedulaUsuario,LocalDateTime.now(),Pedido.ESTADO_NO_ENTREGADO);
 
         } catch (Exception e) {
 
@@ -1096,7 +1097,7 @@ public class VistaCajero extends javax.swing.JFrame implements Runnable {
 
             JOptionPane.showMessageDialog(null, "El pedido se guardo satisfactoriamente.");
 
-            Factura fra=new Factura(pedido,SusTortas,SusCantidades);
+            Factura fra=new Factura(pedido);
 
             fra.setVisible(true);
 

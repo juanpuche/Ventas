@@ -13,11 +13,14 @@ public class main {
     
     public static void main(String[] args) {
         
-//        VistaPrincipal VP = new VistaPrincipal();
+//        VistaPrincipal VP = new VistaPrincipal(12, "puche");
 //        VP.setVisible(true);
         
             Login L = new Login();
             L.setVisible(true);
+            
+//            Factura F=new Factura();
+//            F.setVisible(true);
         
      
         

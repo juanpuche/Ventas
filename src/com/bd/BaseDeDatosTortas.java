@@ -34,7 +34,6 @@ public class BaseDeDatosTortas {
     } 
     
     public static void main(String[] args) {
-        BaseDeDatosTortas.con.conectarBd();
 //        System.out.println(BaseDeDatosTortas.validarCosulta("INSERT INTO `tortas`.`usuario`\n" +
 //            "(`cedula`,\n" +
 //            "`contrasena`,\n" +
@@ -52,22 +51,22 @@ public class BaseDeDatosTortas {
 //                "Admin"
 //        ));
 
-        LinkedList<HashMap<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT cliente.*\n" +
-"    FROM cliente\n" +
-"    WHERE cliente.cedula = ?", Long.parseLong("22"));
-        System.out.println(rs.size());
-        for (HashMap<String, Object> r : rs) {
-            for (String obj1 : r.keySet()) {
-
-                StringBuilder str = new StringBuilder();
-                str.append(obj1);
-                str.append(": ");
-                str.append(r.get(obj1));
-                str.append("\t");
-                System.out.print(str.toString());
-            }
-            System.out.println("");
-        }
+//        LinkedList<HashMap<String,Object>> rs = BaseDeDatosTortas.obtenerConsulta("SELECT cliente.*\n" +
+//"    FROM cliente\n" +
+//"    WHERE cliente.cedula = ?", Long.parseLong("22"));
+//        System.out.println(rs.size());
+//        for (HashMap<String, Object> r : rs) {
+//            for (String obj1 : r.keySet()) {
+//
+//                StringBuilder str = new StringBuilder();
+//                str.append(obj1);
+//                str.append(": ");
+//                str.append(r.get(obj1));
+//                str.append("\t");
+//                System.out.print(str.toString());
+//            }
+//            System.out.println("");
+//        }
     }
     
     public static LinkedList<HashMap<String,Object>> obtenerConsulta(String consulta,Object... parametros) {
@@ -84,7 +83,7 @@ public class BaseDeDatosTortas {
         System.out.println(consulta);
         try {
 //            statement = con.getConnection().createStatement();
-            PreparedStatement smt = con.getConnection().prepareStatement(consulta);
+            PreparedStatement smt = Conexion.prepareStatement(consulta);
             agregarParametros(smt,parametros);
             set = smt.executeQuery();
             ResultSetMetaData rsmdt = set.getMetaData();
@@ -98,7 +97,7 @@ public class BaseDeDatosTortas {
                     map.put(rsmdt.getColumnName(i), set.getObject(i));
                 }
                 
-                
+                System.out.println(map);
                 res.add(map);
             }
             BaseDeDatosTortas.con.desconectarBd();
@@ -122,22 +121,16 @@ public class BaseDeDatosTortas {
         BaseDeDatosTortas.con.conectarBd();
         Connection Conexion = con.getConnection();
         Statement statement = null;
+        System.out.println(consulta);
         try {
-            statement = Conexion.createStatement();
+//            statement = Conexion.createStatement();
             PreparedStatement smt = Conexion.prepareStatement(consulta);
             agregarParametros(smt,parametros);            
+            System.out.println("Todo bien");
             return !smt.execute();
             
         } catch (SQLException e) {
         } finally {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-            }
-            try {
-                Conexion.close();
-            } catch (SQLException e) {
-            }
              BaseDeDatosTortas.con.desconectarBd();
         }
         BaseDeDatosTortas.con.desconectarBd();
@@ -147,14 +140,16 @@ public class BaseDeDatosTortas {
     private static void agregarParametros(PreparedStatement smt, Object[] parametros) throws SQLException {
         if (parametros == null)
             return;
-        
+        System.out.print("(");
         for (int i = 0; i < parametros.length; i++) {
-            if ( parametros[i] instanceof Long){
-                smt.setLong(i+1,  (long) parametros[i]);
-            }else{
-                smt.setObject(i+1, parametros[i] );
-            }
+//            if (parametros[i] instanceof String){
+//                smt.setString(i+1, (String) parametros[i]);
+//            }else{
+                System.out.print(parametros[i] + ", ");
+//            }
+            smt.setObject(i+1, parametros[i] );
         }
+        System.out.println(")");
     }
    
 }
