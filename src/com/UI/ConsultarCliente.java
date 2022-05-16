@@ -229,10 +229,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
 
         in_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Cedula", "Nombres", "Apellidos", "Celular", "Direccion"
@@ -400,12 +397,14 @@ public class ConsultarCliente extends javax.swing.JFrame {
            try {
                
                int cedula = Integer.parseInt(cc_tcedula.getText());
+               Cliente c = Cliente.getCliente(cedula);
+               
+               
                DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
          
  
                Object[] cliente = new Object [5];
                
-               Cliente c = Cliente.getCliente(cedula);
 
                 cliente [0] = c.getCedula()+"";
                 cliente [1] = c.getNombres(); 
@@ -457,7 +456,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cc_botonmostrarclienteActionPerformed
 
     private void cc_botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cc_botonsalirActionPerformed
-         ActualizarCliente fra=new ActualizarCliente();
+         ConsultarCliente fra=new ConsultarCliente();
         fra.setVisible(false);
         dispose();
     }//GEN-LAST:event_cc_botonsalirActionPerformed
@@ -532,10 +531,11 @@ public class ConsultarCliente extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpiarTabla() {
+       
         
         DefaultTableModel model = (DefaultTableModel) in_tabla.getModel();
         
-        for (int i = 0; i < model.getColumnCount(); i++) {
+        for (int i = 0; i < model.getRowCount(); i++) {
             model.removeRow(0);
         }
         

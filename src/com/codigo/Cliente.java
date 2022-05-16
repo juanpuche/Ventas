@@ -72,20 +72,18 @@ public class Cliente {
        
         String consulta = "UPDATE `tortas`.`cliente`\n" +
 "SET\n" +
-"`cedula` = ?\n" +
 "`nombres` = ?\n" +
 "`apellidos` = ?\n" +
 "`celular` = ?\n" +
 "`direccion` = ?\n" +
 "WHERE `cedula` = ?;";
         
-        return BaseDeDatosTortas.validarCosulta(consulta, 
-                
-                cliente.getCedula(),
+        return BaseDeDatosTortas.validarActualizacionCosulta(consulta,                 
                 cliente.getNombres(),
                 cliente.getApellidos(),
                 cliente.getCelular(),
-                cliente.getDireccion(),cliente.getCedula());
+                cliente.getDireccion(),
+                cliente.getCedula());
         
     }
 

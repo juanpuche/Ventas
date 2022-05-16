@@ -130,8 +130,9 @@ public class BaseDeDatosTortas {
             return !smt.execute();
             
         } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
         } finally {
-             BaseDeDatosTortas.con.desconectarBd();
+            BaseDeDatosTortas.con.desconectarBd();
         }
         BaseDeDatosTortas.con.desconectarBd();
         return false;
@@ -151,5 +152,7 @@ public class BaseDeDatosTortas {
         }
         System.out.println(")");
     }
+    
+    
    
 }

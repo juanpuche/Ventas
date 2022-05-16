@@ -22,7 +22,7 @@ public class main {
 //            Factura F=new Factura();
 //            F.setVisible(true);
 
-         AnadirCliente F=new AnadirCliente();
+         ActualizarCliente F=new ActualizarCliente();
          F.setVisible(true);
         
      
